@@ -1,10 +1,8 @@
-package com.iotek.dao;
+package com.iotek.service;
 
 import com.iotek.model.Information;
 
-import java.util.List;
-
-public interface InformationMapper {
+public interface InformationService {
     //添加个人信息
     boolean saveInformation(Information information);
     //修改个人信息
