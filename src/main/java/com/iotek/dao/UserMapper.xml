@@ -7,10 +7,10 @@
         insert into T_USER(U_NAME, U_PASS) VALUES (#{name},#{name})
     </insert>
 
-    <select id="queryUser" resultMap="User">
+    <select id="queryUser" resultMap="USER">
 
     </select>
-    <resultMap id="User" type="com.iotek.model.User">
+    <resultMap id="USER" type="com.iotek.model.User">
         <id property="id" column="U_ID"/>
         <result property="name" column="U_NAME"/>
         <result property="pass" column="U_PASS"/>
