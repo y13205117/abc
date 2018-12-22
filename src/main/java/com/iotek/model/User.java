@@ -4,8 +4,8 @@ import java.io.Serializable;
 //游客
 public class User implements Serializable {
     private Integer id;
-    private String uname;
-    private String upass;
+    private String name;
+    private String pass;
 
     public Integer getId() {
         return id;
@@ -15,28 +15,28 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getUname() {
-        return uname;
+    public String getName() {
+        return name;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUpass() {
-        return upass;
+    public String getPass() {
+        return pass;
     }
 
-    public void setUpass(String upass) {
-        this.upass = upass;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", uname='" + uname + '\'' +
-                ", upass='" + upass + '\'' +
+                ", name='" + name + '\'' +
+                ", pass='" + pass + '\'' +
                 '}';
     }
 }
