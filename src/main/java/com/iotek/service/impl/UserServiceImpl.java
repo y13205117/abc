@@ -1,9 +1,13 @@
 package com.iotek.service.impl;
 
+import com.iotek.dao.UserMapper;
+import com.iotek.model.User;
+import com.iotek.model.UserExample;
 import com.iotek.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -14,7 +18,10 @@ public class UserServiceImpl implements UserService {
         if(user==null){
             return null;
         }
-        return userMapper.queryUser(user);
+        UserExample userExample=new UserExample();
+        userExample.createCriteria().andNameEqualTo(user.getName()).andPassEqualTo(user.getPass());
+        List<User> users = userMapper.selectByExample(userExample);
+        return users.size()>0?users.get(0):null;
     }
 
     @Override
@@ -22,6 +29,7 @@ public class UserServiceImpl implements UserService {
         if(user==null){
             return false;
         }
-        return userMapper.saveUser(user);
+        int i = userMapper.insertSelective(user);
+        return i>0?true:false;
     }
 }
