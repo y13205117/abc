@@ -32,4 +32,15 @@ public class UserServiceImpl implements UserService {
         int i = userMapper.insertSelective(user);
         return i>0?true:false;
     }
+
+    @Override
+    public User queryUserBy(String name) {
+        if(name==null){
+            return null;
+        }
+        UserExample userExample=new UserExample();
+        userExample.createCriteria().andNameEqualTo(name);
+        List<User> users = userMapper.selectByExample(userExample);
+        return users.size()>0?users.get(0):null;
+    }
 }

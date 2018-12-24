@@ -286,9 +286,12 @@
         </includes>
       </resource>
       <!--指定资源的位置-->
-      <!--  <resource>
-          <directory>src/main/resources</directory>
-        </resource>-->
+      <!--<resource>-->
+          <!--<directory>src/main/resources</directory>-->
+        <!--<includes>-->
+            <!--<include>**/*.xml</include>-->
+        <!--</includes>-->
+      <!--</resource>-->
     </resources>
     <finalName>testMavenSSM</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

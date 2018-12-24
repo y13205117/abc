@@ -7,4 +7,6 @@ public interface UserService {
     User queryUser(User user);
     //注册
     boolean saveUser(User user);
+    //查重
+    User queryUserBy(String name);
 }
