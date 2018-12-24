@@ -1,8 +1,5 @@
 package com.iotek.service.impl;
 
-import com.iotek.dao.InformationMapper;
-import com.iotek.model.Information;
-import com.iotek.service.InformationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

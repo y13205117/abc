@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- !!!! Driver Class Path !!!! -->
+    <!--<classPathEntry location="D:\testMavenSSM\src\main\webapp\WEB-INF\pages\lib\ojdbc6_g.jar"/>-->
+
+    <context id="context" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- !!!! Database Configurations !!!! -->
+        <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:1521:XE" userId="scott" password="tiger"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- !!!! Model Configurations !!!! -->
+        <javaModelGenerator targetPackage="com.iotek.model" targetProject="src/main/java/">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- !!!! Mapper XML Configurations !!!! -->
+        <sqlMapGenerator targetPackage="com.iotek.mapper" targetProject="src/main/java/">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- !!!! Mapper Interface Configurations !!!! -->
+        <javaClientGenerator targetPackage="com.iotek.dao" targetProject="src/main/java/" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- !!!! Table Configurations !!!! -->
+        <table tableName="T_AWARDRECORD" domainObjectName="AwardRecord" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="^A_" replaceString=""/>
+        </table>
+        <table tableName="T_CALCULATE" domainObjectName="Calculate" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="C_" replaceString=""/>
+        </table>
+        <table tableName="T_DEPARTMENT" domainObjectName="Department" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="D_" replaceString=""/>
+        </table>
+        <table tableName="T_EMPLOYEE" domainObjectName="Employee" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="E_" replaceString=""/>
+        </table>
+        <table tableName="T_GATECARD" domainObjectName="GateCard" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="G_" replaceString=""/>
+        </table>
+        <table tableName="T_JOB" domainObjectName="Job" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="J_" replaceString=""/>
+        </table>
+        <table tableName="T_LEAVE" domainObjectName="Leave" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="L_" replaceString=""/>
+        </table>
+        <table tableName="T_MEMBERSHOWCV" domainObjectName="MemberShowCV" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="M_" replaceString=""/>
+        </table>
+        <table tableName="T_RECRUIT" domainObjectName="Recruit" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="R_" replaceString=""/>
+        </table>
+        <table tableName="T_TRAIN" domainObjectName="Train" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="T_" replaceString=""/>
+        </table>
+        <table tableName="T_USER" domainObjectName="User" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="U_" replaceString=""/>
+        </table>
+        <table tableName="T_VITAE" domainObjectName="Vitae" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="V_" replaceString=""/>
+        </table>
+    </context>
+</generatorConfiguration>

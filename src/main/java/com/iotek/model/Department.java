@@ -1,11 +1,11 @@
 package com.iotek.model;
 
-public class User {
+public class Department {
     private Integer id;
 
     private String name;
 
-    private String pass;
+    private String creationtime;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getPass() {
-        return pass;
+    public String getCreationtime() {
+        return creationtime;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass == null ? null : pass.trim();
+    public void setCreationtime(String creationtime) {
+        this.creationtime = creationtime == null ? null : creationtime.trim();
     }
 }

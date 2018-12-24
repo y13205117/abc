@@ -1,7 +1,5 @@
 package com.iotek.service.impl;
 
-import com.iotek.dao.UserMapper;
-import com.iotek.model.User;
 import com.iotek.service.UserService;
 import org.springframework.stereotype.Service;
 

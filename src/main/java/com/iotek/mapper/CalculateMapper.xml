@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iotek.dao.CalculateMapper" >
+  <resultMap id="BaseResultMap" type="com.iotek.model.Calculate" >
+    <id column="C_ID" property="id" jdbcType="DECIMAL" />
+    <result column="C_TIME" property="time" jdbcType="VARCHAR" />
+    <result column="C_RECONSIDER" property="reconsider" jdbcType="DECIMAL" />
+    <result column="C_CAUSE" property="cause" jdbcType="VARCHAR" />
+    <result column="C_EID" property="eid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_ID, C_TIME, C_RECONSIDER, C_CAUSE, C_EID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iotek.model.CalculateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_CALCULATE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_CALCULATE
+    where C_ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_CALCULATE
+    where C_ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.iotek.model.CalculateExample" >
+    delete from T_CALCULATE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.iotek.model.Calculate" >
+    insert into T_CALCULATE (C_ID, C_TIME, C_RECONSIDER, 
+      C_CAUSE, C_EID)
+    values (#{id,jdbcType=DECIMAL}, #{time,jdbcType=VARCHAR}, #{reconsider,jdbcType=DECIMAL}, 
+      #{cause,jdbcType=VARCHAR}, #{eid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iotek.model.Calculate" >
+    insert into T_CALCULATE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        C_ID,
+      </if>
+      <if test="time != null" >
+        C_TIME,
+      </if>
+      <if test="reconsider != null" >
+        C_RECONSIDER,
+      </if>
+      <if test="cause != null" >
+        C_CAUSE,
+      </if>
+      <if test="eid != null" >
+        C_EID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="reconsider != null" >
+        #{reconsider,jdbcType=DECIMAL},
+      </if>
+      <if test="cause != null" >
+        #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.iotek.model.CalculateExample" resultType="java.lang.Integer" >
+    select count(*) from T_CALCULATE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_CALCULATE
+    <set >
+      <if test="record.id != null" >
+        C_ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.time != null" >
+        C_TIME = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reconsider != null" >
+        C_RECONSIDER = #{record.reconsider,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cause != null" >
+        C_CAUSE = #{record.cause,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eid != null" >
+        C_EID = #{record.eid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_CALCULATE
+    set C_ID = #{record.id,jdbcType=DECIMAL},
+      C_TIME = #{record.time,jdbcType=VARCHAR},
+      C_RECONSIDER = #{record.reconsider,jdbcType=DECIMAL},
+      C_CAUSE = #{record.cause,jdbcType=VARCHAR},
+      C_EID = #{record.eid,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iotek.model.Calculate" >
+    update T_CALCULATE
+    <set >
+      <if test="time != null" >
+        C_TIME = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="reconsider != null" >
+        C_RECONSIDER = #{reconsider,jdbcType=DECIMAL},
+      </if>
+      <if test="cause != null" >
+        C_CAUSE = #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        C_EID = #{eid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where C_ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iotek.model.Calculate" >
+    update T_CALCULATE
+    set C_TIME = #{time,jdbcType=VARCHAR},
+      C_RECONSIDER = #{reconsider,jdbcType=DECIMAL},
+      C_CAUSE = #{cause,jdbcType=VARCHAR},
+      C_EID = #{eid,jdbcType=DECIMAL}
+    where C_ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

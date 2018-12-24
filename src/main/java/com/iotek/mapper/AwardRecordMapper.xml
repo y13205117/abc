@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iotek.dao.AwardRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.iotek.model.AwardRecord" >
+    <id column="A_ID" property="id" jdbcType="DECIMAL" />
+    <result column="A_CAUSE" property="cause" jdbcType="VARCHAR" />
+    <result column="A_MONEY" property="money" jdbcType="DECIMAL" />
+    <result column="A_TIME" property="time" jdbcType="VARCHAR" />
+    <result column="A_EID" property="eid" jdbcType="DECIMAL" />
+    <result column="A_CID" property="cid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    A_ID, A_CAUSE, A_MONEY, A_TIME, A_EID, A_CID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iotek.model.AwardRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_AWARDRECORD
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_AWARDRECORD
+    where A_ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_AWARDRECORD
+    where A_ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.iotek.model.AwardRecordExample" >
+    delete from T_AWARDRECORD
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.iotek.model.AwardRecord" >
+    insert into T_AWARDRECORD (A_ID, A_CAUSE, A_MONEY, 
+      A_TIME, A_EID, A_CID)
+    values (#{id,jdbcType=DECIMAL}, #{cause,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, 
+      #{time,jdbcType=VARCHAR}, #{eid,jdbcType=DECIMAL}, #{cid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iotek.model.AwardRecord" >
+    insert into T_AWARDRECORD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        A_ID,
+      </if>
+      <if test="cause != null" >
+        A_CAUSE,
+      </if>
+      <if test="money != null" >
+        A_MONEY,
+      </if>
+      <if test="time != null" >
+        A_TIME,
+      </if>
+      <if test="eid != null" >
+        A_EID,
+      </if>
+      <if test="cid != null" >
+        A_CID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="cause != null" >
+        #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=DECIMAL},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.iotek.model.AwardRecordExample" resultType="java.lang.Integer" >
+    select count(*) from T_AWARDRECORD
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_AWARDRECORD
+    <set >
+      <if test="record.id != null" >
+        A_ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cause != null" >
+        A_CAUSE = #{record.cause,jdbcType=VARCHAR},
+      </if>
+      <if test="record.money != null" >
+        A_MONEY = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.time != null" >
+        A_TIME = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eid != null" >
+        A_EID = #{record.eid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cid != null" >
+        A_CID = #{record.cid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_AWARDRECORD
+    set A_ID = #{record.id,jdbcType=DECIMAL},
+      A_CAUSE = #{record.cause,jdbcType=VARCHAR},
+      A_MONEY = #{record.money,jdbcType=DECIMAL},
+      A_TIME = #{record.time,jdbcType=VARCHAR},
+      A_EID = #{record.eid,jdbcType=DECIMAL},
+      A_CID = #{record.cid,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iotek.model.AwardRecord" >
+    update T_AWARDRECORD
+    <set >
+      <if test="cause != null" >
+        A_CAUSE = #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        A_MONEY = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="time != null" >
+        A_TIME = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null" >
+        A_EID = #{eid,jdbcType=DECIMAL},
+      </if>
+      <if test="cid != null" >
+        A_CID = #{cid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where A_ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iotek.model.AwardRecord" >
+    update T_AWARDRECORD
+    set A_CAUSE = #{cause,jdbcType=VARCHAR},
+      A_MONEY = #{money,jdbcType=DECIMAL},
+      A_TIME = #{time,jdbcType=VARCHAR},
+      A_EID = #{eid,jdbcType=DECIMAL},
+      A_CID = #{cid,jdbcType=DECIMAL}
+    where A_ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
