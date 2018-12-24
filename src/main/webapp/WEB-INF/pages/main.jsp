@@ -16,22 +16,7 @@
     <base href="<%=basePath%>"/>
     <title>主页</title>
     <script src="js/jquery-3.1.0.js"></script>
-    <script>
-        $(function () {
-            $("input[type='button']").click(function () {
-                var name=$("input[name='name']").val();
-                var pass=$("input[name='pass']").val();
-                if(name==""){
-                    alert("账号不能空");
-                    return;
-                }else if(pass==""){
-                    alert("密码不能为空");
-                    return;
-                }
-                $("#f1").submit();
-            })
-        })
-    </script>
+    <script src="js/login.js"></script>
 </head>
 <body>
 <c:if test="${empty sessionScope.user}">
