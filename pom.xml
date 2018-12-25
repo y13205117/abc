@@ -19,6 +19,12 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -26,12 +32,12 @@
       <version>RELEASE</version>
     </dependency>
 
-    <!--<dependency>-->
-      <!--<groupId>javax.servlet</groupId>-->
-      <!--<artifactId>servlet-api</artifactId>-->
-      <!--<version>2.5</version>-->
-      <!--<scope>provided</scope>-->
-    <!--</dependency>-->
+    <!--<dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>-->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -73,6 +79,7 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.40</version>
     </dependency>
+
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
@@ -266,14 +273,11 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.7.5</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
     <dependency>
-      <groupId>org.mybatis.generator</groupId>
-      <artifactId>mybatis-generator-core</artifactId>
-      <version>1.3.5</version>
+      <groupId>www.com.cn</groupId>
+      <artifactId>testMavenSSM</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
-
-
   </dependencies>
 
   <build>

@@ -90,4 +90,19 @@ public class Vitae {
     public void setUid(Integer uid) {
         this.uid = uid;
     }
+
+    @Override
+    public String toString() {
+        return "Vitae{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birth='" + birth + '\'' +
+                ", sex='" + sex + '\'' +
+                ", phone=" + phone +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", education='" + education + '\'' +
+                ", uid=" + uid +
+                '}';
+    }
 }

@@ -27,8 +27,10 @@
         <a href="goRegister">注册</a>
     </form>
 </c:if>
-<h4>欢迎${sessionScope.user.name}登陆</h4>
-<a href="">查看个人简历</a>
+<c:if test="${!empty sessionScope.user}">
+    <h4>欢迎${sessionScope.user.name}登陆</h4>
+</c:if>
+<a href="goVitae">查看个人简历</a>
 </body>
 </html>
 
