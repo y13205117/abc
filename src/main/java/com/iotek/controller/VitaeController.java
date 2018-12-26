@@ -26,6 +26,7 @@ public class VitaeController {
         response.getWriter().print("<script language='javascript'>alert('请先登录');window.location.href='index.jsp';</script>");
         return null;
     }
+
     @RequestMapping("/saveVitae")
     public String saveVitae(Vitae vitae,HttpSession session)throws Exception{
         User user = (User) session.getAttribute("user");
