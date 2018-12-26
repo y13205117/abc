@@ -27,7 +27,14 @@ public class VitaeController {
         return null;
     }
     @RequestMapping("/saveVitae")
-    public void saveVitae(Vitae vitae,HttpSession session)throws Exception{
-        System.out.println(vitae);
+    public String saveVitae(Vitae vitae,HttpSession session)throws Exception{
+        User user = (User) session.getAttribute("user");
+        vitae.setUid(user.getId());
+        boolean res = vitaeService.saveVitae(vitae);
+        if(res){
+            session.setAttribute("vitae",vitae);
+            return "vitae";
+        }
+        return "main";
     }
 }

@@ -1,6 +1,8 @@
 package com.iotek.model;
 
-public class Job {
+import java.io.Serializable;
+
+public class Job implements Serializable {
     private Integer id;
 
     private String name;

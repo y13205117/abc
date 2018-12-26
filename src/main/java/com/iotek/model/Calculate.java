@@ -1,6 +1,8 @@
 package com.iotek.model;
 
-public class Calculate {
+import java.io.Serializable;
+
+public class Calculate implements Serializable {
     private Integer id;
 
     private String time;

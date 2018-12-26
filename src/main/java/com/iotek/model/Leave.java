@@ -1,6 +1,8 @@
 package com.iotek.model;
 
-public class Leave {
+import java.io.Serializable;
+
+public class Leave implements Serializable {
     private Integer id;
 
     private String cause;

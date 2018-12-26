@@ -25,6 +25,7 @@
         密码:<input type="password" name="pass">
         <input type="button" value="登录">
         <a href="goRegister">注册</a>
+        <a href="#">员工登录</a>
     </form>
 </c:if>
 <c:if test="${!empty sessionScope.user}">

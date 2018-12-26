@@ -1,8 +1,9 @@
 package com.iotek.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Employee {
+public class Employee implements Serializable {
     private Integer id;
 
     private BigDecimal salary;

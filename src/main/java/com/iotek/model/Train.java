@@ -1,6 +1,8 @@
 package com.iotek.model;
 
-public class Train {
+import java.io.Serializable;
+
+public class Train implements Serializable {
     private Integer id;
 
     private String content;

@@ -1,8 +1,9 @@
 package com.iotek.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class GateCard {
+public class GateCard implements Serializable {
     private Integer id;
 
     private BigDecimal column2;

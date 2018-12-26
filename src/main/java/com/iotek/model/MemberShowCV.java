@@ -1,6 +1,8 @@
 package com.iotek.model;
 
-public class MemberShowCV {
+import java.io.Serializable;
+
+public class MemberShowCV implements Serializable {
     private Integer id;
 
     private Integer rid;

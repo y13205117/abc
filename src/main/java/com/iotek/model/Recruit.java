@@ -1,6 +1,8 @@
 package com.iotek.model;
 
-public class Recruit {
+import java.io.Serializable;
+
+public class Recruit implements Serializable {
     private Integer id;
 
     private String theme;

@@ -13,6 +13,16 @@ import java.util.List;
 public class VitaeServiceImpl implements VitaeService {
     @Resource
     private VitaeMapper vitaeMapper;
+
+    @Override
+    public boolean saveVitae(Vitae vitae) {
+        if(vitae==null){
+            return false;
+        }
+        int i = vitaeMapper.insert(vitae);
+        return i>0?true:false;
+    }
+
     @Override
     public Vitae queryByUid(Integer uid) {
         if(uid<=0){

@@ -1,6 +1,8 @@
 package com.iotek.model;
 
-public class Vitae {
+import java.io.Serializable;
+
+public class Vitae implements Serializable {
     private Integer id;
 
     private String name;
