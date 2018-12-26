@@ -86,11 +86,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_JOB
-    where J_ID = #{id,jdbcType=DECIMAL}
+    where J_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_JOB
-    where J_ID = #{id,jdbcType=DECIMAL}
+    where J_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.JobExample" >
     delete from T_JOB
@@ -101,8 +101,8 @@
   <insert id="insert" parameterType="com.iotek.model.Job" >
     insert into T_JOB (J_ID, J_NAME, J_CREATIONTIME, 
       J_DID)
-    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{creationtime,jdbcType=VARCHAR}, 
-      #{did,jdbcType=DECIMAL})
+    values (#{id}, #{name}, #{creationtime},
+      #{did})
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Job" >
     insert into T_JOB
@@ -122,16 +122,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="creationtime != null" >
-        #{creationtime,jdbcType=VARCHAR},
+        #{creationtime},
       </if>
       <if test="did != null" >
-        #{did,jdbcType=DECIMAL},
+        #{did},
       </if>
     </trim>
   </insert>
@@ -145,16 +145,16 @@
     update T_JOB
     <set >
       <if test="record.id != null" >
-        J_ID = #{record.id,jdbcType=DECIMAL},
+        J_ID = #{record.id},
       </if>
       <if test="record.name != null" >
-        J_NAME = #{record.name,jdbcType=VARCHAR},
+        J_NAME = #{record.name},
       </if>
       <if test="record.creationtime != null" >
-        J_CREATIONTIME = #{record.creationtime,jdbcType=VARCHAR},
+        J_CREATIONTIME = #{record.creationtime},
       </if>
       <if test="record.did != null" >
-        J_DID = #{record.did,jdbcType=DECIMAL},
+        J_DID = #{record.did},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -163,10 +163,10 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_JOB
-    set J_ID = #{record.id,jdbcType=DECIMAL},
-      J_NAME = #{record.name,jdbcType=VARCHAR},
-      J_CREATIONTIME = #{record.creationtime,jdbcType=VARCHAR},
-      J_DID = #{record.did,jdbcType=DECIMAL}
+    set J_ID = #{record.id},
+      J_NAME = #{record.name},
+      J_CREATIONTIME = #{record.creationtime},
+      J_DID = #{record.did}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,22 +175,22 @@
     update T_JOB
     <set >
       <if test="name != null" >
-        J_NAME = #{name,jdbcType=VARCHAR},
+        J_NAME = #{name},
       </if>
       <if test="creationtime != null" >
-        J_CREATIONTIME = #{creationtime,jdbcType=VARCHAR},
+        J_CREATIONTIME = #{creationtime},
       </if>
       <if test="did != null" >
-        J_DID = #{did,jdbcType=DECIMAL},
+        J_DID = #{did},
       </if>
     </set>
-    where J_ID = #{id,jdbcType=DECIMAL}
+    where J_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Job" >
     update T_JOB
-    set J_NAME = #{name,jdbcType=VARCHAR},
-      J_CREATIONTIME = #{creationtime,jdbcType=VARCHAR},
-      J_DID = #{did,jdbcType=DECIMAL}
-    where J_ID = #{id,jdbcType=DECIMAL}
+    set J_NAME = #{name},
+      J_CREATIONTIME = #{creationtime},
+      J_DID = #{did}
+    where J_ID = #{id}
   </update>
 </mapper>

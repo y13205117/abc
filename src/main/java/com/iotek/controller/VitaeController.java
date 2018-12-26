@@ -38,4 +38,25 @@ public class VitaeController {
         }
         return "main";
     }
+    @RequestMapping("/updateVitae")
+    public String updateVitae(Vitae vitae,HttpSession session)throws Exception{
+        System.out.println(vitae);
+        boolean res = vitaeService.updateVitae(vitae);
+        if(res){
+            Vitae vitae1 = vitaeService.queryById(vitae.getId());
+            session.setAttribute("vitae",vitae1);
+            return "vitae";
+        }
+        return "main";
+    }
+    @RequestMapping("deleteVitae")
+    public void deleteVitae(Integer id,HttpSession session,HttpServletResponse response)throws Exception{
+        boolean res = vitaeService.deleteVitae(id);
+        if(res){
+            session.setAttribute("vitae",null);
+            response.getWriter().write("删除成功");
+        }else{
+            response.getWriter().write("删除失败");
+        }
+    }
 }

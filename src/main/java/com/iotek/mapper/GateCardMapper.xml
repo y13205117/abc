@@ -88,11 +88,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_GATECARD
-    where G_ID = #{id,jdbcType=DECIMAL}
+    where G_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_GATECARD
-    where G_ID = #{id,jdbcType=DECIMAL}
+    where G_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.GateCardExample" >
     delete from T_GATECARD
@@ -104,8 +104,8 @@
     insert into T_GATECARD (G_ID, COLUMN_2, G_OFFICEHOURS, 
       G_AFTERHOURS, G_STATE, G_EID
       )
-    values (#{id,jdbcType=DECIMAL}, #{column2,jdbcType=DECIMAL}, #{officehours,jdbcType=VARCHAR}, 
-      #{afterhours,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL}, #{eid,jdbcType=DECIMAL}
+    values (#{id}, #{column2}, #{officehours},
+      #{afterhours}, #{state}, #{eid}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.GateCard" >
@@ -132,22 +132,22 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="column2 != null" >
-        #{column2,jdbcType=DECIMAL},
+        #{column2},
       </if>
       <if test="officehours != null" >
-        #{officehours,jdbcType=VARCHAR},
+        #{officehours},
       </if>
       <if test="afterhours != null" >
-        #{afterhours,jdbcType=VARCHAR},
+        #{afterhours},
       </if>
       <if test="state != null" >
-        #{state,jdbcType=DECIMAL},
+        #{state},
       </if>
       <if test="eid != null" >
-        #{eid,jdbcType=DECIMAL},
+        #{eid},
       </if>
     </trim>
   </insert>
@@ -161,22 +161,22 @@
     update T_GATECARD
     <set >
       <if test="record.id != null" >
-        G_ID = #{record.id,jdbcType=DECIMAL},
+        G_ID = #{record.id},
       </if>
       <if test="record.column2 != null" >
-        COLUMN_2 = #{record.column2,jdbcType=DECIMAL},
+        COLUMN_2 = #{record.column2},
       </if>
       <if test="record.officehours != null" >
-        G_OFFICEHOURS = #{record.officehours,jdbcType=VARCHAR},
+        G_OFFICEHOURS = #{record.officehours},
       </if>
       <if test="record.afterhours != null" >
-        G_AFTERHOURS = #{record.afterhours,jdbcType=VARCHAR},
+        G_AFTERHOURS = #{record.afterhours},
       </if>
       <if test="record.state != null" >
-        G_STATE = #{record.state,jdbcType=DECIMAL},
+        G_STATE = #{record.state},
       </if>
       <if test="record.eid != null" >
-        G_EID = #{record.eid,jdbcType=DECIMAL},
+        G_EID = #{record.eid},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -185,12 +185,12 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_GATECARD
-    set G_ID = #{record.id,jdbcType=DECIMAL},
-      COLUMN_2 = #{record.column2,jdbcType=DECIMAL},
-      G_OFFICEHOURS = #{record.officehours,jdbcType=VARCHAR},
-      G_AFTERHOURS = #{record.afterhours,jdbcType=VARCHAR},
-      G_STATE = #{record.state,jdbcType=DECIMAL},
-      G_EID = #{record.eid,jdbcType=DECIMAL}
+    set G_ID = #{record.id},
+      COLUMN_2 = #{record.column2},
+      G_OFFICEHOURS = #{record.officehours},
+      G_AFTERHOURS = #{record.afterhours},
+      G_STATE = #{record.state},
+      G_EID = #{record.eid}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -199,30 +199,30 @@
     update T_GATECARD
     <set >
       <if test="column2 != null" >
-        COLUMN_2 = #{column2,jdbcType=DECIMAL},
+        COLUMN_2 = #{column2},
       </if>
       <if test="officehours != null" >
-        G_OFFICEHOURS = #{officehours,jdbcType=VARCHAR},
+        G_OFFICEHOURS = #{officehours},
       </if>
       <if test="afterhours != null" >
-        G_AFTERHOURS = #{afterhours,jdbcType=VARCHAR},
+        G_AFTERHOURS = #{afterhours},
       </if>
       <if test="state != null" >
-        G_STATE = #{state,jdbcType=DECIMAL},
+        G_STATE = #{state},
       </if>
       <if test="eid != null" >
-        G_EID = #{eid,jdbcType=DECIMAL},
+        G_EID = #{eid},
       </if>
     </set>
-    where G_ID = #{id,jdbcType=DECIMAL}
+    where G_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.GateCard" >
     update T_GATECARD
-    set COLUMN_2 = #{column2,jdbcType=DECIMAL},
-      G_OFFICEHOURS = #{officehours,jdbcType=VARCHAR},
-      G_AFTERHOURS = #{afterhours,jdbcType=VARCHAR},
-      G_STATE = #{state,jdbcType=DECIMAL},
-      G_EID = #{eid,jdbcType=DECIMAL}
-    where G_ID = #{id,jdbcType=DECIMAL}
+    set COLUMN_2 = #{column2},
+      G_OFFICEHOURS = #{officehours},
+      G_AFTERHOURS = #{afterhours},
+      G_STATE = #{state},
+      G_EID = #{eid}
+    where G_ID = #{id}
   </update>
 </mapper>

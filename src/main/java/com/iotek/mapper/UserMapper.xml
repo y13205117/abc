@@ -85,11 +85,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_USER
-    where U_ID = #{id,jdbcType=DECIMAL}
+    where U_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_USER
-    where U_ID = #{id,jdbcType=DECIMAL}
+    where U_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.UserExample" >
     delete from T_USER
@@ -100,7 +100,7 @@
   <insert id="insert" parameterType="com.iotek.model.User" >
     insert into T_USER (U_ID, U_NAME, U_PASS
       )
-    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{pass,jdbcType=VARCHAR}
+    values (#{id}, #{name}, #{pass}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.User" >
@@ -118,13 +118,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="pass != null" >
-        #{pass,jdbcType=VARCHAR},
+        #{pass},
       </if>
     </trim>
   </insert>
@@ -138,13 +138,13 @@
     update T_USER
     <set >
       <if test="record.id != null" >
-        U_ID = #{record.id,jdbcType=DECIMAL},
+        U_ID = #{record.id},
       </if>
       <if test="record.name != null" >
-        U_NAME = #{record.name,jdbcType=VARCHAR},
+        U_NAME = #{record.name},
       </if>
       <if test="record.pass != null" >
-        U_PASS = #{record.pass,jdbcType=VARCHAR},
+        U_PASS = #{record.pass},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -153,9 +153,9 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_USER
-    set U_ID = #{record.id,jdbcType=DECIMAL},
-      U_NAME = #{record.name,jdbcType=VARCHAR},
-      U_PASS = #{record.pass,jdbcType=VARCHAR}
+    set U_ID = #{record.id},
+      U_NAME = #{record.name},
+      U_PASS = #{record.pass}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -164,18 +164,18 @@
     update T_USER
     <set >
       <if test="name != null" >
-        U_NAME = #{name,jdbcType=VARCHAR},
+        U_NAME = #{name},
       </if>
       <if test="pass != null" >
-        U_PASS = #{pass,jdbcType=VARCHAR},
+        U_PASS = #{pass},
       </if>
     </set>
-    where U_ID = #{id,jdbcType=DECIMAL}
+    where U_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.User" >
     update T_USER
-    set U_NAME = #{name,jdbcType=VARCHAR},
-      U_PASS = #{pass,jdbcType=VARCHAR}
-    where U_ID = #{id,jdbcType=DECIMAL}
+    set U_NAME = #{name},
+      U_PASS = #{pass}
+    where U_ID = #{id}
   </update>
 </mapper>

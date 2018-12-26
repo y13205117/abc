@@ -87,11 +87,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_CALCULATE
-    where C_ID = #{id,jdbcType=DECIMAL}
+    where C_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_CALCULATE
-    where C_ID = #{id,jdbcType=DECIMAL}
+    where C_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.CalculateExample" >
     delete from T_CALCULATE
@@ -102,8 +102,8 @@
   <insert id="insert" parameterType="com.iotek.model.Calculate" >
     insert into T_CALCULATE (C_ID, C_TIME, C_RECONSIDER, 
       C_CAUSE, C_EID)
-    values (#{id,jdbcType=DECIMAL}, #{time,jdbcType=VARCHAR}, #{reconsider,jdbcType=DECIMAL}, 
-      #{cause,jdbcType=VARCHAR}, #{eid,jdbcType=DECIMAL})
+    values (#{id}, #{time}, #{reconsider},
+      #{cause}, #{eid})
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Calculate" >
     insert into T_CALCULATE
@@ -126,19 +126,19 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="time != null" >
-        #{time,jdbcType=VARCHAR},
+        #{time},
       </if>
       <if test="reconsider != null" >
-        #{reconsider,jdbcType=DECIMAL},
+        #{reconsider},
       </if>
       <if test="cause != null" >
-        #{cause,jdbcType=VARCHAR},
+        #{cause},
       </if>
       <if test="eid != null" >
-        #{eid,jdbcType=DECIMAL},
+        #{eid},
       </if>
     </trim>
   </insert>
@@ -152,19 +152,19 @@
     update T_CALCULATE
     <set >
       <if test="record.id != null" >
-        C_ID = #{record.id,jdbcType=DECIMAL},
+        C_ID = #{record.id},
       </if>
       <if test="record.time != null" >
-        C_TIME = #{record.time,jdbcType=VARCHAR},
+        C_TIME = #{record.time},
       </if>
       <if test="record.reconsider != null" >
-        C_RECONSIDER = #{record.reconsider,jdbcType=DECIMAL},
+        C_RECONSIDER = #{record.reconsider},
       </if>
       <if test="record.cause != null" >
-        C_CAUSE = #{record.cause,jdbcType=VARCHAR},
+        C_CAUSE = #{record.cause},
       </if>
       <if test="record.eid != null" >
-        C_EID = #{record.eid,jdbcType=DECIMAL},
+        C_EID = #{record.eid},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -173,11 +173,11 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_CALCULATE
-    set C_ID = #{record.id,jdbcType=DECIMAL},
-      C_TIME = #{record.time,jdbcType=VARCHAR},
-      C_RECONSIDER = #{record.reconsider,jdbcType=DECIMAL},
-      C_CAUSE = #{record.cause,jdbcType=VARCHAR},
-      C_EID = #{record.eid,jdbcType=DECIMAL}
+    set C_ID = #{record.id},
+      C_TIME = #{record.time},
+      C_RECONSIDER = #{record.reconsider},
+      C_CAUSE = #{record.cause},
+      C_EID = #{record.eid}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,26 +186,26 @@
     update T_CALCULATE
     <set >
       <if test="time != null" >
-        C_TIME = #{time,jdbcType=VARCHAR},
+        C_TIME = #{time},
       </if>
       <if test="reconsider != null" >
-        C_RECONSIDER = #{reconsider,jdbcType=DECIMAL},
+        C_RECONSIDER = #{reconsider},
       </if>
       <if test="cause != null" >
-        C_CAUSE = #{cause,jdbcType=VARCHAR},
+        C_CAUSE = #{cause},
       </if>
       <if test="eid != null" >
-        C_EID = #{eid,jdbcType=DECIMAL},
+        C_EID = #{eid},
       </if>
     </set>
-    where C_ID = #{id,jdbcType=DECIMAL}
+    where C_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Calculate" >
     update T_CALCULATE
-    set C_TIME = #{time,jdbcType=VARCHAR},
-      C_RECONSIDER = #{reconsider,jdbcType=DECIMAL},
-      C_CAUSE = #{cause,jdbcType=VARCHAR},
-      C_EID = #{eid,jdbcType=DECIMAL}
-    where C_ID = #{id,jdbcType=DECIMAL}
+    set C_TIME = #{time},
+      C_RECONSIDER = #{reconsider},
+      C_CAUSE = #{cause},
+      C_EID = #{eid}
+    where C_ID = #{id}
   </update>
 </mapper>

@@ -86,11 +86,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_LEAVE
-    where L_ID = #{id,jdbcType=DECIMAL}
+    where L_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_LEAVE
-    where L_ID = #{id,jdbcType=DECIMAL}
+    where L_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.LeaveExample" >
     delete from T_LEAVE
@@ -101,8 +101,8 @@
   <insert id="insert" parameterType="com.iotek.model.Leave" >
     insert into T_LEAVE (L_ID, L_CAUSE, L_TIME, 
       L_EID)
-    values (#{id,jdbcType=DECIMAL}, #{cause,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
-      #{eid,jdbcType=DECIMAL})
+    values (#{id}, #{cause}, #{time},
+      #{eid})
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Leave" >
     insert into T_LEAVE
@@ -122,16 +122,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="cause != null" >
-        #{cause,jdbcType=VARCHAR},
+        #{cause},
       </if>
       <if test="time != null" >
-        #{time,jdbcType=VARCHAR},
+        #{time},
       </if>
       <if test="eid != null" >
-        #{eid,jdbcType=DECIMAL},
+        #{eid},
       </if>
     </trim>
   </insert>
@@ -145,16 +145,16 @@
     update T_LEAVE
     <set >
       <if test="record.id != null" >
-        L_ID = #{record.id,jdbcType=DECIMAL},
+        L_ID = #{record.id},
       </if>
       <if test="record.cause != null" >
-        L_CAUSE = #{record.cause,jdbcType=VARCHAR},
+        L_CAUSE = #{record.cause},
       </if>
       <if test="record.time != null" >
-        L_TIME = #{record.time,jdbcType=VARCHAR},
+        L_TIME = #{record.time},
       </if>
       <if test="record.eid != null" >
-        L_EID = #{record.eid,jdbcType=DECIMAL},
+        L_EID = #{record.eid},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -163,10 +163,10 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_LEAVE
-    set L_ID = #{record.id,jdbcType=DECIMAL},
-      L_CAUSE = #{record.cause,jdbcType=VARCHAR},
-      L_TIME = #{record.time,jdbcType=VARCHAR},
-      L_EID = #{record.eid,jdbcType=DECIMAL}
+    set L_ID = #{record.id},
+      L_CAUSE = #{record.cause},
+      L_TIME = #{record.time},
+      L_EID = #{record.eid}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,22 +175,22 @@
     update T_LEAVE
     <set >
       <if test="cause != null" >
-        L_CAUSE = #{cause,jdbcType=VARCHAR},
+        L_CAUSE = #{cause},
       </if>
       <if test="time != null" >
-        L_TIME = #{time,jdbcType=VARCHAR},
+        L_TIME = #{time},
       </if>
       <if test="eid != null" >
-        L_EID = #{eid,jdbcType=DECIMAL},
+        L_EID = #{eid},
       </if>
     </set>
-    where L_ID = #{id,jdbcType=DECIMAL}
+    where L_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Leave" >
     update T_LEAVE
-    set L_CAUSE = #{cause,jdbcType=VARCHAR},
-      L_TIME = #{time,jdbcType=VARCHAR},
-      L_EID = #{eid,jdbcType=DECIMAL}
-    where L_ID = #{id,jdbcType=DECIMAL}
+    set L_CAUSE = #{cause},
+      L_TIME = #{time},
+      L_EID = #{eid}
+    where L_ID = #{id}
   </update>
 </mapper>

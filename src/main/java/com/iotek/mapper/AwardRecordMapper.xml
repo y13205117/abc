@@ -88,11 +88,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_AWARDRECORD
-    where A_ID = #{id,jdbcType=DECIMAL}
+    where A_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_AWARDRECORD
-    where A_ID = #{id,jdbcType=DECIMAL}
+    where A_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.AwardRecordExample" >
     delete from T_AWARDRECORD
@@ -103,8 +103,8 @@
   <insert id="insert" parameterType="com.iotek.model.AwardRecord" >
     insert into T_AWARDRECORD (A_ID, A_CAUSE, A_MONEY, 
       A_TIME, A_EID, A_CID)
-    values (#{id,jdbcType=DECIMAL}, #{cause,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, 
-      #{time,jdbcType=VARCHAR}, #{eid,jdbcType=DECIMAL}, #{cid,jdbcType=DECIMAL})
+    values (#{id}, #{cause}, #{money},
+      #{time}, #{eid}, #{cid})
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.AwardRecord" >
     insert into T_AWARDRECORD
@@ -130,22 +130,22 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="cause != null" >
-        #{cause,jdbcType=VARCHAR},
+        #{cause},
       </if>
       <if test="money != null" >
-        #{money,jdbcType=DECIMAL},
+        #{money},
       </if>
       <if test="time != null" >
-        #{time,jdbcType=VARCHAR},
+        #{time},
       </if>
       <if test="eid != null" >
-        #{eid,jdbcType=DECIMAL},
+        #{eid},
       </if>
       <if test="cid != null" >
-        #{cid,jdbcType=DECIMAL},
+        #{cid},
       </if>
     </trim>
   </insert>
@@ -159,22 +159,22 @@
     update T_AWARDRECORD
     <set >
       <if test="record.id != null" >
-        A_ID = #{record.id,jdbcType=DECIMAL},
+        A_ID = #{record.id},
       </if>
       <if test="record.cause != null" >
-        A_CAUSE = #{record.cause,jdbcType=VARCHAR},
+        A_CAUSE = #{record.cause},
       </if>
       <if test="record.money != null" >
-        A_MONEY = #{record.money,jdbcType=DECIMAL},
+        A_MONEY = #{record.money},
       </if>
       <if test="record.time != null" >
-        A_TIME = #{record.time,jdbcType=VARCHAR},
+        A_TIME = #{record.time},
       </if>
       <if test="record.eid != null" >
-        A_EID = #{record.eid,jdbcType=DECIMAL},
+        A_EID = #{record.eid},
       </if>
       <if test="record.cid != null" >
-        A_CID = #{record.cid,jdbcType=DECIMAL},
+        A_CID = #{record.cid},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -183,12 +183,12 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_AWARDRECORD
-    set A_ID = #{record.id,jdbcType=DECIMAL},
-      A_CAUSE = #{record.cause,jdbcType=VARCHAR},
-      A_MONEY = #{record.money,jdbcType=DECIMAL},
-      A_TIME = #{record.time,jdbcType=VARCHAR},
-      A_EID = #{record.eid,jdbcType=DECIMAL},
-      A_CID = #{record.cid,jdbcType=DECIMAL}
+    set A_ID = #{record.id},
+      A_CAUSE = #{record.cause},
+      A_MONEY = #{record.money},
+      A_TIME = #{record.time},
+      A_EID = #{record.eid},
+      A_CID = #{record.cid}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,30 +197,30 @@
     update T_AWARDRECORD
     <set >
       <if test="cause != null" >
-        A_CAUSE = #{cause,jdbcType=VARCHAR},
+        A_CAUSE = #{cause},
       </if>
       <if test="money != null" >
-        A_MONEY = #{money,jdbcType=DECIMAL},
+        A_MONEY = #{money},
       </if>
       <if test="time != null" >
-        A_TIME = #{time,jdbcType=VARCHAR},
+        A_TIME = #{time},
       </if>
       <if test="eid != null" >
-        A_EID = #{eid,jdbcType=DECIMAL},
+        A_EID = #{eid},
       </if>
       <if test="cid != null" >
-        A_CID = #{cid,jdbcType=DECIMAL},
+        A_CID = #{cid},
       </if>
     </set>
-    where A_ID = #{id,jdbcType=DECIMAL}
+    where A_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.AwardRecord" >
     update T_AWARDRECORD
-    set A_CAUSE = #{cause,jdbcType=VARCHAR},
-      A_MONEY = #{money,jdbcType=DECIMAL},
-      A_TIME = #{time,jdbcType=VARCHAR},
-      A_EID = #{eid,jdbcType=DECIMAL},
-      A_CID = #{cid,jdbcType=DECIMAL}
-    where A_ID = #{id,jdbcType=DECIMAL}
+    set A_CAUSE = #{cause},
+      A_MONEY = #{money},
+      A_TIME = #{time},
+      A_EID = #{eid},
+      A_CID = #{cid}
+    where A_ID = #{id}
   </update>
 </mapper>

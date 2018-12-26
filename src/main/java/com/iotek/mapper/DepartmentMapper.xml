@@ -85,11 +85,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_DEPARTMENT
-    where D_ID = #{id,jdbcType=DECIMAL}
+    where D_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_DEPARTMENT
-    where D_ID = #{id,jdbcType=DECIMAL}
+    where D_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.DepartmentExample" >
     delete from T_DEPARTMENT
@@ -100,7 +100,7 @@
   <insert id="insert" parameterType="com.iotek.model.Department" >
     insert into T_DEPARTMENT (D_ID, D_NAME, D_CREATIONTIME
       )
-    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{creationtime,jdbcType=VARCHAR}
+    values (#{id}, #{name}, #{creationtime}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Department" >
@@ -118,13 +118,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="creationtime != null" >
-        #{creationtime,jdbcType=VARCHAR},
+        #{creationtime},
       </if>
     </trim>
   </insert>
@@ -138,13 +138,13 @@
     update T_DEPARTMENT
     <set >
       <if test="record.id != null" >
-        D_ID = #{record.id,jdbcType=DECIMAL},
+        D_ID = #{record.id},
       </if>
       <if test="record.name != null" >
-        D_NAME = #{record.name,jdbcType=VARCHAR},
+        D_NAME = #{record.name},
       </if>
       <if test="record.creationtime != null" >
-        D_CREATIONTIME = #{record.creationtime,jdbcType=VARCHAR},
+        D_CREATIONTIME = #{record.creationtime},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -153,9 +153,9 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_DEPARTMENT
-    set D_ID = #{record.id,jdbcType=DECIMAL},
-      D_NAME = #{record.name,jdbcType=VARCHAR},
-      D_CREATIONTIME = #{record.creationtime,jdbcType=VARCHAR}
+    set D_ID = #{record.id},
+      D_NAME = #{record.name},
+      D_CREATIONTIME = #{record.creationtime}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -164,18 +164,18 @@
     update T_DEPARTMENT
     <set >
       <if test="name != null" >
-        D_NAME = #{name,jdbcType=VARCHAR},
+        D_NAME = #{name},
       </if>
       <if test="creationtime != null" >
-        D_CREATIONTIME = #{creationtime,jdbcType=VARCHAR},
+        D_CREATIONTIME = #{creationtime},
       </if>
     </set>
-    where D_ID = #{id,jdbcType=DECIMAL}
+    where D_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Department" >
     update T_DEPARTMENT
-    set D_NAME = #{name,jdbcType=VARCHAR},
-      D_CREATIONTIME = #{creationtime,jdbcType=VARCHAR}
-    where D_ID = #{id,jdbcType=DECIMAL}
+    set D_NAME = #{name},
+      D_CREATIONTIME = #{creationtime}
+    where D_ID = #{id}
   </update>
 </mapper>

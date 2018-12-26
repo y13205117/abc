@@ -17,61 +17,54 @@
     <base href="<%=basePath%>"/>
     <title>个人简历</title>
     <script src="js/jquery-3.1.0.js"></script>
-    <script>
-        $(function () {
-            $("#badd").click(function () {
-                $("#badd").attr("disabled","disabled");
-                var form=$("<form action='saveVitae' method='post' id='f1'></form>");
-                var name=$("<span>姓名:</span><input name='name'><br>");
-                var birth=$("<span>出生日期:</span><input name='birth'><br>");
-                var sex=$("<span>性别:</span><input name='sex'><br>");
-                var phone=$("<span>电话:</span><input name='phone'><br>");
-                var address=$("<span>地址:</span><input name='address'><br>");
-                var Email=$("<span>Email:</span><input name='email'><br>");
-                var education=$("<span>学历:</span><input name='education'><br>");
-                var add=$("<input type='button' id='add' value='添加简历'>");
-                var ret=$("<input type='button' id='ret' value='返回'>");
-                form.append(name);
-                form.append(birth);
-                form.append(sex);
-                form.append(phone);
-                form.append(address);
-                form.append(Email);
-                form.append(education);
-                form.append(add);
-                form.append(ret);
-                $(document.body).append(form);
-                $(document).on("click","#ret",function () {
-                    $("#f1").remove();
-                    $("#badd").removeAttr("disabled");
-                    return;
-                })
-                $(document).on("click","#add",function () {
-                    form.submit();
-                })
-            })
-        })
-    </script>
+    <script src="js/vitae.js"></script>
 </head>
 <body>
-<table>
+<table border="1px">
     <c:if test="${empty sessionScope.vitae}">
-        <tr>抱歉你还没有个人简历</tr>
-        <input id="badd" name="add" type="button" value="添加">
+        <tr>
+            <td>抱歉你还没有个人简历</td>
+            <td><input id="badd" name="add" type="button" value="添加"></td>
+        </tr>
     </c:if>
     <c:if test="${!empty sessionScope.vitae}">
+        <tr><td colspan="3">基本信息</td></tr>
         <tr>
-            姓名:<td>${sessionScope.vitae.name}</td>
-            出生日期:<td>${sessionScope.vitae.birth}</td>
-            性别:<td>${sessionScope.vitae.sex}</td>
-            电话:<td>${sessionScope.vitae.phone}</td>
-            地址:<td>${sessionScope.vitae.address}</td>
-            Email:<td>${sessionScope.vitae.email}</td>
-            学历:<td>${sessionScope.vitae.education}</td>
+            <td>姓名:${sessionScope.vitae.name}</td>
+            <td>性别:${sessionScope.vitae.sex}</td>
+            <td>出生日期:${sessionScope.vitae.birth}</td>
+        </tr>
+        <tr><td colspan="3">联系方式</td></tr>
+        <tr>
+            <td>电话:${sessionScope.vitae.phone}</td>
+            <td colspan="2">Email:${sessionScope.vitae.email}</td>
+        </tr>
+        <tr><td colspan="3">地址:${sessionScope.vitae.address}</td></tr>
+        <tr><td colspan="3">学历:${sessionScope.vitae.education}</td></tr>
+        <tr>
+            <td>
+                <input name="upd" type="button" value="修改">
+                <input name="del" type="button" value="删除">
+                <input hidden value="${sessionScope.vitae.id}">
+            </td>
         </tr>
     </c:if>
 </table>
-
+<div id="d1" style="display: none">
+    <form id="f2" method="post" action="updateVitae">
+        姓名:<input name="name" value="${sessionScope.vitae.name}"><br>
+        性别:<input name="sex" value="${sessionScope.vitae.sex}"><br>
+        出生日期:<input name="birth" value="${sessionScope.vitae.birth}"><br>
+        电话:<input name="phone" value="${sessionScope.vitae.phone}"><br>
+        Email:<input name="email" value="${sessionScope.vitae.email}"><br>
+        地址:<input name="address" value="${sessionScope.vitae.address}"><br>
+        学历:<input name="education" value="${sessionScope.vitae.education}"><br>
+        <input name="id" hidden value="${sessionScope.vitae.id}">
+        <input name="uid" hidden value="${sessionScope.vitae.uid}">
+        <input name="ud" type="button" value="修改">
+        <input name="re" type="button" value="取消">
+    </form>
+</div>
 
 </body>
 </html>

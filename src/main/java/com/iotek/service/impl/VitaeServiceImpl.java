@@ -19,7 +19,7 @@ public class VitaeServiceImpl implements VitaeService {
         if(vitae==null){
             return false;
         }
-        int i = vitaeMapper.insert(vitae);
+        int i = vitaeMapper.insertSelective(vitae);
         return i>0?true:false;
     }
 
@@ -32,5 +32,31 @@ public class VitaeServiceImpl implements VitaeService {
         vitaeExample.createCriteria().andUidEqualTo(uid);
         List<Vitae> vitaes = vitaeMapper.selectByExample(vitaeExample);
         return vitaes.size()>0?vitaes.get(0):null;
+    }
+
+    @Override
+    public boolean updateVitae(Vitae vitae) {
+        if(vitae==null){
+            return false;
+        }
+        int i =vitaeMapper.updateByPrimaryKey(vitae);
+        return i>0?true:false;
+    }
+
+    @Override
+    public boolean deleteVitae(Integer id) {
+        if(id<=0){
+            return false;
+        }
+        int i = vitaeMapper.deleteByPrimaryKey(id);
+        return i>0?true:false;
+    }
+
+    @Override
+    public Vitae queryById(Integer id) {
+        if(id<=0){
+            return null;
+        }
+        return vitaeMapper.selectByPrimaryKey(id);
     }
 }

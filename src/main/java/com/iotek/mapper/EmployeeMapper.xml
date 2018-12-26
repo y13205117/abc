@@ -88,11 +88,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_EMPLOYEE
-    where E_ID = #{id,jdbcType=DECIMAL}
+    where E_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_EMPLOYEE
-    where E_ID = #{id,jdbcType=DECIMAL}
+    where E_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.EmployeeExample" >
     delete from T_EMPLOYEE
@@ -104,8 +104,8 @@
     insert into T_EMPLOYEE (E_ID, E_SALARY, E_STATE, 
       E_TYPE, E_JID, E_PERFORMANCE
       )
-    values (#{id,jdbcType=DECIMAL}, #{salary,jdbcType=DECIMAL}, #{state,jdbcType=DECIMAL}, 
-      #{type,jdbcType=DECIMAL}, #{jid,jdbcType=DECIMAL}, #{performance,jdbcType=DECIMAL}
+    values (#{id}, #{salary}, #{state},
+      #{type}, #{jid}, #{performance}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Employee" >
@@ -132,22 +132,22 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="salary != null" >
-        #{salary,jdbcType=DECIMAL},
+        #{salary},
       </if>
       <if test="state != null" >
-        #{state,jdbcType=DECIMAL},
+        #{state},
       </if>
       <if test="type != null" >
-        #{type,jdbcType=DECIMAL},
+        #{type},
       </if>
       <if test="jid != null" >
-        #{jid,jdbcType=DECIMAL},
+        #{jid},
       </if>
       <if test="performance != null" >
-        #{performance,jdbcType=DECIMAL},
+        #{performance},
       </if>
     </trim>
   </insert>
@@ -161,22 +161,22 @@
     update T_EMPLOYEE
     <set >
       <if test="record.id != null" >
-        E_ID = #{record.id,jdbcType=DECIMAL},
+        E_ID = #{record.id},
       </if>
       <if test="record.salary != null" >
-        E_SALARY = #{record.salary,jdbcType=DECIMAL},
+        E_SALARY = #{record.salary},
       </if>
       <if test="record.state != null" >
-        E_STATE = #{record.state,jdbcType=DECIMAL},
+        E_STATE = #{record.state},
       </if>
       <if test="record.type != null" >
-        E_TYPE = #{record.type,jdbcType=DECIMAL},
+        E_TYPE = #{record.type},
       </if>
       <if test="record.jid != null" >
-        E_JID = #{record.jid,jdbcType=DECIMAL},
+        E_JID = #{record.jid},
       </if>
       <if test="record.performance != null" >
-        E_PERFORMANCE = #{record.performance,jdbcType=DECIMAL},
+        E_PERFORMANCE = #{record.performance},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -185,12 +185,12 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_EMPLOYEE
-    set E_ID = #{record.id,jdbcType=DECIMAL},
-      E_SALARY = #{record.salary,jdbcType=DECIMAL},
-      E_STATE = #{record.state,jdbcType=DECIMAL},
-      E_TYPE = #{record.type,jdbcType=DECIMAL},
-      E_JID = #{record.jid,jdbcType=DECIMAL},
-      E_PERFORMANCE = #{record.performance,jdbcType=DECIMAL}
+    set E_ID = #{record.id},
+      E_SALARY = #{record.salary},
+      E_STATE = #{record.state},
+      E_TYPE = #{record.type},
+      E_JID = #{record.jid},
+      E_PERFORMANCE = #{record.performance}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -199,30 +199,30 @@
     update T_EMPLOYEE
     <set >
       <if test="salary != null" >
-        E_SALARY = #{salary,jdbcType=DECIMAL},
+        E_SALARY = #{salary},
       </if>
       <if test="state != null" >
-        E_STATE = #{state,jdbcType=DECIMAL},
+        E_STATE = #{state},
       </if>
       <if test="type != null" >
-        E_TYPE = #{type,jdbcType=DECIMAL},
+        E_TYPE = #{type},
       </if>
       <if test="jid != null" >
-        E_JID = #{jid,jdbcType=DECIMAL},
+        E_JID = #{jid},
       </if>
       <if test="performance != null" >
-        E_PERFORMANCE = #{performance,jdbcType=DECIMAL},
+        E_PERFORMANCE = #{performance},
       </if>
     </set>
-    where E_ID = #{id,jdbcType=DECIMAL}
+    where E_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Employee" >
     update T_EMPLOYEE
-    set E_SALARY = #{salary,jdbcType=DECIMAL},
-      E_STATE = #{state,jdbcType=DECIMAL},
-      E_TYPE = #{type,jdbcType=DECIMAL},
-      E_JID = #{jid,jdbcType=DECIMAL},
-      E_PERFORMANCE = #{performance,jdbcType=DECIMAL}
-    where E_ID = #{id,jdbcType=DECIMAL}
+    set E_SALARY = #{salary},
+      E_STATE = #{state},
+      E_TYPE = #{type},
+      E_JID = #{jid},
+      E_PERFORMANCE = #{performance}
+    where E_ID = #{id}
   </update>
 </mapper>

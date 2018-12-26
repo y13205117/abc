@@ -87,11 +87,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_MEMBERSHOWCV
-    where M_ID = #{id,jdbcType=DECIMAL}
+    where M_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_MEMBERSHOWCV
-    where M_ID = #{id,jdbcType=DECIMAL}
+    where M_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.MemberShowCVExample" >
     delete from T_MEMBERSHOWCV
@@ -102,8 +102,8 @@
   <insert id="insert" parameterType="com.iotek.model.MemberShowCV" >
     insert into T_MEMBERSHOWCV (M_ID, M_RID, M_VID, 
       M_TIME, M_STATE)
-    values (#{id,jdbcType=DECIMAL}, #{rid,jdbcType=DECIMAL}, #{vid,jdbcType=DECIMAL}, 
-      #{time,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL})
+    values (#{id}, #{rid}, #{vid},
+      #{time}, #{state})
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.MemberShowCV" >
     insert into T_MEMBERSHOWCV
@@ -126,19 +126,19 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="rid != null" >
-        #{rid,jdbcType=DECIMAL},
+        #{rid},
       </if>
       <if test="vid != null" >
-        #{vid,jdbcType=DECIMAL},
+        #{vid},
       </if>
       <if test="time != null" >
-        #{time,jdbcType=VARCHAR},
+        #{time},
       </if>
       <if test="state != null" >
-        #{state,jdbcType=DECIMAL},
+        #{state},
       </if>
     </trim>
   </insert>
@@ -152,19 +152,19 @@
     update T_MEMBERSHOWCV
     <set >
       <if test="record.id != null" >
-        M_ID = #{record.id,jdbcType=DECIMAL},
+        M_ID = #{record.id},
       </if>
       <if test="record.rid != null" >
-        M_RID = #{record.rid,jdbcType=DECIMAL},
+        M_RID = #{record.rid},
       </if>
       <if test="record.vid != null" >
-        M_VID = #{record.vid,jdbcType=DECIMAL},
+        M_VID = #{record.vid},
       </if>
       <if test="record.time != null" >
-        M_TIME = #{record.time,jdbcType=VARCHAR},
+        M_TIME = #{record.time},
       </if>
       <if test="record.state != null" >
-        M_STATE = #{record.state,jdbcType=DECIMAL},
+        M_STATE = #{record.state},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -173,11 +173,11 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_MEMBERSHOWCV
-    set M_ID = #{record.id,jdbcType=DECIMAL},
-      M_RID = #{record.rid,jdbcType=DECIMAL},
-      M_VID = #{record.vid,jdbcType=DECIMAL},
-      M_TIME = #{record.time,jdbcType=VARCHAR},
-      M_STATE = #{record.state,jdbcType=DECIMAL}
+    set M_ID = #{record.id},
+      M_RID = #{record.rid},
+      M_VID = #{record.vid},
+      M_TIME = #{record.time},
+      M_STATE = #{record.state}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,26 +186,26 @@
     update T_MEMBERSHOWCV
     <set >
       <if test="rid != null" >
-        M_RID = #{rid,jdbcType=DECIMAL},
+        M_RID = #{rid},
       </if>
       <if test="vid != null" >
-        M_VID = #{vid,jdbcType=DECIMAL},
+        M_VID = #{vid},
       </if>
       <if test="time != null" >
-        M_TIME = #{time,jdbcType=VARCHAR},
+        M_TIME = #{time},
       </if>
       <if test="state != null" >
-        M_STATE = #{state,jdbcType=DECIMAL},
+        M_STATE = #{state},
       </if>
     </set>
-    where M_ID = #{id,jdbcType=DECIMAL}
+    where M_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.MemberShowCV" >
     update T_MEMBERSHOWCV
-    set M_RID = #{rid,jdbcType=DECIMAL},
-      M_VID = #{vid,jdbcType=DECIMAL},
-      M_TIME = #{time,jdbcType=VARCHAR},
-      M_STATE = #{state,jdbcType=DECIMAL}
-    where M_ID = #{id,jdbcType=DECIMAL}
+    set M_RID = #{rid},
+      M_VID = #{vid},
+      M_TIME = #{time},
+      M_STATE = #{state}
+    where M_ID = #{id}
   </update>
 </mapper>

@@ -91,11 +91,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_VITAE
-    where V_ID = #{id,jdbcType=DECIMAL}
+    where V_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_VITAE
-    where V_ID = #{id,jdbcType=DECIMAL}
+    where V_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.VitaeExample" >
     delete from T_VITAE
@@ -108,9 +108,9 @@
       V_SEX, V_PHONE, V_ADDRESS, 
       V_EMAIL, V_EDUCATION, V_UID
       )
-    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{birth,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=DECIMAL}, #{address,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{uid,jdbcType=DECIMAL}
+    values (#{id}, #{name}, #{birth},
+      #{sex}, #{phone}, #{address},
+      #{email}, #{education}, #{uid}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Vitae" >
@@ -146,31 +146,31 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+        #{name},
       </if>
       <if test="birth != null" >
-        #{birth,jdbcType=VARCHAR},
+        #{birth},
       </if>
       <if test="sex != null" >
-        #{sex,jdbcType=VARCHAR},
+        #{sex},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=DECIMAL},
+        #{phone},
       </if>
       <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+        #{address},
       </if>
       <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
+        #{email},
       </if>
       <if test="education != null" >
-        #{education,jdbcType=VARCHAR},
+        #{education},
       </if>
       <if test="uid != null" >
-        #{uid,jdbcType=DECIMAL},
+        #{uid},
       </if>
     </trim>
   </insert>
@@ -184,48 +184,48 @@
     update T_VITAE
     <set >
       <if test="record.id != null" >
-        V_ID = #{record.id,jdbcType=DECIMAL},
+        V_ID = #{record.id},
       </if>
       <if test="record.name != null" >
-        V_NAME = #{record.name,jdbcType=VARCHAR},
+        V_NAME = #{record.name},
       </if>
       <if test="record.birth != null" >
-        V_BIRTH = #{record.birth,jdbcType=VARCHAR},
+        V_BIRTH = #{record.birth},
       </if>
       <if test="record.sex != null" >
-        V_SEX = #{record.sex,jdbcType=VARCHAR},
+        V_SEX = #{record.sex},
       </if>
       <if test="record.phone != null" >
-        V_PHONE = #{record.phone,jdbcType=DECIMAL},
+        V_PHONE = #{record.phone},
       </if>
       <if test="record.address != null" >
-        V_ADDRESS = #{record.address,jdbcType=VARCHAR},
+        V_ADDRESS = #{record.address},
       </if>
       <if test="record.email != null" >
-        V_EMAIL = #{record.email,jdbcType=VARCHAR},
+        V_EMAIL = #{record.email},
       </if>
       <if test="record.education != null" >
-        V_EDUCATION = #{record.education,jdbcType=VARCHAR},
+        V_EDUCATION = #{record.education},
       </if>
       <if test="record.uid != null" >
-        V_UID = #{record.uid,jdbcType=DECIMAL},
+        V_UID = #{record.uid},
       </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+   <update id="updateByExample" parameterType="map" >
     update T_VITAE
-    set V_ID = #{record.id,jdbcType=DECIMAL},
-      V_NAME = #{record.name,jdbcType=VARCHAR},
-      V_BIRTH = #{record.birth,jdbcType=VARCHAR},
-      V_SEX = #{record.sex,jdbcType=VARCHAR},
-      V_PHONE = #{record.phone,jdbcType=DECIMAL},
-      V_ADDRESS = #{record.address,jdbcType=VARCHAR},
-      V_EMAIL = #{record.email,jdbcType=VARCHAR},
-      V_EDUCATION = #{record.education,jdbcType=VARCHAR},
-      V_UID = #{record.uid,jdbcType=DECIMAL}
+    set V_ID = #{record.id},
+      V_NAME = #{record.name},
+      V_BIRTH = #{record.birth},
+      V_SEX = #{record.sex},
+      V_PHONE = #{record.phone},
+      V_ADDRESS = #{record.address},
+      V_EMAIL = #{record.email},
+      V_EDUCATION = #{record.education},
+      V_UID = #{record.uid}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -234,42 +234,42 @@
     update T_VITAE
     <set >
       <if test="name != null" >
-        V_NAME = #{name,jdbcType=VARCHAR},
+        V_NAME = #{name},
       </if>
       <if test="birth != null" >
-        V_BIRTH = #{birth,jdbcType=VARCHAR},
+        V_BIRTH = #{birth},
       </if>
       <if test="sex != null" >
-        V_SEX = #{sex,jdbcType=VARCHAR},
+        V_SEX = #{sex},
       </if>
       <if test="phone != null" >
-        V_PHONE = #{phone,jdbcType=DECIMAL},
+        V_PHONE = #{phone},
       </if>
       <if test="address != null" >
-        V_ADDRESS = #{address,jdbcType=VARCHAR},
+        V_ADDRESS = #{address},
       </if>
       <if test="email != null" >
-        V_EMAIL = #{email,jdbcType=VARCHAR},
+        V_EMAIL = #{email},
       </if>
       <if test="education != null" >
-        V_EDUCATION = #{education,jdbcType=VARCHAR},
+        V_EDUCATION = #{education},
       </if>
       <if test="uid != null" >
-        V_UID = #{uid,jdbcType=DECIMAL},
+        V_UID = #{uid},
       </if>
     </set>
-    where V_ID = #{id,jdbcType=DECIMAL}
+    where V_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Vitae" >
     update T_VITAE
-    set V_NAME = #{name,jdbcType=VARCHAR},
-      V_BIRTH = #{birth,jdbcType=VARCHAR},
-      V_SEX = #{sex,jdbcType=VARCHAR},
-      V_PHONE = #{phone,jdbcType=DECIMAL},
-      V_ADDRESS = #{address,jdbcType=VARCHAR},
-      V_EMAIL = #{email,jdbcType=VARCHAR},
-      V_EDUCATION = #{education,jdbcType=VARCHAR},
-      V_UID = #{uid,jdbcType=DECIMAL}
-    where V_ID = #{id,jdbcType=DECIMAL}
+    set V_NAME = #{name},
+      V_BIRTH = #{birth},
+      V_SEX = #{sex},
+      V_PHONE = #{phone},
+      V_ADDRESS = #{address},
+      V_EMAIL = #{email},
+      V_EDUCATION = #{education},
+      V_UID = #{uid}
+    where V_ID = #{id}
   </update>
 </mapper>

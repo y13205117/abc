@@ -87,11 +87,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_TRAIN
-    where T_ID = #{id,jdbcType=DECIMAL}
+    where T_ID = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_TRAIN
-    where T_ID = #{id,jdbcType=DECIMAL}
+    where T_ID = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.TrainExample" >
     delete from T_TRAIN
@@ -102,8 +102,8 @@
   <insert id="insert" parameterType="com.iotek.model.Train" >
     insert into T_TRAIN (T_ID, T_CONTENT, T_REQUIRED, 
       T_STARTTIME, T_ENDTIME)
-    values (#{id,jdbcType=DECIMAL}, #{content,jdbcType=VARCHAR}, #{required,jdbcType=VARCHAR}, 
-      #{starttime,jdbcType=VARCHAR}, #{endtime,jdbcType=VARCHAR})
+    values (#{id}, #{content}, #{required},
+      #{starttime}, #{endtime})
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Train" >
     insert into T_TRAIN
@@ -126,19 +126,19 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=DECIMAL},
+        #{id},
       </if>
       <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+        #{content},
       </if>
       <if test="required != null" >
-        #{required,jdbcType=VARCHAR},
+        #{required},
       </if>
       <if test="starttime != null" >
-        #{starttime,jdbcType=VARCHAR},
+        #{starttime},
       </if>
       <if test="endtime != null" >
-        #{endtime,jdbcType=VARCHAR},
+        #{endtime},
       </if>
     </trim>
   </insert>
@@ -152,19 +152,19 @@
     update T_TRAIN
     <set >
       <if test="record.id != null" >
-        T_ID = #{record.id,jdbcType=DECIMAL},
+        T_ID = #{record.id},
       </if>
       <if test="record.content != null" >
-        T_CONTENT = #{record.content,jdbcType=VARCHAR},
+        T_CONTENT = #{record.content},
       </if>
       <if test="record.required != null" >
-        T_REQUIRED = #{record.required,jdbcType=VARCHAR},
+        T_REQUIRED = #{record.required},
       </if>
       <if test="record.starttime != null" >
-        T_STARTTIME = #{record.starttime,jdbcType=VARCHAR},
+        T_STARTTIME = #{record.starttime},
       </if>
       <if test="record.endtime != null" >
-        T_ENDTIME = #{record.endtime,jdbcType=VARCHAR},
+        T_ENDTIME = #{record.endtime},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -173,11 +173,11 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_TRAIN
-    set T_ID = #{record.id,jdbcType=DECIMAL},
-      T_CONTENT = #{record.content,jdbcType=VARCHAR},
-      T_REQUIRED = #{record.required,jdbcType=VARCHAR},
-      T_STARTTIME = #{record.starttime,jdbcType=VARCHAR},
-      T_ENDTIME = #{record.endtime,jdbcType=VARCHAR}
+    set T_ID = #{record.id},
+      T_CONTENT = #{record.content},
+      T_REQUIRED = #{record.required},
+      T_STARTTIME = #{record.starttime},
+      T_ENDTIME = #{record.endtime}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,26 +186,26 @@
     update T_TRAIN
     <set >
       <if test="content != null" >
-        T_CONTENT = #{content,jdbcType=VARCHAR},
+        T_CONTENT = #{content},
       </if>
       <if test="required != null" >
-        T_REQUIRED = #{required,jdbcType=VARCHAR},
+        T_REQUIRED = #{required},
       </if>
       <if test="starttime != null" >
-        T_STARTTIME = #{starttime,jdbcType=VARCHAR},
+        T_STARTTIME = #{starttime},
       </if>
       <if test="endtime != null" >
-        T_ENDTIME = #{endtime,jdbcType=VARCHAR},
+        T_ENDTIME = #{endtime},
       </if>
     </set>
-    where T_ID = #{id,jdbcType=DECIMAL}
+    where T_ID = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Train" >
     update T_TRAIN
-    set T_CONTENT = #{content,jdbcType=VARCHAR},
-      T_REQUIRED = #{required,jdbcType=VARCHAR},
-      T_STARTTIME = #{starttime,jdbcType=VARCHAR},
-      T_ENDTIME = #{endtime,jdbcType=VARCHAR}
-    where T_ID = #{id,jdbcType=DECIMAL}
+    set T_CONTENT = #{content},
+      T_REQUIRED = #{required},
+      T_STARTTIME = #{starttime},
+      T_ENDTIME = #{endtime}
+    where T_ID = #{id}
   </update>
 </mapper>
