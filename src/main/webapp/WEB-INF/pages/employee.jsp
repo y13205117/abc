@@ -16,8 +16,13 @@
     <title>员工界面</title>
 </head>
 <body>
-<a>上班打卡</a>
-<a>下班打卡</a>
+<ul>
+    <li>上班打卡</li>
+    <li>下班打卡</li>
+    <li>创建部门</li>
+    <li>发布招聘</li>
+    <li>查看简历</li>
+</ul>
 </body>
 </html>
 
