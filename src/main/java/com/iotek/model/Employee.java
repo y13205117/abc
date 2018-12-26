@@ -16,6 +16,8 @@ public class Employee implements Serializable {
 
     private Integer performance;
 
+    private Integer vid;
+
     public Integer getId() {
         return id;
     }
@@ -62,5 +64,13 @@ public class Employee implements Serializable {
 
     public void setPerformance(Integer performance) {
         this.performance = performance;
+    }
+
+    public Integer getVid() {
+        return vid;
+    }
+
+    public void setVid(Integer vid) {
+        this.vid = vid;
     }
 }

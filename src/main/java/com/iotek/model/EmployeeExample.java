@@ -464,6 +464,66 @@ public class EmployeeExample {
             addCriterion("E_PERFORMANCE not between", value1, value2, "performance");
             return (Criteria) this;
         }
+
+        public Criteria andVidIsNull() {
+            addCriterion("E_VID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidIsNotNull() {
+            addCriterion("E_VID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidEqualTo(Integer value) {
+            addCriterion("E_VID =", value, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidNotEqualTo(Integer value) {
+            addCriterion("E_VID <>", value, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidGreaterThan(Integer value) {
+            addCriterion("E_VID >", value, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("E_VID >=", value, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidLessThan(Integer value) {
+            addCriterion("E_VID <", value, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidLessThanOrEqualTo(Integer value) {
+            addCriterion("E_VID <=", value, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidIn(List<Integer> values) {
+            addCriterion("E_VID in", values, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidNotIn(List<Integer> values) {
+            addCriterion("E_VID not in", values, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidBetween(Integer value1, Integer value2) {
+            addCriterion("E_VID between", value1, value2, "vid");
+            return (Criteria) this;
+        }
+
+        public Criteria andVidNotBetween(Integer value1, Integer value2) {
+            addCriterion("E_VID not between", value1, value2, "vid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
