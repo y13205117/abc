@@ -1,6 +1,9 @@
 package com.iotek.service.impl;
 
+import com.iotek.dao.EmployeeMapper;
 import com.iotek.dao.VitaeMapper;
+import com.iotek.model.Employee;
+import com.iotek.model.EmployeeExample;
 import com.iotek.model.Vitae;
 import com.iotek.model.VitaeExample;
 import com.iotek.service.VitaeService;
@@ -13,6 +16,8 @@ import java.util.List;
 public class VitaeServiceImpl implements VitaeService {
     @Resource
     private VitaeMapper vitaeMapper;
+    @Resource
+    private EmployeeMapper employeeMapper;
 
     @Override
     public boolean saveVitae(Vitae vitae) {
@@ -39,6 +44,12 @@ public class VitaeServiceImpl implements VitaeService {
         if(vitae==null){
             return false;
         }
+        EmployeeExample employeeExample=new EmployeeExample();
+        employeeExample.createCriteria().andVidEqualTo(vitae.getId());
+        List<Employee> employees = employeeMapper.selectByExample(employeeExample);
+        if(employees!=null){
+            return false;
+        }
         int i =vitaeMapper.updateByPrimaryKey(vitae);
         return i>0?true:false;
     }
@@ -46,6 +57,12 @@ public class VitaeServiceImpl implements VitaeService {
     @Override
     public boolean deleteVitae(Integer id) {
         if(id<=0){
+            return false;
+        }
+        EmployeeExample employeeExample=new EmployeeExample();
+        employeeExample.createCriteria().andVidEqualTo(id);
+        List<Employee> employees = employeeMapper.selectByExample(employeeExample);
+        if(employees!=null){
             return false;
         }
         int i = vitaeMapper.deleteByPrimaryKey(id);
