@@ -32,6 +32,7 @@
     <h4>欢迎${sessionScope.user.name}登陆</h4>
 </c:if>
 <a href="goVitae">查看个人简历</a>
+<a href="goRecruit">查看招聘信息</a>
 </body>
 </html>
 

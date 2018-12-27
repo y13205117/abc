@@ -18,7 +18,8 @@ public class UserController {
     @Resource(name = "employeeServiceImpl")
     private EmployeeService employeeService;
     @RequestMapping("/login")
-    public String login(User user, HttpSession session)throws Exception{
+    public String login(User user, HttpSession session,HttpServletResponse response)throws Exception{
+        System.out.println(user);
         User user1 = userService.queryUser(user);
         if(user1!=null) {
             session.setAttribute("user", user1);
@@ -28,6 +29,10 @@ public class UserController {
         if(employee!=null){
             session.setAttribute("emp",employee);
             return "employee";
+        }
+        if(user.getName().equals("admin") && user.getPass().equals("123456")){
+            response.sendRedirect("goAdmin");
+            return null;
         }
         return "main";
     }
@@ -55,5 +60,9 @@ public class UserController {
     @RequestMapping("/goRegister")
     public String goRegister()throws Exception{
         return "register";
+    }
+    @RequestMapping("/goRecruit")
+    public String goRecruit()throws Exception{
+        return "recruit";
     }
 }
