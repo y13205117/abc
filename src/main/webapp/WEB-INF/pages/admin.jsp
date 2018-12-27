@@ -16,21 +16,31 @@
     <base href="<%=basePath%>"/>
     <title>管理员界面</title>
     <script src="js/jquery-3.1.0.js"></script>
-    <%--<script>--%>
-        <%--$(function () {--%>
-            <%--$("#d1").change(function () {--%>
-                <%--$("#j1").html();--%>
-                <%--$.ajax({--%>
-                    <%--type:"post",--%>
-                    <%--url:"",--%>
-                    <%--data:"",--%>
-                    <%--success:function(obj){--%>
-
-                    <%--}--%>
-                <%--})--%>
-            <%--})--%>
-        <%--})--%>
-    <%--</script>--%>
+    <script>
+        $(function () {
+            // $("#d1").change(function () {
+            //     $("#j1").html();
+            //     $.ajax({
+            //         type:"post",
+            //         url:"",
+            //         data:"",
+            //         success:function(obj){
+            //
+            //         }
+            //     })
+            // })
+            $("#addD").click(function () {
+                $("#addD").attr("disabled","disabled");
+                var div=$("<div id='div'></div>");
+                var vd=$("<span>部门名称:</span><input id='dn' name='name'><br>");
+                var que=$("<input id='qu' type='button'value='确认'>");
+                var res=$("<input id='re' type='button'value='取消'>");
+                div.append(vd);
+                div.append(que);
+                div.append(res);
+            })
+        })
+    </script>
 </head>
 <body>
 <ul>
@@ -53,6 +63,7 @@
     </select>
     职位:<select id="j1"></select>
 </c:if>
+<input id="addD" type="button" value="添加部门">
 </body>
 </html>
 

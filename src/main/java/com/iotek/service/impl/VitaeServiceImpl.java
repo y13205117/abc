@@ -47,11 +47,11 @@ public class VitaeServiceImpl implements VitaeService {
         EmployeeExample employeeExample=new EmployeeExample();
         employeeExample.createCriteria().andVidEqualTo(vitae.getId());
         List<Employee> employees = employeeMapper.selectByExample(employeeExample);
-        if(employees!=null){
-            return false;
+        if(employees==null || employees.size()==0){
+            int i =vitaeMapper.updateByPrimaryKey(vitae);
+            return i>0?true:false;
         }
-        int i =vitaeMapper.updateByPrimaryKey(vitae);
-        return i>0?true:false;
+        return false;
     }
 
     @Override
@@ -62,11 +62,11 @@ public class VitaeServiceImpl implements VitaeService {
         EmployeeExample employeeExample=new EmployeeExample();
         employeeExample.createCriteria().andVidEqualTo(id);
         List<Employee> employees = employeeMapper.selectByExample(employeeExample);
-        if(employees!=null){
-            return false;
+        if(employees==null || employees.size()==0){
+            int i = vitaeMapper.deleteByPrimaryKey(id);
+            return i>0?true:false;
         }
-        int i = vitaeMapper.deleteByPrimaryKey(id);
-        return i>0?true:false;
+        return false;
     }
 
     @Override
