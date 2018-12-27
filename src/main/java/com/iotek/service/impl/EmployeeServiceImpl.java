@@ -4,7 +4,6 @@ import com.iotek.dao.EmployeeMapper;
 import com.iotek.dao.VitaeMapper;
 import com.iotek.model.Employee;
 import com.iotek.model.Vitae;
-import com.iotek.model.VitaeExample;
 import com.iotek.service.EmployeeService;
 import org.springframework.stereotype.Service;
 

@@ -1,12 +1,11 @@
 package com.iotek.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class Employee implements Serializable {
     private Integer id;
 
-    private BigDecimal salary;
+    private Double salary;
 
     private Integer state;
 
@@ -18,6 +17,8 @@ public class Employee implements Serializable {
 
     private Integer vid;
 
+    private Integer did;
+
     public Integer getId() {
         return id;
     }
@@ -26,11 +27,11 @@ public class Employee implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getSalary() {
+    public Double getSalary() {
         return salary;
     }
 
-    public void setSalary(BigDecimal salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 
@@ -73,4 +74,13 @@ public class Employee implements Serializable {
     public void setVid(Integer vid) {
         this.vid = vid;
     }
+
+    public Integer getDid() {
+        return did;
+    }
+
+    public void setDid(Integer did) {
+        this.did = did;
+    }
+
 }

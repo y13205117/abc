@@ -13,12 +13,15 @@
 <html>
 <head>
     <base href="<%=basePath%>"/>
-    <title></title>
+    <title>管理员界面</title>
+    <script src="js/jquery-3.1.0.js"></script>
+    <script>
+
+    </script>
 </head>
 <body>
 <ul>
     <li>查看部门</li>
-    <li>查看职位</li>
     <li>查看员工</li>
     <li>薪资结算</li>
     <li>查看考勤</li>
@@ -26,6 +29,8 @@
     <li>查看招聘</li>
     <li>查看奖惩</li>
 </ul>
+部门:<select id="d1"></select>
+职位:<select id="j1"></select>
 </body>
 </html>
 

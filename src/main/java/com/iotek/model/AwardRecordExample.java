@@ -1,6 +1,5 @@
 package com.iotek.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -435,52 +434,52 @@ public class AwardRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andCidEqualTo(BigDecimal value) {
+        public Criteria andCidEqualTo(Double value) {
             addCriterion("A_CID =", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidNotEqualTo(BigDecimal value) {
+        public Criteria andCidNotEqualTo(Double value) {
             addCriterion("A_CID <>", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidGreaterThan(BigDecimal value) {
+        public Criteria andCidGreaterThan(Double value) {
             addCriterion("A_CID >", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andCidGreaterThanOrEqualTo(Double value) {
             addCriterion("A_CID >=", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidLessThan(BigDecimal value) {
+        public Criteria andCidLessThan(Double value) {
             addCriterion("A_CID <", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andCidLessThanOrEqualTo(Double value) {
             addCriterion("A_CID <=", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidIn(List<BigDecimal> values) {
+        public Criteria andCidIn(List<Double> values) {
             addCriterion("A_CID in", values, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidNotIn(List<BigDecimal> values) {
+        public Criteria andCidNotIn(List<Double> values) {
             addCriterion("A_CID not in", values, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andCidBetween(Double value1, Double value2) {
             addCriterion("A_CID between", value1, value2, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andCidNotBetween(Double value1, Double value2) {
             addCriterion("A_CID not between", value1, value2, "cid");
             return (Criteria) this;
         }

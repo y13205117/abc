@@ -524,6 +524,66 @@ public class EmployeeExample {
             addCriterion("E_VID not between", value1, value2, "vid");
             return (Criteria) this;
         }
+
+        public Criteria andDidIsNull() {
+            addCriterion("E_DID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidIsNotNull() {
+            addCriterion("E_DID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidEqualTo(Integer value) {
+            addCriterion("E_DID =", value, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidNotEqualTo(Integer value) {
+            addCriterion("E_DID <>", value, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidGreaterThan(Integer value) {
+            addCriterion("E_DID >", value, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("E_DID >=", value, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidLessThan(Integer value) {
+            addCriterion("E_DID <", value, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidLessThanOrEqualTo(Integer value) {
+            addCriterion("E_DID <=", value, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidIn(List<Integer> values) {
+            addCriterion("E_DID in", values, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidNotIn(List<Integer> values) {
+            addCriterion("E_DID not in", values, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidBetween(Integer value1, Integer value2) {
+            addCriterion("E_DID between", value1, value2, "did");
+            return (Criteria) this;
+        }
+
+        public Criteria andDidNotBetween(Integer value1, Integer value2) {
+            addCriterion("E_DID not between", value1, value2, "did");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

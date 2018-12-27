@@ -1,6 +1,5 @@
 package com.iotek.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -175,52 +174,52 @@ public class GateCardExample {
             return (Criteria) this;
         }
 
-        public Criteria andColumn2EqualTo(BigDecimal value) {
+        public Criteria andColumn2EqualTo(Double value) {
             addCriterion("COLUMN_2 =", value, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2NotEqualTo(BigDecimal value) {
+        public Criteria andColumn2NotEqualTo(Double value) {
             addCriterion("COLUMN_2 <>", value, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2GreaterThan(BigDecimal value) {
+        public Criteria andColumn2GreaterThan(Double value) {
             addCriterion("COLUMN_2 >", value, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2GreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andColumn2GreaterThanOrEqualTo(Double value) {
             addCriterion("COLUMN_2 >=", value, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2LessThan(BigDecimal value) {
+        public Criteria andColumn2LessThan(Double value) {
             addCriterion("COLUMN_2 <", value, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2LessThanOrEqualTo(BigDecimal value) {
+        public Criteria andColumn2LessThanOrEqualTo(Double value) {
             addCriterion("COLUMN_2 <=", value, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2In(List<BigDecimal> values) {
+        public Criteria andColumn2In(List<Double> values) {
             addCriterion("COLUMN_2 in", values, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2NotIn(List<BigDecimal> values) {
+        public Criteria andColumn2NotIn(List<Double> values) {
             addCriterion("COLUMN_2 not in", values, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2Between(BigDecimal value1, BigDecimal value2) {
+        public Criteria andColumn2Between(Double value1, Double value2) {
             addCriterion("COLUMN_2 between", value1, value2, "column2");
             return (Criteria) this;
         }
 
-        public Criteria andColumn2NotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andColumn2NotBetween(Double value1, Double value2) {
             addCriterion("COLUMN_2 not between", value1, value2, "column2");
             return (Criteria) this;
         }

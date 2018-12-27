@@ -1,7 +1,6 @@
 package com.iotek.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class AwardRecord implements Serializable {
     private Integer id;
@@ -14,7 +13,7 @@ public class AwardRecord implements Serializable {
 
     private Integer eid;
 
-    private BigDecimal cid;
+    private Double cid;
 
     public Integer getId() {
         return id;
@@ -56,11 +55,11 @@ public class AwardRecord implements Serializable {
         this.eid = eid;
     }
 
-    public BigDecimal getCid() {
+    public Double getCid() {
         return cid;
     }
 
-    public void setCid(BigDecimal cid) {
+    public void setCid(Double cid) {
         this.cid = cid;
     }
 }

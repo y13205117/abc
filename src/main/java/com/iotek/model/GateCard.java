@@ -1,12 +1,11 @@
 package com.iotek.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class GateCard implements Serializable {
     private Integer id;
 
-    private BigDecimal column2;
+    private Double column2;
 
     private String officehours;
 
@@ -24,11 +23,11 @@ public class GateCard implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getColumn2() {
+    public Double getColumn2() {
         return column2;
     }
 
-    public void setColumn2(BigDecimal column2) {
+    public void setColumn2(Double column2) {
         this.column2 = column2;
     }
 
