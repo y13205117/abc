@@ -19,7 +19,6 @@ public class UserController {
     private EmployeeService employeeService;
     @RequestMapping("/login")
     public String login(User user, HttpSession session,HttpServletResponse response)throws Exception{
-        System.out.println(user);
         User user1 = userService.queryUser(user);
         if(user1!=null) {
             session.setAttribute("user", user1);
