@@ -10,6 +10,8 @@ import com.iotek.service.DepartmentService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -24,19 +26,22 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public boolean saveDepartment(Department department) {
-        if(department==null){
+    public boolean saveDepartment(String name) {
+        if(name==null){
             return false;
         }
         //判重名
         DepartmentExample departmentExample=new DepartmentExample();
-        departmentExample.createCriteria().andNameEqualTo(department.getName());
+        departmentExample.createCriteria().andNameEqualTo(name);
         List<Department> departments = departmentMapper.selectByExample(departmentExample);
-        if(departments!=null || departments.size()>0){
-            return false;
+        if(departments==null || departments.size()==0){
+            Department department=new Department();
+            department.setName(name);
+            department.setCreationtime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            int i = departmentMapper.insertSelective(department);
+            return i>0?true:false;
         }
-        int i = departmentMapper.insertSelective(department);
-        return i>0?true:false;
+        return false;
     }
 
     @Override

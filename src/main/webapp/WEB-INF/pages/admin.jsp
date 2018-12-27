@@ -38,6 +38,26 @@
                 div.append(vd);
                 div.append(que);
                 div.append(res);
+                $(document.body).append(div);
+                $(document).on("click", "#re", function () {
+                    $("#div").remove();
+                    $("#addD").removeAttr("disabled");
+                    return;
+                })
+                $(document).on("click", "#qu", function () {
+                    var name=$("#dn").val();
+                    $.ajax({
+                        type:"post",
+                        url:"saveDEP",
+                        data:"name="+name,
+                        success:function(obj){
+                            alert(obj);
+                            if(obj=="添加成功"){
+                                location.reload();
+                            }
+                        }
+                    })
+                })
             })
         })
     </script>
@@ -58,7 +78,7 @@
 <c:if test="${!empty sessionScope.department}">
     部门:<select id="d1">
     <c:forEach items="${sessionScope.department}" var="i">
-        <option>${i}</option>
+        <option>${i.name}</option>
     </c:forEach>
     </select>
     职位:<select id="j1"></select>

@@ -32,4 +32,13 @@ public class Department implements Serializable {
     public void setCreationtime(String creationtime) {
         this.creationtime = creationtime == null ? null : creationtime.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", creationtime='" + creationtime + '\'' +
+                '}';
+    }
 }

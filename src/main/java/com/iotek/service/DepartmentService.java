@@ -8,7 +8,7 @@ public interface DepartmentService {
     //查询所有
     List<Department> queryDepartment();
     //增加
-    boolean saveDepartment(Department department);
+    boolean saveDepartment(String name);
     //删除
     boolean deleteDepartment(Integer id);
 }
