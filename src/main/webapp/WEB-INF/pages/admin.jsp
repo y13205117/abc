@@ -16,51 +16,7 @@
     <base href="<%=basePath%>"/>
     <title>管理员界面</title>
     <script src="js/jquery-3.1.0.js"></script>
-    <script>
-        $(function () {
-            // $("#d1").change(function () {
-            //     $("#j1").html();
-            //     $.ajax({
-            //         type:"post",
-            //         url:"",
-            //         data:"",
-            //         success:function(obj){
-            //
-            //         }
-            //     })
-            // })
-            $("#addD").click(function () {
-                $("#addD").attr("disabled","disabled");
-                var div=$("<div id='div'></div>");
-                var vd=$("<span>部门名称:</span><input id='dn' name='name'><br>");
-                var que=$("<input id='qu' type='button'value='确认'>");
-                var res=$("<input id='re' type='button'value='取消'>");
-                div.append(vd);
-                div.append(que);
-                div.append(res);
-                $(document.body).append(div);
-                $(document).on("click", "#re", function () {
-                    $("#div").remove();
-                    $("#addD").removeAttr("disabled");
-                    return;
-                })
-                $(document).on("click", "#qu", function () {
-                    var name=$("#dn").val();
-                    $.ajax({
-                        type:"post",
-                        url:"saveDEP",
-                        data:"name="+name,
-                        success:function(obj){
-                            alert(obj);
-                            if(obj=="添加成功"){
-                                location.reload();
-                            }
-                        }
-                    })
-                })
-            })
-        })
-    </script>
+    <script src="js/admin.js"></script>
 </head>
 <body>
 <ul>
@@ -76,14 +32,14 @@
     抱歉还没有任何部门
 </c:if>
 <c:if test="${!empty sessionScope.department}">
-    部门:<select id="d1">
+    部门:<select id="d1" name="did">
     <c:forEach items="${sessionScope.department}" var="i">
-        <option>${i.name}</option>
+        <option value="${i.id}">${i.name}</option>
     </c:forEach>
     </select>
-    职位:<select id="j1"></select>
+    职位:<select id="j1"></select><br>
 </c:if>
-<input id="addD" type="button" value="添加部门">
+<input id="addD" type="button" value="添加部门"><input id="addJ" type="button" value="添加职位">
 </body>
 </html>
 

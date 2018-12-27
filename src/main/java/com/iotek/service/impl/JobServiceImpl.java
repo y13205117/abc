@@ -10,6 +10,8 @@ import com.iotek.service.JobService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 @Service
 public class JobServiceImpl implements JobService {
@@ -18,8 +20,9 @@ public class JobServiceImpl implements JobService {
     @Resource
     private EmployeeMapper employeeMapper;
     @Override
-    public List<Job> queryJob() {
+    public List<Job> queryJob(Integer did) {
         JobExample jobExample=new JobExample();
+        jobExample.createCriteria().andDidEqualTo(did);
         return jobMapper.selectByExample(jobExample);
     }
 
@@ -31,11 +34,12 @@ public class JobServiceImpl implements JobService {
         JobExample jobExample=new JobExample();
         jobExample.createCriteria().andDidEqualTo(job.getDid()).andNameEqualTo(job.getName());
         List<Job> jobs = jobMapper.selectByExample(jobExample);
-        if(jobs!=null || jobs.size()>0){
-            return false;
+        if(jobs==null || jobs.size()==0){
+            job.setCreationtime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+            int i = jobMapper.insertSelective(job);
+            return i>0?true:false;
         }
-        int i = jobMapper.insertSelective(job);
-        return i>0?true:false;
+        return false;
     }
 
     @Override
@@ -46,10 +50,10 @@ public class JobServiceImpl implements JobService {
         EmployeeExample employeeExample=new EmployeeExample();
         employeeExample.createCriteria().andJidEqualTo(id);
         List<Employee> employees = employeeMapper.selectByExample(employeeExample);
-        if(employees!=null || employees.size()>0){
-            return false;
+        if(employees==null || employees.size()==0){
+            int i = jobMapper.deleteByPrimaryKey(id);
+            return i>0?true:false;
         }
-        int i = jobMapper.deleteByPrimaryKey(id);
-        return i>0?true:false;
+        return false;
     }
 }

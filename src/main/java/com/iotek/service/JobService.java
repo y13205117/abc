@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface JobService {
     //查询职位
-    List<Job> queryJob();
+    List<Job> queryJob(Integer did);
     //增加
     boolean saveJob(Job job);
     //删除

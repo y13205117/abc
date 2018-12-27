@@ -42,4 +42,14 @@ public class Job implements Serializable {
     public void setDid(Integer did) {
         this.did = did;
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", creationtime='" + creationtime + '\'' +
+                ", did=" + did +
+                '}';
+    }
 }
