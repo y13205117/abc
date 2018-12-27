@@ -10,7 +10,8 @@ $(function () {
                 if(obj.length>0){
                     for (var i in obj) {
                         var j=$("<option></option>");
-                        j.html(obj[i]);
+                        j.html(obj[i].name);
+                        j.val(obj[i].id);
                         $("#j1").append(j);
                     }
                 }else{
@@ -83,6 +84,44 @@ $(function () {
                     }
                 }
             })
+        })
+    })
+    $("#j1").change(function () {
+        var tb=$("#t1");
+        var did=$("#d1").val();
+        var jid=$("#j1").val();
+        $.ajax({
+            type:"post",
+            url:"queryEmp",
+            data:{"did":did,"jid":jid},
+            success:function(obj){
+                if(obj.length>0){
+                    for (var i in obj){
+                        var tr=$("<tr></tr>");
+                        var td1=$("<td>员工编号:</td>");
+                        var td2=$("<td>员工姓名:</td>");
+                        var td3=$("<td>员工状态:</td>");
+                        var td4=$("<td>员工等级:</td>");
+                        var td5=$("<td>员工绩效:</td>");
+                        td1.html(obj[i].employee.id);
+                        td2.html(obj[i].vitae.name);
+                        td3.html(obj[i].employee.state);
+                        td4.html(obj[i].employee.type);
+                        td5.html(obj[i].employee.performance);
+                        tr.append(td1);
+                        tr.append(td2);
+                        tr.append(td3);
+                        tr.append(td4);
+                        tr.append(td5);
+                        tb.append(tr);
+                    }
+                }else {
+                    var tr=$("<tr></tr>");
+                    var td=$("<td>抱歉本职位还没有员工</td>");
+                    tr.append(td);
+                    tb.append(tr);
+                }
+            }
         })
     })
 })

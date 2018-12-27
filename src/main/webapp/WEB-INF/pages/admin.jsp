@@ -17,6 +17,11 @@
     <title>管理员界面</title>
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/admin.js"></script>
+    <script>
+        $(function () {
+
+        })
+    </script>
 </head>
 <body>
 <ul>
@@ -37,9 +42,14 @@
         <option value="${i.id}">${i.name}</option>
     </c:forEach>
     </select>
-    职位:<select id="j1"></select><br>
+    职位:<select id="j1" name="jid"></select><br>
 </c:if>
-<input id="addD" type="button" value="添加部门"><input id="addJ" type="button" value="添加职位">
+<table id="t1" border="1px">
+
+</table>
+<input id="addD" type="button" value="添加部门"><input id="addJ" type="button" value="添加职位"><br>
+<input id="upD" type="button" value="修改部门"><input id="upJ" type="button" value="修改职位"><br>
+<input id="deD" type="button" value="删除部门"><input id="deJ" type="button" value="删除职位"><br>
 </body>
 </html>
 

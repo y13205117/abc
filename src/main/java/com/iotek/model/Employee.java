@@ -83,4 +83,18 @@ public class Employee implements Serializable {
     public void setDid(Integer did) {
         this.did = did;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", salary=" + salary +
+                ", state=" + state +
+                ", type=" + type +
+                ", jid=" + jid +
+                ", performance=" + performance +
+                ", vid=" + vid +
+                ", did=" + did +
+                '}';
+    }
 }

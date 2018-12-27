@@ -18,17 +18,11 @@ import java.util.List;
 public class JobController {
     @Resource(name = "jobServiceImpl")
     private JobService jobService;
-    @RequestMapping("queryJob")
+    @RequestMapping("/queryJob")
     @ResponseBody
-    public List<String> queryJob(Integer did)throws Exception{
+    public List<Job> queryJob(Integer did)throws Exception{
         List<Job> jobs = jobService.queryJob(did);
-        List<String> str=new ArrayList<>();
-        if(jobs!=null || jobs.size()>0){
-            for (Job job : jobs) {
-                str.add(job.getName());
-            }
-        }
-        return str;
+        return jobs;
     }
     @RequestMapping("/saveJob")
     public String saveJob(Job job, HttpServletResponse response)throws Exception{
