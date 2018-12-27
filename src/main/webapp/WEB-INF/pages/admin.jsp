@@ -13,15 +13,18 @@
 <html>
 <head>
     <base href="<%=basePath%>"/>
-    <title>员工界面</title>
+    <title></title>
 </head>
 <body>
 <ul>
-    <li>考勤打卡</li>
-    <li>个人信息</li>
-    <li>通讯录</li>
+    <li>查看部门</li>
+    <li>查看职位</li>
+    <li>查看员工</li>
+    <li>薪资结算</li>
+    <li>查看考勤</li>
     <li>查看培训</li>
-    <li>查看奖惩记录</li>
+    <li>查看招聘</li>
+    <li>查看奖惩</li>
 </ul>
 </body>
 </html>
