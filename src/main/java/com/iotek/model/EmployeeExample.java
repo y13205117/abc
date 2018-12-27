@@ -1,6 +1,5 @@
 package com.iotek.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -175,52 +174,52 @@ public class EmployeeExample {
             return (Criteria) this;
         }
 
-        public Criteria andSalaryEqualTo(BigDecimal value) {
+        public Criteria andSalaryEqualTo(Double value) {
             addCriterion("E_SALARY =", value, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryNotEqualTo(BigDecimal value) {
+        public Criteria andSalaryNotEqualTo(Double value) {
             addCriterion("E_SALARY <>", value, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryGreaterThan(BigDecimal value) {
+        public Criteria andSalaryGreaterThan(Double value) {
             addCriterion("E_SALARY >", value, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andSalaryGreaterThanOrEqualTo(Double value) {
             addCriterion("E_SALARY >=", value, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryLessThan(BigDecimal value) {
+        public Criteria andSalaryLessThan(Double value) {
             addCriterion("E_SALARY <", value, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andSalaryLessThanOrEqualTo(Double value) {
             addCriterion("E_SALARY <=", value, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryIn(List<BigDecimal> values) {
+        public Criteria andSalaryIn(List<Double> values) {
             addCriterion("E_SALARY in", values, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryNotIn(List<BigDecimal> values) {
+        public Criteria andSalaryNotIn(List<Double> values) {
             addCriterion("E_SALARY not in", values, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andSalaryBetween(Double value1, Double value2) {
             addCriterion("E_SALARY between", value1, value2, "salary");
             return (Criteria) this;
         }
 
-        public Criteria andSalaryNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andSalaryNotBetween(Double value1, Double value2) {
             addCriterion("E_SALARY not between", value1, value2, "salary");
             return (Criteria) this;
         }

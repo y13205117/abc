@@ -2,7 +2,6 @@ package com.iotek.service.impl;
 
 import com.iotek.dao.DepartmentMapper;
 import com.iotek.dao.EmployeeMapper;
-import com.iotek.dao.JobMapper;
 import com.iotek.model.Department;
 import com.iotek.model.DepartmentExample;
 import com.iotek.model.Employee;

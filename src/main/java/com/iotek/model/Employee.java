@@ -1,5 +1,6 @@
 package com.iotek.model;
 
+
 import java.io.Serializable;
 
 public class Employee implements Serializable {
@@ -82,5 +83,4 @@ public class Employee implements Serializable {
     public void setDid(Integer did) {
         this.did = did;
     }
-
 }

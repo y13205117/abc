@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.iotek.dao.EmployeeMapper">
-  <resultMap id="BaseResultMap" type="com.iotek.model.Employee">
-    <id column="E_ID" jdbcType="DECIMAL" property="id" />
-    <result column="E_SALARY" jdbcType="DECIMAL" property="salary" />
-    <result column="E_STATE" jdbcType="DECIMAL" property="state" />
-    <result column="E_TYPE" jdbcType="DECIMAL" property="type" />
-    <result column="E_JID" jdbcType="DECIMAL" property="jid" />
-    <result column="E_PERFORMANCE" jdbcType="DECIMAL" property="performance" />
-    <result column="E_VID" jdbcType="DECIMAL" property="vid" />
-    <result column="E_DID" jdbcType="DECIMAL" property="did" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iotek.dao.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.iotek.model.Employee" >
+    <id column="E_ID" property="id" jdbcType="DECIMAL" />
+    <result column="E_SALARY" property="salary" jdbcType="DECIMAL" />
+    <result column="E_STATE" property="state" jdbcType="DECIMAL" />
+    <result column="E_TYPE" property="type" jdbcType="DECIMAL" />
+    <result column="E_JID" property="jid" jdbcType="DECIMAL" />
+    <result column="E_PERFORMANCE" property="performance" jdbcType="DECIMAL" />
+    <result column="E_VID" property="vid" jdbcType="DECIMAL" />
+    <result column="E_DID" property="did" jdbcType="DECIMAL" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -40,25 +40,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -69,444 +69,190 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     E_ID, E_SALARY, E_STATE, E_TYPE, E_JID, E_PERFORMANCE, E_VID, E_DID
   </sql>
-  <select id="selectByExample" parameterType="com.iotek.model.EmployeeExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iotek.model.EmployeeExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from T_EMPLOYEE
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from T_EMPLOYEE
-    where E_ID = #{id,jdbcType=DECIMAL}
+    where E_ID = #{id}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_EMPLOYEE
-    where E_ID = #{id,jdbcType=DECIMAL}
+    where E_ID = #{id}
   </delete>
-  <delete id="deleteByExample" parameterType="com.iotek.model.EmployeeExample">
+  <delete id="deleteByExample" parameterType="com.iotek.model.EmployeeExample" >
     delete from T_EMPLOYEE
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.iotek.model.Employee">
+  <insert id="insert" parameterType="com.iotek.model.Employee" >
     insert into T_EMPLOYEE (E_ID, E_SALARY, E_STATE, 
       E_TYPE, E_JID, E_PERFORMANCE, 
       E_VID, E_DID)
-    values (#{id,jdbcType=DECIMAL}, #{salary,jdbcType=DECIMAL}, #{state,jdbcType=DECIMAL}, 
-      #{type,jdbcType=DECIMAL}, #{jid,jdbcType=DECIMAL}, #{performance,jdbcType=DECIMAL}, 
-      #{vid,jdbcType=DECIMAL}, #{did,jdbcType=DECIMAL})
+    values (#{id}, #{salary}, #{state},
+      #{type}, #{jid}, #{performance},
+      #{vid}, #{did})
   </insert>
-  <insert id="insertSelective" parameterType="com.iotek.model.Employee">
+  <insert id="insertSelective" parameterType="com.iotek.model.Employee" >
     insert into T_EMPLOYEE
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         E_ID,
       </if>
-      <if test="salary != null">
+      <if test="salary != null" >
         E_SALARY,
       </if>
-      <if test="state != null">
+      <if test="state != null" >
         E_STATE,
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         E_TYPE,
       </if>
-      <if test="jid != null">
+      <if test="jid != null" >
         E_JID,
       </if>
-      <if test="performance != null">
+      <if test="performance != null" >
         E_PERFORMANCE,
       </if>
-      <if test="vid != null">
+      <if test="vid != null" >
         E_VID,
       </if>
-      <if test="did != null">
+      <if test="did != null" >
         E_DID,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=DECIMAL},
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
       </if>
-      <if test="salary != null">
-        #{salary,jdbcType=DECIMAL},
+      <if test="salary != null" >
+        #{salary},
       </if>
-      <if test="state != null">
-        #{state,jdbcType=DECIMAL},
+      <if test="state != null" >
+        #{state},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=DECIMAL},
+      <if test="type != null" >
+        #{type},
       </if>
-      <if test="jid != null">
-        #{jid,jdbcType=DECIMAL},
+      <if test="jid != null" >
+        #{jid},
       </if>
-      <if test="performance != null">
-        #{performance,jdbcType=DECIMAL},
+      <if test="performance != null" >
+        #{performance},
       </if>
-      <if test="vid != null">
-        #{vid,jdbcType=DECIMAL},
+      <if test="vid != null" >
+        #{vid},
       </if>
-      <if test="did != null">
-        #{did,jdbcType=DECIMAL},
+      <if test="did != null" >
+        #{did},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.iotek.model.EmployeeExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.iotek.model.EmployeeExample" resultType="java.lang.Integer" >
     select count(*) from T_EMPLOYEE
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update T_EMPLOYEE
-    <set>
-      <if test="record.id != null">
-        E_ID = #{record.id,jdbcType=DECIMAL},
+    <set >
+      <if test="record.id != null" >
+        E_ID = #{record.id},
       </if>
-      <if test="record.salary != null">
-        E_SALARY = #{record.salary,jdbcType=DECIMAL},
+      <if test="record.salary != null" >
+        E_SALARY = #{record.salary},
       </if>
-      <if test="record.state != null">
-        E_STATE = #{record.state,jdbcType=DECIMAL},
+      <if test="record.state != null" >
+        E_STATE = #{record.state},
       </if>
-      <if test="record.type != null">
-        E_TYPE = #{record.type,jdbcType=DECIMAL},
+      <if test="record.type != null" >
+        E_TYPE = #{record.type},
       </if>
-      <if test="record.jid != null">
-        E_JID = #{record.jid,jdbcType=DECIMAL},
+      <if test="record.jid != null" >
+        E_JID = #{record.jid},
       </if>
-      <if test="record.performance != null">
-        E_PERFORMANCE = #{record.performance,jdbcType=DECIMAL},
+      <if test="record.performance != null" >
+        E_PERFORMANCE = #{record.performance},
       </if>
-      <if test="record.vid != null">
-        E_VID = #{record.vid,jdbcType=DECIMAL},
+      <if test="record.vid != null" >
+        E_VID = #{record.vid},
       </if>
-      <if test="record.did != null">
-        E_DID = #{record.did,jdbcType=DECIMAL},
+      <if test="record.did != null" >
+        E_DID = #{record.did},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update T_EMPLOYEE
-    set E_ID = #{record.id,jdbcType=DECIMAL},
-      E_SALARY = #{record.salary,jdbcType=DECIMAL},
-      E_STATE = #{record.state,jdbcType=DECIMAL},
-      E_TYPE = #{record.type,jdbcType=DECIMAL},
-      E_JID = #{record.jid,jdbcType=DECIMAL},
-      E_PERFORMANCE = #{record.performance,jdbcType=DECIMAL},
-      E_VID = #{record.vid,jdbcType=DECIMAL},
-      E_DID = #{record.did,jdbcType=DECIMAL}
-    <if test="_parameter != null">
+    set E_ID = #{record.id},
+      E_SALARY = #{record.salary},
+      E_STATE = #{record.state},
+      E_TYPE = #{record.type},
+      E_JID = #{record.jid},
+      E_PERFORMANCE = #{record.performance},
+      E_VID = #{record.vid},
+      E_DID = #{record.did}
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.iotek.model.Employee">
+  <update id="updateByPrimaryKeySelective" parameterType="com.iotek.model.Employee" >
     update T_EMPLOYEE
-    <set>
-      <if test="salary != null">
-        E_SALARY = #{salary,jdbcType=DECIMAL},
+    <set >
+      <if test="salary != null" >
+        E_SALARY = #{salary},
       </if>
-      <if test="state != null">
-        E_STATE = #{state,jdbcType=DECIMAL},
+      <if test="state != null" >
+        E_STATE = #{state},
       </if>
-      <if test="type != null">
-        E_TYPE = #{type,jdbcType=DECIMAL},
+      <if test="type != null" >
+        E_TYPE = #{type},
       </if>
-      <if test="jid != null">
-        E_JID = #{jid,jdbcType=DECIMAL},
+      <if test="jid != null" >
+        E_JID = #{jid},
       </if>
-      <if test="performance != null">
-        E_PERFORMANCE = #{performance,jdbcType=DECIMAL},
+      <if test="performance != null" >
+        E_PERFORMANCE = #{performance},
       </if>
-      <if test="vid != null">
-        E_VID = #{vid,jdbcType=DECIMAL},
+      <if test="vid != null" >
+        E_VID = #{vid},
       </if>
-      <if test="did != null">
-        E_DID = #{did,jdbcType=DECIMAL},
+      <if test="did != null" >
+        E_DID = #{did},
       </if>
     </set>
-    where E_ID = #{id,jdbcType=DECIMAL}
+    where E_ID = #{id}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.iotek.model.Employee">
+  <update id="updateByPrimaryKey" parameterType="com.iotek.model.Employee" >
     update T_EMPLOYEE
-    set E_SALARY = #{salary,jdbcType=DECIMAL},
-      E_STATE = #{state,jdbcType=DECIMAL},
-      E_TYPE = #{type,jdbcType=DECIMAL},
-      E_JID = #{jid,jdbcType=DECIMAL},
-      E_PERFORMANCE = #{performance,jdbcType=DECIMAL},
-      E_VID = #{vid,jdbcType=DECIMAL},
-      E_DID = #{did,jdbcType=DECIMAL}
-    where E_ID = #{id,jdbcType=DECIMAL}
-  </update>
-  <resultMap id="BaseResultMap" type="com.iotek.model.Employee">
-    <id column="E_ID" jdbcType="DECIMAL" property="id" />
-    <result column="E_SALARY" jdbcType="DECIMAL" property="salary" />
-    <result column="E_STATE" jdbcType="DECIMAL" property="state" />
-    <result column="E_TYPE" jdbcType="DECIMAL" property="type" />
-    <result column="E_JID" jdbcType="DECIMAL" property="jid" />
-    <result column="E_PERFORMANCE" jdbcType="DECIMAL" property="performance" />
-    <result column="E_VID" jdbcType="DECIMAL" property="vid" />
-    <result column="E_DID" jdbcType="DECIMAL" property="did" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    E_ID, E_SALARY, E_STATE, E_TYPE, E_JID, E_PERFORMANCE, E_VID, E_DID
-  </sql>
-  <select id="selectByExample" parameterType="com.iotek.model.EmployeeExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from T_EMPLOYEE
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from T_EMPLOYEE
-    where E_ID = #{id,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from T_EMPLOYEE
-    where E_ID = #{id,jdbcType=DECIMAL}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.iotek.model.EmployeeExample">
-    delete from T_EMPLOYEE
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.iotek.model.Employee">
-    insert into T_EMPLOYEE (E_ID, E_SALARY, E_STATE, 
-      E_TYPE, E_JID, E_PERFORMANCE, 
-      E_VID, E_DID)
-    values (#{id,jdbcType=DECIMAL}, #{salary,jdbcType=DECIMAL}, #{state,jdbcType=DECIMAL}, 
-      #{type,jdbcType=DECIMAL}, #{jid,jdbcType=DECIMAL}, #{performance,jdbcType=DECIMAL}, 
-      #{vid,jdbcType=DECIMAL}, #{did,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.iotek.model.Employee">
-    insert into T_EMPLOYEE
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        E_ID,
-      </if>
-      <if test="salary != null">
-        E_SALARY,
-      </if>
-      <if test="state != null">
-        E_STATE,
-      </if>
-      <if test="type != null">
-        E_TYPE,
-      </if>
-      <if test="jid != null">
-        E_JID,
-      </if>
-      <if test="performance != null">
-        E_PERFORMANCE,
-      </if>
-      <if test="vid != null">
-        E_VID,
-      </if>
-      <if test="did != null">
-        E_DID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=DECIMAL},
-      </if>
-      <if test="salary != null">
-        #{salary,jdbcType=DECIMAL},
-      </if>
-      <if test="state != null">
-        #{state,jdbcType=DECIMAL},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=DECIMAL},
-      </if>
-      <if test="jid != null">
-        #{jid,jdbcType=DECIMAL},
-      </if>
-      <if test="performance != null">
-        #{performance,jdbcType=DECIMAL},
-      </if>
-      <if test="vid != null">
-        #{vid,jdbcType=DECIMAL},
-      </if>
-      <if test="did != null">
-        #{did,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.iotek.model.EmployeeExample" resultType="java.lang.Integer">
-    select count(*) from T_EMPLOYEE
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update T_EMPLOYEE
-    <set>
-      <if test="record.id != null">
-        E_ID = #{record.id,jdbcType=DECIMAL},
-      </if>
-      <if test="record.salary != null">
-        E_SALARY = #{record.salary,jdbcType=DECIMAL},
-      </if>
-      <if test="record.state != null">
-        E_STATE = #{record.state,jdbcType=DECIMAL},
-      </if>
-      <if test="record.type != null">
-        E_TYPE = #{record.type,jdbcType=DECIMAL},
-      </if>
-      <if test="record.jid != null">
-        E_JID = #{record.jid,jdbcType=DECIMAL},
-      </if>
-      <if test="record.performance != null">
-        E_PERFORMANCE = #{record.performance,jdbcType=DECIMAL},
-      </if>
-      <if test="record.vid != null">
-        E_VID = #{record.vid,jdbcType=DECIMAL},
-      </if>
-      <if test="record.did != null">
-        E_DID = #{record.did,jdbcType=DECIMAL},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update T_EMPLOYEE
-    set E_ID = #{record.id,jdbcType=DECIMAL},
-      E_SALARY = #{record.salary,jdbcType=DECIMAL},
-      E_STATE = #{record.state,jdbcType=DECIMAL},
-      E_TYPE = #{record.type,jdbcType=DECIMAL},
-      E_JID = #{record.jid,jdbcType=DECIMAL},
-      E_PERFORMANCE = #{record.performance,jdbcType=DECIMAL},
-      E_VID = #{record.vid,jdbcType=DECIMAL},
-      E_DID = #{record.did,jdbcType=DECIMAL}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.iotek.model.Employee">
-    update T_EMPLOYEE
-    <set>
-      <if test="salary != null">
-        E_SALARY = #{salary,jdbcType=DECIMAL},
-      </if>
-      <if test="state != null">
-        E_STATE = #{state,jdbcType=DECIMAL},
-      </if>
-      <if test="type != null">
-        E_TYPE = #{type,jdbcType=DECIMAL},
-      </if>
-      <if test="jid != null">
-        E_JID = #{jid,jdbcType=DECIMAL},
-      </if>
-      <if test="performance != null">
-        E_PERFORMANCE = #{performance,jdbcType=DECIMAL},
-      </if>
-      <if test="vid != null">
-        E_VID = #{vid,jdbcType=DECIMAL},
-      </if>
-      <if test="did != null">
-        E_DID = #{did,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where E_ID = #{id,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.iotek.model.Employee">
-    update T_EMPLOYEE
-    set E_SALARY = #{salary,jdbcType=DECIMAL},
-      E_STATE = #{state,jdbcType=DECIMAL},
-      E_TYPE = #{type,jdbcType=DECIMAL},
-      E_JID = #{jid,jdbcType=DECIMAL},
-      E_PERFORMANCE = #{performance,jdbcType=DECIMAL},
-      E_VID = #{vid,jdbcType=DECIMAL},
-      E_DID = #{did,jdbcType=DECIMAL}
-    where E_ID = #{id,jdbcType=DECIMAL}
+    set E_SALARY = #{salary},
+      E_STATE = #{state},
+      E_TYPE = #{type},
+      E_JID = #{jid},
+      E_PERFORMANCE = #{performance},
+      E_VID = #{vid},
+      E_DID = #{did}
+    where E_ID = #{id}
   </update>
 </mapper>

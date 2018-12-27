@@ -32,4 +32,13 @@ public class User implements Serializable {
     public void setPass(String pass) {
         this.pass = pass == null ? null : pass.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pass='" + pass + '\'' +
+                '}';
+    }
 }
