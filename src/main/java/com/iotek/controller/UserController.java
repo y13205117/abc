@@ -1,8 +1,10 @@
 package com.iotek.controller;
 
 import com.iotek.model.Employee;
+import com.iotek.model.Recruit;
 import com.iotek.model.User;
 import com.iotek.service.EmployeeService;
+import com.iotek.service.RecruitService;
 import com.iotek.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -60,8 +63,5 @@ public class UserController {
     public String goRegister()throws Exception{
         return "register";
     }
-    @RequestMapping("/goRecruit")
-    public String goRecruit()throws Exception{
-        return "recruit";
-    }
+
 }

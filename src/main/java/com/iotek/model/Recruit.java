@@ -5,15 +5,15 @@ import java.io.Serializable;
 public class Recruit implements Serializable {
     private Integer id;
 
-    private String theme;
+    private String theme;//主题
 
-    private String content;
+    private String content;//内容
 
-    private String require;
+    private String require;//要求
 
-    private Integer count;
+    private Integer count;//人数
 
-    private String releasetime;
+    private String releasetime;//发布时间
 
     public Integer getId() {
         return id;
