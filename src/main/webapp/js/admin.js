@@ -88,6 +88,7 @@ $(function () {
     })
     $("#j1").change(function () {
         var tb=$("#t1");
+        tb.html("");
         var did=$("#d1").val();
         var jid=$("#j1").val();
         $.ajax({
@@ -123,5 +124,35 @@ $(function () {
                 }
             }
         })
+    })
+    $("#qE").click(function () {
+        $("li").removeAttr("disabled");
+        $("div").css("display","none");
+        $("#dE").css("display","block");
+        $("#qE").attr("disabled","disabled");
+    })
+    $("#qGC").click(function () {
+        $("li").removeAttr("disabled");
+        $("div").css("display","none");
+        $("#dGC").css("display","block");
+        $("#qGC").attr("disabled","disabled");
+    })
+    $("#qT").click(function () {
+        $("li").removeAttr("disabled");
+        $("div").css("display","none");
+        $("#dT").css("display","block");
+        $("#qT").attr("disabled","disabled");
+    })
+    $("#qR").click(function () {
+        $("li").removeAttr("disabled");
+        $("div").css("display","none");
+        $("#dR").css("display","block");
+        $("#qR").attr("disabled","disabled");
+    })
+    $("#qA").click(function () {
+        $("li").removeAttr("disabled");
+        $("div").css("display","none");
+        $("#dA").css("display","block");
+        $("#qA").attr("disabled","disabled");
     })
 })
