@@ -5,15 +5,17 @@ import java.io.Serializable;
 public class Recruit implements Serializable {
     private Integer id;
 
-    private String theme;//主题
+    private String theme;
 
-    private String content;//内容
+    private String content;
 
-    private String require;//要求
+    private Integer count;
 
-    private Integer count;//人数
+    private String releasetime;
 
-    private String releasetime;//发布时间
+    private Integer did;
+
+    private Integer jid;
 
     public Integer getId() {
         return id;
@@ -39,14 +41,6 @@ public class Recruit implements Serializable {
         this.content = content == null ? null : content.trim();
     }
 
-    public String getRequire() {
-        return require;
-    }
-
-    public void setRequire(String require) {
-        this.require = require == null ? null : require.trim();
-    }
-
     public Integer getCount() {
         return count;
     }
@@ -61,5 +55,34 @@ public class Recruit implements Serializable {
 
     public void setReleasetime(String releasetime) {
         this.releasetime = releasetime == null ? null : releasetime.trim();
+    }
+
+    public Integer getDid() {
+        return did;
+    }
+
+    public void setDid(Integer did) {
+        this.did = did;
+    }
+
+    public Integer getJid() {
+        return jid;
+    }
+
+    public void setJid(Integer jid) {
+        this.jid = jid;
+    }
+
+    @Override
+    public String toString() {
+        return "Recruit{" +
+                "id=" + id +
+                ", theme='" + theme + '\'' +
+                ", content='" + content + '\'' +
+                ", count=" + count +
+                ", releasetime='" + releasetime + '\'' +
+                ", did=" + did +
+                ", jid=" + jid +
+                '}';
     }
 }

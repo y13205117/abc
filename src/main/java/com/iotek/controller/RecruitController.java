@@ -1,7 +1,6 @@
 package com.iotek.controller;
 
-import com.iotek.model.MemberShowCV;
-import com.iotek.model.Recruit;
+import com.iotek.model.Recruit2;
 import com.iotek.model.User;
 import com.iotek.model.Vitae;
 import com.iotek.service.MemberShowCVService;
@@ -27,14 +26,14 @@ public class RecruitController {
             response.getWriter().print("<script language='javascript'>alert('请先登录');window.location.href='index.jsp';</script>");
             return null;
         }
-        List<Recruit> recruits = recruitService.queryRecruit();
+        List<Recruit2> recruits = recruitService.queryRecruit();
         session.setAttribute("recruit",recruits);
         return "recruit";
     }
     @RequestMapping("/quRecruit")
     public void quRecruit(Integer id, HttpServletResponse response)throws Exception{
-        Recruit recruit = recruitService.queryRecruitById(id);
-        response.getWriter().write(recruit.getContent());
+        Recruit2 recruit2 = recruitService.queryRecruitById(id);
+        response.getWriter().write(recruit2.getRecruit().getContent());
     }
     @RequestMapping("/sendRecruit")
     public void sendRecruit(Integer id, HttpSession session,HttpServletResponse response)throws Exception{

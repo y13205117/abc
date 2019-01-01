@@ -53,7 +53,34 @@
 </div>
 <div id="dGC">这里是考勤</div>
 <div id="dT">这里是培训</div>
-<div id="dR">这里是招聘</div>
+<div id="dR">
+    <input id="addR" type="button" value="发布招聘"><br>
+    <c:if test="${empty sessionScope.recruit}">
+        抱歉还没有招聘
+    </c:if>
+    <c:if test="${!empty sessionScope.recruit}">
+        <table>
+            <tr>
+                <td>招聘主题</td>
+                <td>招聘人数</td>
+                <td>招聘部门</td>
+                <td>招聘职位</td>
+                <td>发布时间</td>
+                <td>查看简历</td>
+            </tr>
+            <c:forEach items="${sessionScope.recruit}" var="i">
+                <tr>
+                    <td>${i.recruit.theme}</td>
+                    <td>${i.recruit.count}</td>
+                    <td>${i.Dname}</td>
+                    <td>${i.Jname}</td>
+                    <td>${i.recruit.releasetime}</td>
+                    <td><input name="query" type="button" value="查看简历"><span>${i.recruit.id}</span></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+</div>
 <div id="dA">这里是奖惩</div>
 <div></div>
 </body>

@@ -5,9 +5,10 @@
     <id column="R_ID" property="id" jdbcType="DECIMAL" />
     <result column="R_THEME" property="theme" jdbcType="VARCHAR" />
     <result column="R_CONTENT" property="content" jdbcType="VARCHAR" />
-    <result column="R_REQUIRE" property="require" jdbcType="VARCHAR" />
     <result column="R_COUNT" property="count" jdbcType="DECIMAL" />
     <result column="R_RELEASETIME" property="releasetime" jdbcType="VARCHAR" />
+    <result column="R_DID" property="did" jdbcType="DECIMAL" />
+    <result column="R_JID" property="jid" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    R_ID, R_THEME, R_CONTENT, R_REQUIRE, R_COUNT, R_RELEASETIME
+    R_ID, R_THEME, R_CONTENT, R_COUNT, R_RELEASETIME, R_DID, R_JID
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iotek.model.RecruitExample" >
     select
@@ -88,11 +89,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_RECRUIT
-    where R_ID = #{id}
+    where R_ID = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_RECRUIT
-    where R_ID = #{id}
+    where R_ID = #{id,jdbcType=DECIMAL}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.RecruitExample" >
     delete from T_RECRUIT
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.iotek.model.Recruit" >
     insert into T_RECRUIT (R_ID, R_THEME, R_CONTENT, 
-      R_REQUIRE, R_COUNT, R_RELEASETIME
-      )
-    values (#{id}, #{theme}, #{content},
-      #{require}, #{count}, #{releasetime}
-      )
+      R_COUNT, R_RELEASETIME, R_DID, 
+      R_JID)
+    values (#{id,jdbcType=DECIMAL}, #{theme,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{count,jdbcType=DECIMAL}, #{releasetime,jdbcType=VARCHAR}, #{did,jdbcType=DECIMAL}, 
+      #{jid,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Recruit" >
     insert into T_RECRUIT
@@ -120,34 +121,40 @@
       <if test="content != null" >
         R_CONTENT,
       </if>
-      <if test="require != null" >
-        R_REQUIRE,
-      </if>
       <if test="count != null" >
         R_COUNT,
       </if>
       <if test="releasetime != null" >
         R_RELEASETIME,
       </if>
+      <if test="did != null" >
+        R_DID,
+      </if>
+      <if test="jid != null" >
+        R_JID,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="theme != null" >
-        #{theme},
+        #{theme,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
-        #{content},
-      </if>
-      <if test="require != null" >
-        #{require},
+        #{content,jdbcType=VARCHAR},
       </if>
       <if test="count != null" >
-        #{count},
+        #{count,jdbcType=DECIMAL},
       </if>
       <if test="releasetime != null" >
-        #{releasetime},
+        #{releasetime,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null" >
+        #{did,jdbcType=DECIMAL},
+      </if>
+      <if test="jid != null" >
+        #{jid,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -161,22 +168,25 @@
     update T_RECRUIT
     <set >
       <if test="record.id != null" >
-        R_ID = #{record.id},
+        R_ID = #{record.id,jdbcType=DECIMAL},
       </if>
       <if test="record.theme != null" >
-        R_THEME = #{record.theme},
+        R_THEME = #{record.theme,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null" >
-        R_CONTENT = #{record.content},
-      </if>
-      <if test="record.require != null" >
-        R_REQUIRE = #{record.require},
+        R_CONTENT = #{record.content,jdbcType=VARCHAR},
       </if>
       <if test="record.count != null" >
-        R_COUNT = #{record.count},
+        R_COUNT = #{record.count,jdbcType=DECIMAL},
       </if>
       <if test="record.releasetime != null" >
-        R_RELEASETIME = #{record.releasetime},
+        R_RELEASETIME = #{record.releasetime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.did != null" >
+        R_DID = #{record.did,jdbcType=DECIMAL},
+      </if>
+      <if test="record.jid != null" >
+        R_JID = #{record.jid,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -185,12 +195,13 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_RECRUIT
-    set R_ID = #{record.id},
-      R_THEME = #{record.theme},
-      R_CONTENT = #{record.content},
-      R_REQUIRE = #{record.require},
-      R_COUNT = #{record.count},
-      R_RELEASETIME = #{record.releasetime}
+    set R_ID = #{record.id,jdbcType=DECIMAL},
+      R_THEME = #{record.theme,jdbcType=VARCHAR},
+      R_CONTENT = #{record.content,jdbcType=VARCHAR},
+      R_COUNT = #{record.count,jdbcType=DECIMAL},
+      R_RELEASETIME = #{record.releasetime,jdbcType=VARCHAR},
+      R_DID = #{record.did,jdbcType=DECIMAL},
+      R_JID = #{record.jid,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -199,30 +210,34 @@
     update T_RECRUIT
     <set >
       <if test="theme != null" >
-        R_THEME = #{theme},
+        R_THEME = #{theme,jdbcType=VARCHAR},
       </if>
       <if test="content != null" >
-        R_CONTENT = #{content},
-      </if>
-      <if test="require != null" >
-        R_REQUIRE = #{require},
+        R_CONTENT = #{content,jdbcType=VARCHAR},
       </if>
       <if test="count != null" >
-        R_COUNT = #{count},
+        R_COUNT = #{count,jdbcType=DECIMAL},
       </if>
       <if test="releasetime != null" >
-        R_RELEASETIME = #{releasetime},
+        R_RELEASETIME = #{releasetime,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null" >
+        R_DID = #{did,jdbcType=DECIMAL},
+      </if>
+      <if test="jid != null" >
+        R_JID = #{jid,jdbcType=DECIMAL},
       </if>
     </set>
-    where R_ID = #{id}
+    where R_ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Recruit" >
     update T_RECRUIT
-    set R_THEME = #{theme},
-      R_CONTENT = #{content},
-      R_REQUIRE = #{require},
-      R_COUNT = #{count},
-      R_RELEASETIME = #{releasetime}
-    where R_ID = #{id}
+    set R_THEME = #{theme,jdbcType=VARCHAR},
+      R_CONTENT = #{content,jdbcType=VARCHAR},
+      R_COUNT = #{count,jdbcType=DECIMAL},
+      R_RELEASETIME = #{releasetime,jdbcType=VARCHAR},
+      R_DID = #{did,jdbcType=DECIMAL},
+      R_JID = #{jid,jdbcType=DECIMAL}
+    where R_ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

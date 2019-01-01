@@ -60,7 +60,8 @@
     <tr>
         <td>招聘主题</td>
         <td>招聘人数</td>
-        <td>招聘要求</td>
+        <td>招聘部门</td>
+        <td>招聘职位</td>
         <td>发布时间</td>
         <td>查看内容</td>
     </tr>
@@ -68,7 +69,8 @@
         <tr>
             <td>${i.recruit.theme}</td>
             <td>${i.recruit.count}</td>
-            <td>${i.recruit.require}</td>
+            <td>${i.Dname}</td>
+            <td>${i.Jname}</td>
             <td>${i.recruit.releasetime}</td>
             <td><input name="qu" type="button" value="查看"><span>${i.recruit.id}</span></td>
         </tr>

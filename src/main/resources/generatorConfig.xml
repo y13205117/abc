@@ -49,10 +49,10 @@
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="D_" replaceString=""/>-->
         <!--</table>-->
-        <table tableName="T_EMPLOYEE" domainObjectName="Employee" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true">
-            <columnRenamingRule searchString="E_" replaceString=""/>
-        </table>
+        <!--<table tableName="T_EMPLOYEE" domainObjectName="Employee" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--enableUpdateByExample="true">-->
+            <!--<columnRenamingRule searchString="E_" replaceString=""/>-->
+        <!--</table>-->
         <!--<table tableName="T_GATECARD" domainObjectName="GateCard" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="G_" replaceString=""/>-->
@@ -69,10 +69,10 @@
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="M_" replaceString=""/>-->
         <!--</table>-->
-        <!--<table tableName="T_RECRUIT" domainObjectName="Recruit" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
-               <!--enableUpdateByExample="true">-->
-            <!--<columnRenamingRule searchString="R_" replaceString=""/>-->
-        <!--</table>-->
+        <table tableName="T_RECRUIT" domainObjectName="Recruit" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="R_" replaceString=""/>
+        </table>
         <!--<table tableName="T_TRAIN" domainObjectName="Train" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="T_" replaceString=""/>-->
