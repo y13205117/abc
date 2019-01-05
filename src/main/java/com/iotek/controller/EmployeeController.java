@@ -17,7 +17,6 @@ public class EmployeeController {
     @RequestMapping("/queryEmp")
     @ResponseBody
     public List<Employee2> queryEmp(Employee employee)throws Exception{
-        System.out.println(employee);
         List<Employee2> employees = employeeService.queryEMP(employee);
         return employees;
     }

@@ -12,4 +12,8 @@ public interface RecruitService {
     List<Recruit2> queryRecruit();
     //查找内容
     Recruit2 queryRecruitById(Integer id);
+    //查找内容
+    Recruit queryById(Integer id);
+    //根据部门id查询
+    List<Recruit2> queryByJidAndDid(Integer jid,Integer did);
 }

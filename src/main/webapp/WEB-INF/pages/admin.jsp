@@ -16,7 +16,9 @@
     <base href="<%=basePath%>"/>
     <title>管理员界面</title>
     <script src="js/jquery-3.1.0.js"></script>
-    <script src="js/admin.js"></script>
+    <script src="js/admin.js">
+
+    </script>
     <style>
         div {
             display: none;
@@ -59,7 +61,7 @@
         抱歉还没有招聘
     </c:if>
     <c:if test="${!empty sessionScope.recruit}">
-        <table>
+        <table id="MTB">
             <tr>
                 <td>招聘主题</td>
                 <td>招聘人数</td>
@@ -72,14 +74,34 @@
                 <tr>
                     <td>${i.recruit.theme}</td>
                     <td>${i.recruit.count}</td>
-                    <td>${i.Dname}</td>
-                    <td>${i.Jname}</td>
+                    <td>${i.department.name}</td>
+                    <td>${i.job.name}</td>
                     <td>${i.recruit.releasetime}</td>
                     <td><input name="query" type="button" value="查看简历"><span>${i.recruit.id}</span></td>
                 </tr>
             </c:forEach>
         </table>
     </c:if>
+    <div id="addDiv" style="display: none">
+        <form id="sF" action="amdinSendRecruit" method="post">
+            <c:if test="${empty sessionScope.department}">
+                抱歉还没有任何部门
+            </c:if>
+            <c:if test="${!empty sessionScope.department}">
+                选择部门:<select id="d2" name="did">
+                <option>请选择</option>
+                <c:forEach items="${sessionScope.department}" var="i">
+                    <option value="${i.id}">${i.name}</option>
+                </c:forEach>
+                </select><br>
+                选择职位:<select id="j2" name="jid"></select><br>
+            </c:if>
+            招聘主题:<input name="theme"><br>
+            招聘内容:<textarea name="content"></textarea><br>
+            招聘人数:<input type="number" min="1" value="1" name="count"><br>
+            <input name="se" type="button" value="确认发布"><input name="rs" type="button" value="返回">
+        </form>
+    </div>
 </div>
 <div id="dA">这里是奖惩</div>
 <div></div>

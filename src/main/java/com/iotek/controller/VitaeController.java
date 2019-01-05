@@ -40,7 +40,6 @@ public class VitaeController {
     }
     @RequestMapping("/updateVitae")
     public String updateVitae(Vitae vitae,HttpSession session)throws Exception{
-        System.out.println(vitae);
         boolean res = vitaeService.updateVitae(vitae);
         if(res){
             Vitae vitae1 = vitaeService.queryById(vitae.getId());

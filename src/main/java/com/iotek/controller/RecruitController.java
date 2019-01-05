@@ -1,8 +1,7 @@
 package com.iotek.controller;
 
-import com.iotek.model.Recruit2;
-import com.iotek.model.User;
-import com.iotek.model.Vitae;
+import com.iotek.model.*;
+import com.iotek.service.DepartmentService;
 import com.iotek.service.MemberShowCVService;
 import com.iotek.service.RecruitService;
 import org.springframework.stereotype.Controller;
@@ -15,37 +14,50 @@ import java.util.List;
 
 @Controller
 public class RecruitController {
+    @Resource(name = "departmentServiceImpl")
+    private DepartmentService departmentService;
     @Resource(name = "recruitServiceImpl")
     private RecruitService recruitService;
     @Resource(name = "memberShowCVServiceImpl")
     private MemberShowCVService memberShowCVService;
     @RequestMapping("/goRecruit")
-    public String goRecruit(HttpSession session,HttpServletResponse response)throws Exception{
-        User user= (User) session.getAttribute("user");
-        if(user==null){
-            response.getWriter().print("<script language='javascript'>alert('请先登录');window.location.href='index.jsp';</script>");
-            return null;
-        }
+    public String goRecruit(HttpSession session)throws Exception{
+        List<Department> departments = departmentService.queryDepartment();
+        session.setAttribute("department",departments);
         List<Recruit2> recruits = recruitService.queryRecruit();
         session.setAttribute("recruit",recruits);
         return "recruit";
     }
     @RequestMapping("/quRecruit")
     public void quRecruit(Integer id, HttpServletResponse response)throws Exception{
-        Recruit2 recruit2 = recruitService.queryRecruitById(id);
-        response.getWriter().write(recruit2.getRecruit().getContent());
+        Recruit recruit = recruitService.queryById(id);
+        response.getWriter().write(recruit.getContent());
     }
     @RequestMapping("/sendRecruit")
-    public void sendRecruit(Integer id, HttpSession session,HttpServletResponse response)throws Exception{
+    public String sendRecruit(Integer id, HttpSession session,HttpServletResponse response)throws Exception{
+        User user= (User) session.getAttribute("user");
+        if(user==null){
+            response.getWriter().write("抱歉你还没有登录");
+            return null;
+        }
         Vitae vitae= (Vitae) session.getAttribute("vitae");
         if(vitae==null){
             response.getWriter().write("抱歉你还没有简历");
+            return null;
         }
         boolean res = memberShowCVService.saveMemberShowCV(id, vitae.getId());
         if(res){
             response.getWriter().write("投递成功");
         }else{
-            response.getWriter().write("投递失败");
+            response.getWriter().write("您已经投递过了，请不要重复投递");
         }
+        return null;
+    }
+    @RequestMapping("/queryRecruit")
+    public void queryRecruit(Integer jid,Integer did,HttpSession session,HttpServletResponse response)throws Exception{
+        List<Recruit2> recruit2s = recruitService.queryByJidAndDid(jid, did);
+        session.removeAttribute("recruit");
+        session.setAttribute("recruit",recruit2s);
+        response.getWriter().write("ok");
     }
 }

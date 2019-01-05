@@ -16,47 +16,28 @@
     <base href="<%=basePath%>"/>
     <title>招聘页面</title>
     <script src="js/jquery-3.1.0.js"></script>
-    <%--<script src="js/recruit.js"></script>--%>
-    <script>
-        $(function () {
-            $("input[name='qu']").click(function () {
-                $("input[name='qu']").attr("disabled","disabled");
-                var tf=$(this).parent();
-                var id=$(this).next().html();
-                $.ajax({
-                    type:"post",
-                    url:"quRecruit",
-                    data:"id="+id,
-                    success:function (obj){
-                        var tr1=$("<tr></tr>");
-                        var td1=$("<td colspan='4'>obj</td>");
-                        var td2=$("<td><input id='send' type='button' value='投递简历'><input id='re' type='button' value='返回'></td>");
-                        tr1.append(td1);
-                        tr1.append(td2);
-                        tr1.appendTo(tf);
-                        $(document).on("click", "#re", function () {
-                            tr1.remove();
-                            $("input[name='qu']").removeAttr("disabled");
-                            return;
-                        })
-                        $(document).on("click", "#send", function () {
-                            $.ajax({
-                                type:"post",
-                                url:"sendRecruit",
-                                data:"id="+id,
-                                success:function (obj){
-                                    alert(obj);
-                                }
-                            })
-                        })
-                    }
-                })
-            })
-        })
-    </script>
+    <script src="js/recruit.js"></script>
 </head>
 <body>
-<table id="t1">
+<c:if test="${empty sessionScope.user}">
+    <form id="f1" method="post" action="login">
+        用户名:<input name="name" type="text">
+        密码:<input type="password" name="pass">
+        <input type="button" value="登录">
+        <a href="goRegister">注册</a>
+    </form>
+</c:if>
+<c:if test="${!empty sessionScope.user}">
+    <h4>欢迎${sessionScope.user.name}登陆</h4>
+</c:if>
+部门:<select id="d1" name="did">
+    <option>请选择</option>
+    <c:forEach items="${sessionScope.department}" var="i">
+        <option value="${i.id}">${i.name}</option>
+    </c:forEach>
+</select>
+职位:<select id="j1" name="jid"></select><br>
+<table >
     <tr>
         <td>招聘主题</td>
         <td>招聘人数</td>
@@ -65,17 +46,27 @@
         <td>发布时间</td>
         <td>查看内容</td>
     </tr>
-    <c:forEach items="${sessionScope.recruit}" var="i">
-        <tr>
-            <td>${i.recruit.theme}</td>
-            <td>${i.recruit.count}</td>
-            <td>${i.Dname}</td>
-            <td>${i.Jname}</td>
-            <td>${i.recruit.releasetime}</td>
-            <td><input name="qu" type="button" value="查看"><span>${i.recruit.id}</span></td>
-        </tr>
-    </c:forEach>
 </table>
+<table id="t1">
+    <c:if test="${empty sessionScope.recruit}">
+        <tr>
+            <td colspan="6">抱歉该职位还没有招聘</td>
+        </tr>
+    </c:if>
+    <c:if test="${!empty sessionScope.recruit}">
+        <c:forEach items="${sessionScope.recruit}" var="i">
+            <tr>
+                <td>${i.recruit.theme}</td>
+                <td>${i.recruit.count}</td>
+                <td>${i.department.name}</td>
+                <td>${i.job.name}</td>
+                <td>${i.recruit.releasetime}</td>
+                <td><input class="qu" type="button" value="查看"><span>${i.recruit.id}</span></td>
+            </tr>
+        </c:forEach>
+    </c:if>
+</table>
+
 </body>
 </html>
 

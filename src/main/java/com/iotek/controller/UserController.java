@@ -2,8 +2,10 @@ package com.iotek.controller;
 
 import com.iotek.model.Employee;
 import com.iotek.model.User;
+import com.iotek.model.Vitae;
 import com.iotek.service.EmployeeService;
 import com.iotek.service.UserService;
+import com.iotek.service.VitaeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,11 +19,15 @@ public class UserController {
     private UserService userService;
     @Resource(name = "employeeServiceImpl")
     private EmployeeService employeeService;
+    @Resource(name = "vitaeServiceImpl")
+    private VitaeService vitaeService;
     @RequestMapping("/login")
     public String login(User user, HttpSession session,HttpServletResponse response)throws Exception{
         User user1 = userService.queryUser(user);
         if(user1!=null) {
             session.setAttribute("user", user1);
+            Vitae vitae = vitaeService.queryByUid(user1.getId());
+            session.setAttribute("vitae",vitae);
             return "main";
         }
         Employee employee = employeeService.EMPLogin(user.getName(), user.getPass());

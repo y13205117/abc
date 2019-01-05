@@ -37,4 +37,13 @@ public class MemberShowCVServiceImpl implements MemberShowCVService {
         return false;
     }
 
+    @Override
+    public List<MemberShowCV> queryByRid(Integer rid) {
+        if(rid<=0){
+            return null;
+        }
+        MemberShowCVExample memberShowCVExample=new MemberShowCVExample();
+        memberShowCVExample.createCriteria().andRidEqualTo(rid);
+        return memberShowCVMapper.selectByExample(memberShowCVExample);
+    }
 }

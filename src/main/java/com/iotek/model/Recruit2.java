@@ -1,9 +1,11 @@
 package com.iotek.model;
 
-public class Recruit2 {
+import java.io.Serializable;
+
+public class Recruit2 implements Serializable {
     private Recruit recruit;
-    private String Dname;
-    private String Jname;
+    private Department department;
+    private Job job;
 
     public Recruit getRecruit() {
         return recruit;
@@ -13,19 +15,19 @@ public class Recruit2 {
         this.recruit = recruit;
     }
 
-    public String getDname() {
-        return Dname;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDname(String dname) {
-        Dname = dname;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public String getJname() {
-        return Jname;
+    public Job getJob() {
+        return job;
     }
 
-    public void setJname(String jname) {
-        Jname = jname;
+    public void setJob(Job job) {
+        this.job = job;
     }
 }
