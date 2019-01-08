@@ -56,8 +56,12 @@ public class RecruitController {
     @RequestMapping("/queryRecruit")
     public void queryRecruit(Integer jid,Integer did,HttpSession session,HttpServletResponse response)throws Exception{
         List<Recruit2> recruit2s = recruitService.queryByJidAndDid(jid, did);
-        session.removeAttribute("recruit");
-        session.setAttribute("recruit",recruit2s);
-        response.getWriter().write("ok");
+        if(recruit2s==null || recruit2s.size()==0){
+            session.setAttribute("recruit","");
+            response.getWriter().write("null");
+        }else{
+            session.setAttribute("recruit",recruit2s);
+            response.getWriter().write("ok");
+        }
     }
 }

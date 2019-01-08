@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.iotek.dao.GateCardMapper" >
-  <resultMap id="BaseResultMap" type="com.iotek.model.GateCard" >
-    <id column="G_ID" property="id" jdbcType="DECIMAL" />
-    <result column="G_OFFICEHOURS" property="officehours" jdbcType="VARCHAR" />
-    <result column="G_AFTERHOURS" property="afterhours" jdbcType="VARCHAR" />
-    <result column="G_STATE" property="state" jdbcType="DECIMAL" />
-    <result column="G_EID" property="eid" jdbcType="DECIMAL" />
+<mapper namespace="com.iotek.dao.TrainAndDepMapper" >
+  <resultMap id="BaseResultMap" type="com.iotek.model.TrainAndDep" >
+    <id column="TAD_ID" property="id" jdbcType="DECIMAL" />
+    <result column="TAD_DID" property="did" jdbcType="DECIMAL" />
+    <result column="TAD_TID" property="tid" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    G_ID, G_OFFICEHOURS, G_AFTERHOURS, G_STATE, G_EID
+    TAD_ID, TAD_DID, TAD_TID
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iotek.model.GateCardExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iotek.model.TrainAndDepExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from T_GATECARD
+    from T_TRAINANDDEP
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +84,65 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from T_GATECARD
-    where G_ID = #{id,jdbcType=DECIMAL}
+    from T_TRAINANDDEP
+    where TAD_ID = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from T_GATECARD
-    where G_ID = #{id,jdbcType=DECIMAL}
+    delete from T_TRAINANDDEP
+    where TAD_ID = #{id,jdbcType=DECIMAL}
   </delete>
-  <delete id="deleteByExample" parameterType="com.iotek.model.GateCardExample" >
-    delete from T_GATECARD
+  <delete id="deleteByExample" parameterType="com.iotek.model.TrainAndDepExample" >
+    delete from T_TRAINANDDEP
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.iotek.model.GateCard" >
-    insert into T_GATECARD (G_ID, G_OFFICEHOURS, G_AFTERHOURS, 
-      G_STATE, G_EID)
-    values (#{id,jdbcType=DECIMAL}, #{officehours,jdbcType=VARCHAR}, #{afterhours,jdbcType=VARCHAR}, 
-      #{state,jdbcType=DECIMAL}, #{eid,jdbcType=DECIMAL})
+  <insert id="insert" parameterType="com.iotek.model.TrainAndDep" >
+    insert into T_TRAINANDDEP (TAD_ID, TAD_DID, TAD_TID)
+    values (#{id,jdbcType=DECIMAL}, #{did,jdbcType=DECIMAL}, #{tid,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.iotek.model.GateCard" >
-    insert into T_GATECARD
+  <insert id="insertSelective" parameterType="com.iotek.model.TrainAndDep" >
+    insert into T_TRAINANDDEP
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        G_ID,
+        TAD_ID,
       </if>
-      <if test="officehours != null" >
-        G_OFFICEHOURS,
+      <if test="did != null" >
+        TAD_DID,
       </if>
-      <if test="afterhours != null" >
-        G_AFTERHOURS,
-      </if>
-      <if test="state != null" >
-        G_STATE,
-      </if>
-      <if test="eid != null" >
-        G_EID,
+      <if test="tid != null" >
+        TAD_TID,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=DECIMAL},
       </if>
-      <if test="officehours != null" >
-        #{officehours,jdbcType=VARCHAR},
+      <if test="did != null" >
+        #{did,jdbcType=DECIMAL},
       </if>
-      <if test="afterhours != null" >
-        #{afterhours,jdbcType=VARCHAR},
-      </if>
-      <if test="state != null" >
-        #{state,jdbcType=DECIMAL},
-      </if>
-      <if test="eid != null" >
-        #{eid,jdbcType=DECIMAL},
+      <if test="tid != null" >
+        #{tid,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.iotek.model.GateCardExample" resultType="java.lang.Integer" >
-    select count(*) from T_GATECARD
+  <select id="countByExample" parameterType="com.iotek.model.TrainAndDepExample" resultType="java.lang.Integer" >
+    select count(*) from T_TRAINANDDEP
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update T_GATECARD
+    update T_TRAINANDDEP
     <set >
       <if test="record.id != null" >
-        G_ID = #{record.id,jdbcType=DECIMAL},
+        TAD_ID = #{record.id,jdbcType=DECIMAL},
       </if>
-      <if test="record.officehours != null" >
-        G_OFFICEHOURS = #{record.officehours,jdbcType=VARCHAR},
+      <if test="record.did != null" >
+        TAD_DID = #{record.did,jdbcType=DECIMAL},
       </if>
-      <if test="record.afterhours != null" >
-        G_AFTERHOURS = #{record.afterhours,jdbcType=VARCHAR},
-      </if>
-      <if test="record.state != null" >
-        G_STATE = #{record.state,jdbcType=DECIMAL},
-      </if>
-      <if test="record.eid != null" >
-        G_EID = #{record.eid,jdbcType=DECIMAL},
+      <if test="record.tid != null" >
+        TAD_TID = #{record.tid,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -172,40 +150,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update T_GATECARD
-    set G_ID = #{record.id,jdbcType=DECIMAL},
-      G_OFFICEHOURS = #{record.officehours,jdbcType=VARCHAR},
-      G_AFTERHOURS = #{record.afterhours,jdbcType=VARCHAR},
-      G_STATE = #{record.state,jdbcType=DECIMAL},
-      G_EID = #{record.eid,jdbcType=DECIMAL}
+    update T_TRAINANDDEP
+    set TAD_ID = #{record.id,jdbcType=DECIMAL},
+      TAD_DID = #{record.did,jdbcType=DECIMAL},
+      TAD_TID = #{record.tid,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.iotek.model.GateCard" >
-    update T_GATECARD
+  <update id="updateByPrimaryKeySelective" parameterType="com.iotek.model.TrainAndDep" >
+    update T_TRAINANDDEP
     <set >
-      <if test="officehours != null" >
-        G_OFFICEHOURS = #{officehours,jdbcType=VARCHAR},
+      <if test="did != null" >
+        TAD_DID = #{did,jdbcType=DECIMAL},
       </if>
-      <if test="afterhours != null" >
-        G_AFTERHOURS = #{afterhours,jdbcType=VARCHAR},
-      </if>
-      <if test="state != null" >
-        G_STATE = #{state,jdbcType=DECIMAL},
-      </if>
-      <if test="eid != null" >
-        G_EID = #{eid,jdbcType=DECIMAL},
+      <if test="tid != null" >
+        TAD_TID = #{tid,jdbcType=DECIMAL},
       </if>
     </set>
-    where G_ID = #{id,jdbcType=DECIMAL}
+    where TAD_ID = #{id,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.iotek.model.GateCard" >
-    update T_GATECARD
-    set G_OFFICEHOURS = #{officehours,jdbcType=VARCHAR},
-      G_AFTERHOURS = #{afterhours,jdbcType=VARCHAR},
-      G_STATE = #{state,jdbcType=DECIMAL},
-      G_EID = #{eid,jdbcType=DECIMAL}
-    where G_ID = #{id,jdbcType=DECIMAL}
+  <update id="updateByPrimaryKey" parameterType="com.iotek.model.TrainAndDep" >
+    update T_TRAINANDDEP
+    set TAD_DID = #{did,jdbcType=DECIMAL},
+      TAD_TID = #{tid,jdbcType=DECIMAL}
+    where TAD_ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

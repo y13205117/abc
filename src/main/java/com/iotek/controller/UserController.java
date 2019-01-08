@@ -36,8 +36,9 @@ public class UserController {
             return "employee";
         }
         if(user.getName().equals("admin") && user.getPass().equals("123456")){
-            response.sendRedirect("goAdmin");
-            return null;
+//            response.sendRedirect("goAdmin");
+//            return null;
+            return "employee";
         }
         return "main";
     }

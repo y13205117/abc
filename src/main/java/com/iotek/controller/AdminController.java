@@ -1,12 +1,7 @@
 package com.iotek.controller;
 
-import com.iotek.model.Department;
-import com.iotek.model.MemberShowCV;
-import com.iotek.model.Recruit;
-import com.iotek.model.Recruit2;
-import com.iotek.service.DepartmentService;
-import com.iotek.service.MemberShowCVService;
-import com.iotek.service.RecruitService;
+import com.iotek.model.*;
+import com.iotek.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,12 +19,24 @@ public class AdminController {
     private RecruitService recruitService;
     @Resource(name = "memberShowCVServiceImpl")
     private MemberShowCVService memberShowCVService;
+    @Resource(name = "trainServiceImpl")
+    private TrainService trainService;
+    @Resource(name = "gateCardServiceImpl")
+    private GateCardService gateCardService;
+    @Resource(name = "awardRecordServiceImpl")
+    private AwardRecordService awardRecordService;
     @RequestMapping("/goAdmin")
     public String goAdmin(HttpSession session)throws Exception{
         List<Recruit2> recruits = recruitService.queryRecruit();
         List<Department> departments = departmentService.queryDepartment();
+        List<Train> trains=trainService.queryAll();
+        List<GateCard> gateCards=gateCardService.queryAll();
+        List<AwardRecord> awardRecords = awardRecordService.queryAll();
         session.setAttribute("department",departments);
         session.setAttribute("recruit",recruits);
+        session.setAttribute("train",trains);
+        session.setAttribute("gateCard",gateCards);
+        session.setAttribute("awardRecord",awardRecords);
         return "admin";
     }
     @RequestMapping("/amdinSendRecruit")

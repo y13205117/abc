@@ -25,7 +25,7 @@ $(function () {
     $("#addD").click(function () {
         $("#addD").attr("disabled","disabled");
         $("#addJ").attr("disabled","disabled");
-        var div=$("<div id='div1'></div>");
+        var div=$("<div id='div1' style='display: block'></div>");
         var vd=$("<span>部门名称:</span><input id='dn' name='name'><br>");
         var que=$("<input id='qu' type='button'value='确认'>");
         var res=$("<input id='re' type='button'value='取消'>");
@@ -58,7 +58,8 @@ $(function () {
         var did=$("#d1").val();
         $("#addD").attr("disabled","disabled");
         $("#addJ").attr("disabled","disabled");
-        var div=$("<div id='div2'></div>");
+        var div=$("<div id='div2' style='display: block'></div>");
+        $("#div2").css("display","block");
         var vd=$("<span>职位名称:</span><input id='jn' name='name'><br>");
         var que=$("<input id='jqu' type='button'value='确认'>");
         var res=$("<input id='jre' type='button'value='取消'>");

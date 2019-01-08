@@ -69,8 +69,8 @@ $(function () {
             url:"queryRecruit",
             data:{"did":did,"jid":jid},
             success:function(obj) {
+                $("#t1").load(location.href+" #t1");
                 if(obj=="ok"){
-                    $("#t1").load(location.href+" #t1");
                     $(document).on("click", ".qu", function (){
                         qu(this);
                     })

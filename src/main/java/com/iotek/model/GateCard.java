@@ -5,8 +5,6 @@ import java.io.Serializable;
 public class GateCard implements Serializable {
     private Integer id;
 
-    private Double column2;
-
     private String officehours;
 
     private String afterhours;
@@ -21,14 +19,6 @@ public class GateCard implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Double getColumn2() {
-        return column2;
-    }
-
-    public void setColumn2(Double column2) {
-        this.column2 = column2;
     }
 
     public String getOfficehours() {

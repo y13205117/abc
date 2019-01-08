@@ -37,6 +37,14 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
+        <table tableName="T_TRAINANDDEP" domainObjectName="TrainAndDep" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+        enableUpdateByExample="true">
+        <columnRenamingRule searchString="^TAD_" replaceString=""/>
+        </table>
+        <table tableName="T_TRAINANDEMP" domainObjectName="TrainAndEmp" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="^TAE_" replaceString=""/>
+        </table>
         <!--<table tableName="T_AWARDRECORD" domainObjectName="AwardRecord" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="^A_" replaceString=""/>-->
@@ -53,10 +61,10 @@
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="E_" replaceString=""/>-->
         <!--</table>-->
-        <!--<table tableName="T_GATECARD" domainObjectName="GateCard" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
-               <!--enableUpdateByExample="true">-->
-            <!--<columnRenamingRule searchString="G_" replaceString=""/>-->
-        <!--</table>-->
+        <table tableName="T_GATECARD" domainObjectName="GateCard" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="G_" replaceString=""/>
+        </table>
         <!--<table tableName="T_JOB" domainObjectName="Job" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="J_" replaceString=""/>-->
@@ -69,10 +77,10 @@
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="M_" replaceString=""/>-->
         <!--</table>-->
-        <table tableName="T_RECRUIT" domainObjectName="Recruit" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true">
-            <columnRenamingRule searchString="R_" replaceString=""/>
-        </table>
+        <!--<table tableName="T_RECRUIT" domainObjectName="Recruit" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--enableUpdateByExample="true">-->
+            <!--<columnRenamingRule searchString="R_" replaceString=""/>-->
+        <!--</table>-->
         <!--<table tableName="T_TRAIN" domainObjectName="Train" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="T_" replaceString=""/>-->

@@ -53,8 +53,72 @@
     </c:if>
     <table id="t1" border="1px"></table>
 </div>
-<div id="dGC">这里是考勤</div>
-<div id="dT">这里是培训</div>
+<div id="dT">
+    <table>
+        <tr>
+            <td>培训内容</td>
+            <td>培训要求</td>
+            <td>培训开始时间</td>
+            <td>培训结束时间</td>
+            <td>操作</td>
+        </tr>
+        <c:if test="${empty sessionScope.train}">
+            <tr>
+                <td colspan="5">抱歉还没有培训</td>
+            </tr>
+        </c:if>
+        <c:if test="${!empty sessionScope.train}">
+            <c:forEach items="${sessionScope.train}" var="i">
+                <tr>
+                    <td>${i.content}</td>
+                    <td>${i.required}</td>
+                    <td>${i.starttime}</td>
+                    <td>${i.endtime}</td>
+                    <td><input type="button" value="修改"><input type="button" value="删除"><span>${i.id}</span></td>
+                </tr>
+            </c:forEach>
+        </c:if>
+    </table>
+</div>
+<div id="dGC">
+    <table>
+        <tr>
+            <td>员工编号</td>
+            <td>考勤状态</td>
+            <td>上班时间</td>
+            <td>下班时间</td>
+        </tr>
+        <c:if test="${empty sessionScope.gateCard}">
+            <tr>
+                <td colspan="5">抱歉还没有考勤</td>
+            </tr>
+        </c:if>
+        <c:if test="${!empty sessionScope.gateCard}">
+            <c:forEach items="${sessionScope.gateCard}" var="i">
+                <tr>
+                    <td>${i.eid}</td>
+                    <c:if test="${i.state==1}">
+                        <td>正常</td>
+                    </c:if>
+                    <c:if test="${i.state==2}">
+                        <td>加班</td>
+                    </c:if>
+                    <c:if test="${i.state==3}">
+                        <td>迟到</td>
+                    </c:if>
+                    <c:if test="${i.state==4}">
+                        <td>早退</td>
+                    </c:if>
+                    <c:if test="${i.state==5}">
+                        <td>旷工</td>
+                    </c:if>
+                    <td>${i.officehours}</td>
+                    <td>${i.afterhours}</td>
+                </tr>
+            </c:forEach>
+        </c:if>
+    </table>
+</div>
 <div id="dR">
     <input id="addR" type="button" value="发布招聘"><br>
     <c:if test="${empty sessionScope.recruit}">
@@ -103,7 +167,42 @@
         </form>
     </div>
 </div>
-<div id="dA">这里是奖惩</div>
+<div id="dA">
+    <table>
+        <tr>
+            <td>记录编号</td>
+            <td>奖惩原因</td>
+            <td>奖惩金额</td>
+            <td>奖惩时间</td>
+            <td>员工编号</td>
+            <td>是否结算</td>
+            <td>修改记录</td>
+        </tr>
+        <c:if test="${empty sessionScope.awardRecord}">
+            <tr>
+                <td colspan="7">抱歉还没有奖惩记录</td>
+            </tr>
+        </c:if>
+        <c:if test="${!empty sessionScope.awardRecord}">
+            <c:forEach items="${sessionScope.awardRecord}" var="i">
+                <tr>
+                    <td>${i.id}</td>
+                    <td>${i.cause}</td>
+                    <td>${i.money}</td>
+                    <td>${i.time}</td>
+                    <td>${i.eid}</td>
+                    <c:if test="${!empty i.cid}">
+                        <td>已结算</td>
+                    </c:if>
+                    <c:if test="${empty i.cid}">
+                        <td>未结算</td>
+                    </c:if>
+                    <td><input name="upA" type="button" value="修改"><span>${i.id}</span></td>
+                </tr>
+            </c:forEach>
+        </c:if>
+    </table>
+</div>
 <div></div>
 </body>
 </html>
