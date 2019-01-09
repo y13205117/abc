@@ -17,4 +17,14 @@ public class AwardRecordServiceImpl implements AwardRecordService {
         AwardRecordExample awardRecordExample=new AwardRecordExample();
         return awardRecordMapper.selectByExample(awardRecordExample);
     }
+
+    @Override
+    public List<AwardRecord> queryByEid(Integer eid) {
+        if(eid<=0){
+            return null;
+        }
+        AwardRecordExample awardRecordExample=new AwardRecordExample();
+        awardRecordExample.createCriteria().andEidEqualTo(eid);
+        return awardRecordMapper.selectByExample(awardRecordExample);
+    }
 }

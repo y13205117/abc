@@ -2,6 +2,7 @@
     position: relative;
     width: 600px;
     height: 600px;
+    padding: 0px;
     margin: 20px auto 0 auto;
     background: url(clockface.jpg);
     list-style: none;
@@ -28,4 +29,7 @@
 #hour {
     background: url(hourhand.png);
     z-index: 1;
+}
+div {
+    display: none;
 }

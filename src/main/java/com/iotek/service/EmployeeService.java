@@ -10,4 +10,6 @@ public interface EmployeeService {
     Employee EMPLogin(String name, String pass);
     //根据部门和职位找员工
     List<Employee2> queryEMP(Employee employee);
+    //根据id找员工
+    Employee2 queryEmpById(Integer id);
 }

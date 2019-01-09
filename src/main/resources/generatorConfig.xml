@@ -37,14 +37,14 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="T_TRAINANDDEP" domainObjectName="TrainAndDep" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-        enableUpdateByExample="true">
-        <columnRenamingRule searchString="^TAD_" replaceString=""/>
-        </table>
-        <table tableName="T_TRAINANDEMP" domainObjectName="TrainAndEmp" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true">
-            <columnRenamingRule searchString="^TAE_" replaceString=""/>
-        </table>
+        <!--<table tableName="T_TRAINANDDEP" domainObjectName="TrainAndDep" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--enableUpdateByExample="true">-->
+        <!--<columnRenamingRule searchString="^TAD_" replaceString=""/>-->
+        <!--</table>-->
+        <!--<table tableName="T_TRAINANDEMP" domainObjectName="TrainAndEmp" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--enableUpdateByExample="true">-->
+            <!--<columnRenamingRule searchString="^TAE_" replaceString=""/>-->
+        <!--</table>-->
         <!--<table tableName="T_AWARDRECORD" domainObjectName="AwardRecord" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="^A_" replaceString=""/>-->

@@ -1,6 +1,5 @@
 package com.iotek.model;
 
-
 import java.io.Serializable;
 
 public class Employee implements Serializable {
@@ -10,7 +9,7 @@ public class Employee implements Serializable {
 
     private Integer state;
 
-    private Integer type;
+    private String entrytime;
 
     private Integer jid;
 
@@ -44,12 +43,12 @@ public class Employee implements Serializable {
         this.state = state;
     }
 
-    public Integer getType() {
-        return type;
+    public String getEntrytime() {
+        return entrytime;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setEntrytime(String entrytime) {
+        this.entrytime = entrytime == null ? null : entrytime.trim();
     }
 
     public Integer getJid() {
@@ -90,7 +89,7 @@ public class Employee implements Serializable {
                 "id=" + id +
                 ", salary=" + salary +
                 ", state=" + state +
-                ", type=" + type +
+                ", entrytime='" + entrytime + '\'' +
                 ", jid=" + jid +
                 ", performance=" + performance +
                 ", vid=" + vid +

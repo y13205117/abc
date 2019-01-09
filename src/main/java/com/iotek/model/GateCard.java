@@ -1,17 +1,15 @@
 package com.iotek.model;
 
-import java.io.Serializable;
-
-public class GateCard implements Serializable {
+public class GateCard {
     private Integer id;
 
     private String officehours;
 
     private String afterhours;
 
-    private Integer state;
-
     private Integer eid;
+
+    private String date;
 
     public Integer getId() {
         return id;
@@ -37,19 +35,19 @@ public class GateCard implements Serializable {
         this.afterhours = afterhours == null ? null : afterhours.trim();
     }
 
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
-    }
-
     public Integer getEid() {
         return eid;
     }
 
     public void setEid(Integer eid) {
         this.eid = eid;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date == null ? null : date.trim();
     }
 }

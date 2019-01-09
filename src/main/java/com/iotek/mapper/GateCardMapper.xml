@@ -5,8 +5,8 @@
     <id column="G_ID" property="id" jdbcType="DECIMAL" />
     <result column="G_OFFICEHOURS" property="officehours" jdbcType="VARCHAR" />
     <result column="G_AFTERHOURS" property="afterhours" jdbcType="VARCHAR" />
-    <result column="G_STATE" property="state" jdbcType="DECIMAL" />
     <result column="G_EID" property="eid" jdbcType="DECIMAL" />
+    <result column="G_DATE" property="date" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    G_ID, G_OFFICEHOURS, G_AFTERHOURS, G_STATE, G_EID
+    G_ID, G_OFFICEHOURS, G_AFTERHOURS, G_EID, G_DATE
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iotek.model.GateCardExample" >
     select
@@ -101,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.iotek.model.GateCard" >
     insert into T_GATECARD (G_ID, G_OFFICEHOURS, G_AFTERHOURS, 
-      G_STATE, G_EID)
+      G_EID, G_DATE)
     values (#{id,jdbcType=DECIMAL}, #{officehours,jdbcType=VARCHAR}, #{afterhours,jdbcType=VARCHAR}, 
-      #{state,jdbcType=DECIMAL}, #{eid,jdbcType=DECIMAL})
+      #{eid,jdbcType=DECIMAL}, #{date,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.GateCard" >
     insert into T_GATECARD
@@ -117,11 +117,11 @@
       <if test="afterhours != null" >
         G_AFTERHOURS,
       </if>
-      <if test="state != null" >
-        G_STATE,
-      </if>
       <if test="eid != null" >
         G_EID,
+      </if>
+      <if test="date != null" >
+        G_DATE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -134,11 +134,11 @@
       <if test="afterhours != null" >
         #{afterhours,jdbcType=VARCHAR},
       </if>
-      <if test="state != null" >
-        #{state,jdbcType=DECIMAL},
-      </if>
       <if test="eid != null" >
         #{eid,jdbcType=DECIMAL},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -160,11 +160,11 @@
       <if test="record.afterhours != null" >
         G_AFTERHOURS = #{record.afterhours,jdbcType=VARCHAR},
       </if>
-      <if test="record.state != null" >
-        G_STATE = #{record.state,jdbcType=DECIMAL},
-      </if>
       <if test="record.eid != null" >
         G_EID = #{record.eid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.date != null" >
+        G_DATE = #{record.date,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -176,8 +176,8 @@
     set G_ID = #{record.id,jdbcType=DECIMAL},
       G_OFFICEHOURS = #{record.officehours,jdbcType=VARCHAR},
       G_AFTERHOURS = #{record.afterhours,jdbcType=VARCHAR},
-      G_STATE = #{record.state,jdbcType=DECIMAL},
-      G_EID = #{record.eid,jdbcType=DECIMAL}
+      G_EID = #{record.eid,jdbcType=DECIMAL},
+      G_DATE = #{record.date,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -191,11 +191,11 @@
       <if test="afterhours != null" >
         G_AFTERHOURS = #{afterhours,jdbcType=VARCHAR},
       </if>
-      <if test="state != null" >
-        G_STATE = #{state,jdbcType=DECIMAL},
-      </if>
       <if test="eid != null" >
         G_EID = #{eid,jdbcType=DECIMAL},
+      </if>
+      <if test="date != null" >
+        G_DATE = #{date,jdbcType=VARCHAR},
       </if>
     </set>
     where G_ID = #{id,jdbcType=DECIMAL}
@@ -204,8 +204,8 @@
     update T_GATECARD
     set G_OFFICEHOURS = #{officehours,jdbcType=VARCHAR},
       G_AFTERHOURS = #{afterhours,jdbcType=VARCHAR},
-      G_STATE = #{state,jdbcType=DECIMAL},
-      G_EID = #{eid,jdbcType=DECIMAL}
+      G_EID = #{eid,jdbcType=DECIMAL},
+      G_DATE = #{date,jdbcType=VARCHAR}
     where G_ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

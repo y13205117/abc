@@ -1,11 +1,10 @@
 package com.iotek.service.impl;
 
+import com.iotek.dao.DepartmentMapper;
 import com.iotek.dao.EmployeeMapper;
+import com.iotek.dao.JobMapper;
 import com.iotek.dao.VitaeMapper;
-import com.iotek.model.Employee;
-import com.iotek.model.Employee2;
-import com.iotek.model.EmployeeExample;
-import com.iotek.model.Vitae;
+import com.iotek.model.*;
 import com.iotek.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +18,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeMapper employeeMapper;
     @Resource
     private VitaeMapper vitaeMapper;
+    @Resource
+    private DepartmentMapper departmentMapper;
+    @Resource
+    private JobMapper jobMapper;
     @Override
     public Employee EMPLogin(String name, String pass) {
         if(name==null || pass==null){
@@ -58,11 +61,35 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(employees!=null || employees.size()>0){
             for (Employee employee1 : employees) {
                 Vitae vitae = vitaeMapper.selectByPrimaryKey(employee1.getVid());
+                Department department = departmentMapper.selectByPrimaryKey(employee1.getDid());
+                Job job = jobMapper.selectByPrimaryKey(employee1.getJid());
                 Employee2 employee2=new Employee2();
                 employee2.setEmployee(employee1);
                 employee2.setVitae(vitae);
+                employee2.setDepartment(department);
+                employee2.setJob(job);
                 employee2s.add(employee2);
             }
+            return employee2s;
+        }
+        return null;
+    }
+
+    @Override
+    public Employee2 queryEmpById(Integer id) {
+        Employee2 employee2s=new Employee2();
+        if(id<=0){
+            return null;
+        }
+        Employee employee = employeeMapper.selectByPrimaryKey(id);
+        if(employee!=null){
+            Vitae vitae = vitaeMapper.selectByPrimaryKey(employee.getVid());
+            Department department = departmentMapper.selectByPrimaryKey(employee.getDid());
+            Job job = jobMapper.selectByPrimaryKey(employee.getJid());
+            employee2s.setEmployee(employee);
+            employee2s.setVitae(vitae);
+            employee2s.setDepartment(department);
+            employee2s.setJob(job);
             return employee2s;
         }
         return null;

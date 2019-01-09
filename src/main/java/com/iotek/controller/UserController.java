@@ -1,6 +1,7 @@
 package com.iotek.controller;
 
 import com.iotek.model.Employee;
+import com.iotek.model.Employee2;
 import com.iotek.model.User;
 import com.iotek.model.Vitae;
 import com.iotek.service.EmployeeService;
@@ -32,8 +33,9 @@ public class UserController {
         }
         Employee employee = employeeService.EMPLogin(user.getName(), user.getPass());
         if(employee!=null){
-            session.setAttribute("emp",employee);
-            return "employee";
+            Employee2 employee2 = employeeService.queryEmpById(employee.getId());
+            session.setAttribute("emp",employee2);
+            return "goEmployee";
         }
         if(user.getName().equals("admin") && user.getPass().equals("123456")){
 //            response.sendRedirect("goAdmin");

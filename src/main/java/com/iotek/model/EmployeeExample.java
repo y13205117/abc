@@ -284,63 +284,73 @@ public class EmployeeExample {
             return (Criteria) this;
         }
 
-        public Criteria andTypeIsNull() {
-            addCriterion("E_TYPE is null");
+        public Criteria andEntrytimeIsNull() {
+            addCriterion("E_ENTRYTIME is null");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIsNotNull() {
-            addCriterion("E_TYPE is not null");
+        public Criteria andEntrytimeIsNotNull() {
+            addCriterion("E_ENTRYTIME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTypeEqualTo(Integer value) {
-            addCriterion("E_TYPE =", value, "type");
+        public Criteria andEntrytimeEqualTo(String value) {
+            addCriterion("E_ENTRYTIME =", value, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotEqualTo(Integer value) {
-            addCriterion("E_TYPE <>", value, "type");
+        public Criteria andEntrytimeNotEqualTo(String value) {
+            addCriterion("E_ENTRYTIME <>", value, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThan(Integer value) {
-            addCriterion("E_TYPE >", value, "type");
+        public Criteria andEntrytimeGreaterThan(String value) {
+            addCriterion("E_ENTRYTIME >", value, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("E_TYPE >=", value, "type");
+        public Criteria andEntrytimeGreaterThanOrEqualTo(String value) {
+            addCriterion("E_ENTRYTIME >=", value, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThan(Integer value) {
-            addCriterion("E_TYPE <", value, "type");
+        public Criteria andEntrytimeLessThan(String value) {
+            addCriterion("E_ENTRYTIME <", value, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("E_TYPE <=", value, "type");
+        public Criteria andEntrytimeLessThanOrEqualTo(String value) {
+            addCriterion("E_ENTRYTIME <=", value, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeIn(List<Integer> values) {
-            addCriterion("E_TYPE in", values, "type");
+        public Criteria andEntrytimeLike(String value) {
+            addCriterion("E_ENTRYTIME like", value, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotIn(List<Integer> values) {
-            addCriterion("E_TYPE not in", values, "type");
+        public Criteria andEntrytimeNotLike(String value) {
+            addCriterion("E_ENTRYTIME not like", value, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeBetween(Integer value1, Integer value2) {
-            addCriterion("E_TYPE between", value1, value2, "type");
+        public Criteria andEntrytimeIn(List<String> values) {
+            addCriterion("E_ENTRYTIME in", values, "entrytime");
             return (Criteria) this;
         }
 
-        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("E_TYPE not between", value1, value2, "type");
+        public Criteria andEntrytimeNotIn(List<String> values) {
+            addCriterion("E_ENTRYTIME not in", values, "entrytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntrytimeBetween(String value1, String value2) {
+            addCriterion("E_ENTRYTIME between", value1, value2, "entrytime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntrytimeNotBetween(String value1, String value2) {
+            addCriterion("E_ENTRYTIME not between", value1, value2, "entrytime");
             return (Criteria) this;
         }
 

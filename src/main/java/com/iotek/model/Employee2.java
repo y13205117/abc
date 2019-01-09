@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class Employee2 implements Serializable {
     private Employee employee;
     private Vitae vitae;
+    private Department department;
+    private Job job;
 
     public Employee getEmployee() {
         return employee;
@@ -20,5 +22,21 @@ public class Employee2 implements Serializable {
 
     public void setVitae(Vitae vitae) {
         this.vitae = vitae;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
     }
 }

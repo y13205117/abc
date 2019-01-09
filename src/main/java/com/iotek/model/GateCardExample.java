@@ -304,66 +304,6 @@ public class GateCardExample {
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNull() {
-            addCriterion("G_STATE is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateIsNotNull() {
-            addCriterion("G_STATE is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateEqualTo(Integer value) {
-            addCriterion("G_STATE =", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateNotEqualTo(Integer value) {
-            addCriterion("G_STATE <>", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateGreaterThan(Integer value) {
-            addCriterion("G_STATE >", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateGreaterThanOrEqualTo(Integer value) {
-            addCriterion("G_STATE >=", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateLessThan(Integer value) {
-            addCriterion("G_STATE <", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateLessThanOrEqualTo(Integer value) {
-            addCriterion("G_STATE <=", value, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateIn(List<Integer> values) {
-            addCriterion("G_STATE in", values, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateNotIn(List<Integer> values) {
-            addCriterion("G_STATE not in", values, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateBetween(Integer value1, Integer value2) {
-            addCriterion("G_STATE between", value1, value2, "state");
-            return (Criteria) this;
-        }
-
-        public Criteria andStateNotBetween(Integer value1, Integer value2) {
-            addCriterion("G_STATE not between", value1, value2, "state");
-            return (Criteria) this;
-        }
-
         public Criteria andEidIsNull() {
             addCriterion("G_EID is null");
             return (Criteria) this;
@@ -421,6 +361,76 @@ public class GateCardExample {
 
         public Criteria andEidNotBetween(Integer value1, Integer value2) {
             addCriterion("G_EID not between", value1, value2, "eid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateIsNull() {
+            addCriterion("G_DATE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateIsNotNull() {
+            addCriterion("G_DATE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateEqualTo(String value) {
+            addCriterion("G_DATE =", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateNotEqualTo(String value) {
+            addCriterion("G_DATE <>", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateGreaterThan(String value) {
+            addCriterion("G_DATE >", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateGreaterThanOrEqualTo(String value) {
+            addCriterion("G_DATE >=", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateLessThan(String value) {
+            addCriterion("G_DATE <", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateLessThanOrEqualTo(String value) {
+            addCriterion("G_DATE <=", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateLike(String value) {
+            addCriterion("G_DATE like", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateNotLike(String value) {
+            addCriterion("G_DATE not like", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateIn(List<String> values) {
+            addCriterion("G_DATE in", values, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateNotIn(List<String> values) {
+            addCriterion("G_DATE not in", values, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateBetween(String value1, String value2) {
+            addCriterion("G_DATE between", value1, value2, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateNotBetween(String value1, String value2) {
+            addCriterion("G_DATE not between", value1, value2, "date");
             return (Criteria) this;
         }
     }
