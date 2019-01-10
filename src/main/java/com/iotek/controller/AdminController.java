@@ -53,10 +53,25 @@ public class AdminController {
     }
     @RequestMapping("queryMCV")
     @ResponseBody
-    public List<MemberShowCV> queryMCV(Integer rid)throws Exception{
-        System.out.println(rid);
-        List<MemberShowCV> memberShowCVS = memberShowCVService.queryByRid(rid);
-        System.out.println(memberShowCVS);
+    public List<MemberShowCV> queryMCV(Integer mid)throws Exception{
+        List<MemberShowCV> memberShowCVS = memberShowCVService.queryByRid(mid);
         return memberShowCVS;
+    }
+    @RequestMapping("updateMCV")
+    public void updateMCV(Integer mid)throws Exception{
+        boolean res = memberShowCVService.updateMemberShowCV(mid);
+    }
+    @RequestMapping("invMCV")
+    public void invMCV(Integer mid,HttpServletResponse response)throws Exception{
+        int i = memberShowCVService.updateInv(mid);
+        if(i==2){
+            response.getWriter().write("已发送面试邀请");
+        }else if(i==3){
+            response.getWriter().write("面试邀请失败");
+        }else if(i==1){
+            response.getWriter().write("已发送邀请,请不要重复发送");
+        }else {
+            response.getWriter().write("无效数据");
+        }
     }
 }

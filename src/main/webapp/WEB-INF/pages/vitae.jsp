@@ -71,6 +71,7 @@
         <input name="re" type="button" value="返回">
     </form>
 </div>
+<a href="index.jsp"><input type="button" value="返回主页"></a>
 </body>
 </html>
 

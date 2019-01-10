@@ -4,12 +4,15 @@ import com.iotek.model.User;
 import com.iotek.model.Vitae;
 import com.iotek.service.VitaeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class VitaeController {
@@ -57,5 +60,11 @@ public class VitaeController {
         }else{
             response.getWriter().write("删除失败");
         }
+    }
+    @RequestMapping("quVitae")
+    @ResponseBody
+    public Vitae quVitae(Integer id)throws Exception{
+        System.out.println(id);
+        return vitaeService.queryById(id);
     }
 }

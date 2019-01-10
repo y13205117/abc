@@ -17,13 +17,14 @@
     <title>招聘页面</title>
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/recruit.js"></script>
+    <script src="js/register.js"></script>
 </head>
 <body>
 <c:if test="${empty sessionScope.user}">
     <form id="f1" method="post" action="login">
         用户名:<input name="name" type="text">
         密码:<input type="password" name="pass">
-        <input type="button" value="登录">
+        <input name="login" type="button" value="登录">
         <a href="goRegister">注册</a>
     </form>
 </c:if>
@@ -66,7 +67,7 @@
         </c:forEach>
     </c:if>
 </table>
-
+<a href="index.jsp"><input type="button" value="返回主页"></a>
 </body>
 </html>
 

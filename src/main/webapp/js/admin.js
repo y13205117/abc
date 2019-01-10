@@ -206,25 +206,23 @@ $(function () {
         $("#addDiv").css("display","none");
     })
     $("input[name='query']").click(function () {
-        var rid=$(this).next().html();
+        var mid=$(this).next().html();
         var tb=$("#MTB");
         $.ajax({
             type:"post",
             url:"queryMCV",
-            data:{"rid":rid},
+            data:{"mid":mid},
             success:function(obj){
                 if(obj.length>0){
                     var tr=$("<tr></tr>");
                     var td1=$("<td>简历编号</td>");
                     var td2=$("<td>是否阅读</td>");
-                    var td3=$("<td colspan='2'>投递时间</td>");
+                    var td3=$("<td colspan='3'>投递时间</td>");
                     var td4=$("<td>查看简历</td>");
-                    var td5=$("<td>面试邀请</td>")
                     tr.append(td1);
                     tr.append(td2);
                     tr.append(td3);
                     tr.append(td4);
-                    tr.append(td5);
                     tb.append(tr);
                     for (var i in obj){
                         var tr1=$("<tr></tr>");
@@ -232,19 +230,82 @@ $(function () {
                         td6.html(obj[i].vid);
                         if(obj[i].state==0){
                             td7=$("<td>未读</td>");
-                        }else{
+                        }else if(obj[i].state==1){
                             td7=$("<td>已读</td>");
+                        }else {
+                            td7=$("<td>已发面试邀请</td>");
                         }
-                        td8=$("<td colspan='2'></td>");
+                        td8=$("<td colspan='3'></td>");
                         td8.html(obj[i].time);
-                        td9=$("<td><input name='look' type='button' value='查看简历'></td>");
-                        td0=$("<td><input name='tong' type='button' value='面试通知'></td>");
+                        td9=$("<td><input class='look' type='button' value='查看简历'></td>");
+                        var s=$("<span style='display: none'></span>");
+                        s.html(obj[i].vid);
+                        td9.append(s);
                         tr1.append(td6);
                         tr1.append(td7);
                         tr1.append(td8);
                         tr1.append(td9);
-                        tr1.append(td0);
                         tb.append(tr1);
+                        $(document).on("click", ".look", function (){
+                            $(this).attr("disabled","disabled");
+                            var id=$(this).next().html();
+                            var tb=$("#MTB");
+                            $.ajax({
+                                type:"post",
+                                url:"quVitae",
+                                data:{"id":id},
+                                success:function(ob){
+                                    var tr2=$("<tr></tr>");
+                                    var td1=$("<td></td>");
+                                    td1.html("姓名:"+ob.name);
+                                    var td2=$("<td></td>");
+                                    td2.html("性别:"+ob.sex);
+                                    var td3=$("<td></td>");
+                                    td3.html("出身日期:"+ob.birth);
+                                    var td4=$("<td></td>");
+                                    td4.html("电话:"+ob.phone);
+                                    var td5=$("<td></td>");
+                                    td5.html("Email:"+ob.email);
+                                    var td6=$("<td></td>");
+                                    td6.html("地址:"+ob.address);
+                                    var td7=$("<td></td>");
+                                    td7.html("学历:"+ob.education);
+                                    var td8=$("<td><input class='inv' type='button' value='邀请面试'><input class='re' type='button' value='返回'></td>");
+                                    tr2.append(td1);
+                                    tr2.append(td2);
+                                    tr2.append(td3);
+                                    tr2.append(td4);
+                                    tr2.append(td5);
+                                    tr2.append(td6);
+                                    tr2.append(td7);
+                                    tr2.append(td8);
+                                    tb.append(tr2);
+                                    $(document).on("click", ".re", function (){
+                                        tr2.remove();
+                                        $(".look").removeAttr("disabled");
+                                        $.ajax({
+                                            type:"post",
+                                            url:"updateMCV",
+                                            data:{"mid":mid},
+                                            success:function(){
+                                            }
+                                        })
+                                        return;
+                                    })
+                                    $(document).on("click", ".inv", function (){
+                                        $.ajax({
+                                            type:"post",
+                                            url:"invMCV",
+                                            data:{"mid":mid},
+                                            success:function(obj){
+                                                alert(obj);
+                                                return;
+                                            }
+                                        })
+                                    })
+                                }
+                            })
+                        })
                     }
                 }else {
                     var tr=$("<tr></tr>");

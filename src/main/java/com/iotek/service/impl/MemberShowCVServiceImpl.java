@@ -1,8 +1,8 @@
 package com.iotek.service.impl;
 
 import com.iotek.dao.MemberShowCVMapper;
-import com.iotek.model.MemberShowCV;
-import com.iotek.model.MemberShowCVExample;
+import com.iotek.dao.VitaeMapper;
+import com.iotek.model.*;
 import com.iotek.service.MemberShowCVService;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,8 @@ import java.util.List;
 public class MemberShowCVServiceImpl implements MemberShowCVService {
     @Resource
     private MemberShowCVMapper memberShowCVMapper;
+    @Resource
+    private VitaeMapper vitaeMapper;
     @Override
     public boolean saveMemberShowCV(Integer rid, Integer vid) {
         if(rid<=0 || vid<=0){
@@ -38,12 +40,85 @@ public class MemberShowCVServiceImpl implements MemberShowCVService {
     }
 
     @Override
-    public List<MemberShowCV> queryByRid(Integer rid) {
-        if(rid<=0){
+    public List<MemberShowCV> queryByRid(Integer mid) {
+        if(mid<=0){
             return null;
         }
         MemberShowCVExample memberShowCVExample=new MemberShowCVExample();
-        memberShowCVExample.createCriteria().andRidEqualTo(rid);
+        memberShowCVExample.createCriteria().andRidEqualTo(mid);
         return memberShowCVMapper.selectByExample(memberShowCVExample);
+    }
+
+    @Override
+    public boolean updateMemberShowCV(Integer mid) {
+        if(mid<=0){
+            return false;
+        }
+        MemberShowCV memberShowCV = memberShowCVMapper.selectByPrimaryKey(mid);
+        if(memberShowCV.getState()==1){
+            return false;
+        }else if(memberShowCV.getState()==2){
+            return false;
+        }
+        //已读状态
+        memberShowCV.setState(1);
+        int i = memberShowCVMapper.updateByPrimaryKeySelective(memberShowCV);
+        return i>0?true:false;
+    }
+
+    @Override
+    public int updateInv(Integer mid) {
+        if(mid<=0){
+            return 0;
+        }
+        MemberShowCV memberShowCV = memberShowCVMapper.selectByPrimaryKey(mid);
+        if(memberShowCV.getState()==2){
+            return 1;
+        }
+        memberShowCV.setState(2);
+        int i = memberShowCVMapper.updateByPrimaryKeySelective(memberShowCV);
+        return i>0?2:3;
+    }
+
+    @Override
+    public List<MemberShowCV> queryByUser(User user) {
+        if(user==null){
+            return null;
+        }
+        VitaeExample vitaeExample=new VitaeExample();
+        vitaeExample.createCriteria().andUidEqualTo(user.getId());
+        List<Vitae> vitaes = vitaeMapper.selectByExample(vitaeExample);
+        if(vitaes==null ||vitaes.size()==0){
+            return null;
+        }
+        Vitae vitae=vitaes.get(0);
+        MemberShowCVExample memberShowCVExample=new MemberShowCVExample();
+        //2位邀请面试
+        memberShowCVExample.createCriteria().andVidEqualTo(vitae.getId()).andStateEqualTo(2);
+        return memberShowCVMapper.selectByExample(memberShowCVExample);
+    }
+
+    @Override
+    public boolean updateState(Integer mid) {
+        if(mid<=0){
+            return false;
+        }
+        MemberShowCV memberShowCV = memberShowCVMapper.selectByPrimaryKey(mid);
+        //3为用户去面试
+        memberShowCV.setState(3);
+        int i = memberShowCVMapper.updateByPrimaryKeySelective(memberShowCV);
+        return i>0?true:false;
+    }
+
+    @Override
+    public boolean updateNotState(Integer mid) {
+        if(mid<=0){
+            return false;
+        }
+        MemberShowCV memberShowCV = memberShowCVMapper.selectByPrimaryKey(mid);
+        //4为用户不去面试
+        memberShowCV.setState(4);
+        int i = memberShowCVMapper.updateByPrimaryKeySelective(memberShowCV);
+        return i>0?true:false;
     }
 }

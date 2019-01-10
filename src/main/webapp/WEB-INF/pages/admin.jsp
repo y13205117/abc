@@ -81,10 +81,10 @@
     </table>
 </div>
 <div id="dGC">
-    <table>
+    <table id="tGC">
         <tr>
             <td>员工编号</td>
-            <td>考勤状态</td>
+            <td>考勤日期</td>
             <td>上班时间</td>
             <td>下班时间</td>
         </tr>
@@ -97,21 +97,7 @@
             <c:forEach items="${sessionScope.gateCard}" var="i">
                 <tr>
                     <td>${i.eid}</td>
-                    <c:if test="${i.state==1}">
-                        <td>正常</td>
-                    </c:if>
-                    <c:if test="${i.state==2}">
-                        <td>加班</td>
-                    </c:if>
-                    <c:if test="${i.state==3}">
-                        <td>迟到</td>
-                    </c:if>
-                    <c:if test="${i.state==4}">
-                        <td>早退</td>
-                    </c:if>
-                    <c:if test="${i.state==5}">
-                        <td>旷工</td>
-                    </c:if>
+                    <td>${i.date}</td>
                     <td>${i.officehours}</td>
                     <td>${i.afterhours}</td>
                 </tr>

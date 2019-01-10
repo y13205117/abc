@@ -52,4 +52,15 @@ public class MemberShowCV implements Serializable {
     public void setState(Integer state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "MemberShowCV{" +
+                "id=" + id +
+                ", rid=" + rid +
+                ", vid=" + vid +
+                ", time='" + time + '\'' +
+                ", state=" + state +
+                '}';
+    }
 }
