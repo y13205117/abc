@@ -61,18 +61,18 @@
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="E_" replaceString=""/>-->
         <!--</table>-->
-        <table tableName="T_GATECARD" domainObjectName="GateCard" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true">
-            <columnRenamingRule searchString="G_" replaceString=""/>
-        </table>
+        <!--<table tableName="T_GATECARD" domainObjectName="GateCard" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--enableUpdateByExample="true">-->
+            <!--<columnRenamingRule searchString="G_" replaceString=""/>-->
+        <!--</table>-->
         <!--<table tableName="T_JOB" domainObjectName="Job" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="J_" replaceString=""/>-->
         <!--</table>-->
-        <!--<table tableName="T_LEAVE" domainObjectName="Leave" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
-               <!--enableUpdateByExample="true">-->
-            <!--<columnRenamingRule searchString="L_" replaceString=""/>-->
-        <!--</table>-->
+        <table tableName="T_LEAVE" domainObjectName="Leave" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="L_" replaceString=""/>
+        </table>
         <!--<table tableName="T_MEMBERSHOWCV" domainObjectName="MemberShowCV" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="M_" replaceString=""/>-->

@@ -56,4 +56,21 @@ public class JobServiceImpl implements JobService {
         }
         return false;
     }
+
+    @Override
+    public Job queryById(Integer id) {
+        if(id<=0){
+            return null;
+        }
+        return jobMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public boolean updateJob(Job job) {
+        if(job==null){
+            return false;
+        }
+        int i = jobMapper.updateByPrimaryKeySelective(job);
+        return i>0?true:false;
+    }
 }

@@ -15,7 +15,9 @@
 <head>
     <base href="<%=basePath%>"/>
     <title>管理员界面</title>
+    <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/Ecalendar.jquery.min.js"></script>
     <script src="js/admin.js">
 
     </script>
@@ -26,6 +28,7 @@
     </style>
 </head>
 <body>
+<h4><a href="goOut">注销</a></h4>
 <ul>
     <li id="qE">查看员工</li>
     <li id="qGC">查看考勤</li>
@@ -38,7 +41,10 @@
     <input id="addD" type="button" value="添加部门"><input id="addJ" type="button" value="添加职位">
     <input id="upD" type="button" value="修改部门"><input id="upJ" type="button" value="修改职位">
     <input id="deD" type="button" value="删除部门"><input id="deJ" type="button" value="删除职位">
-    <input id="addE" type="button" value="添加员工"><input id="deE" type="button" value="员工离职"><br>
+    <input id="addE" type="button" value="添加员工"><input id="deE" disabled type="button" value="员工离职"><br>
+    <c:if test="${!empty sessionScope.leave}">
+        <script language='javascript'>document.getElementById("deE").removeAttribute("disabled");</script>
+    </c:if>
     <c:if test="${empty sessionScope.department}">
         抱歉还没有任何部门
     </c:if>
@@ -54,7 +60,7 @@
     <table id="t1" border="1px"></table>
 </div>
 <div id="dT">
-    <table>
+    <table id="tT">
         <tr>
             <td>培训内容</td>
             <td>培训要求</td>
@@ -74,11 +80,13 @@
                     <td>${i.required}</td>
                     <td>${i.starttime}</td>
                     <td>${i.endtime}</td>
-                    <td><input type="button" value="修改"><input type="button" value="删除"><span>${i.id}</span></td>
+                    <td><input class="addTandD" type="button" value="添加员工"><input class="deT" type="button" value="删除"><span>${i.id}</span></td>
                 </tr>
             </c:forEach>
         </c:if>
     </table>
+    <input id="addT" type="button" value="添加"><br>
+    <p id="p1"></p>
 </div>
 <div id="dGC">
     <table id="tGC">

@@ -1,6 +1,7 @@
 package com.iotek.service.impl;
 
 import com.iotek.dao.MemberShowCVMapper;
+import com.iotek.dao.RecruitMapper;
 import com.iotek.dao.VitaeMapper;
 import com.iotek.model.*;
 import com.iotek.service.MemberShowCVService;
@@ -17,6 +18,8 @@ public class MemberShowCVServiceImpl implements MemberShowCVService {
     private MemberShowCVMapper memberShowCVMapper;
     @Resource
     private VitaeMapper vitaeMapper;
+    @Resource
+    private RecruitMapper recruitMapper;
     @Override
     public boolean saveMemberShowCV(Integer rid, Integer vid) {
         if(rid<=0 || vid<=0){
@@ -120,5 +123,23 @@ public class MemberShowCVServiceImpl implements MemberShowCVService {
         memberShowCV.setState(4);
         int i = memberShowCVMapper.updateByPrimaryKeySelective(memberShowCV);
         return i>0?true:false;
+    }
+
+    @Override
+    public List<MemberShowCV> queryByJid(Integer jid) {
+        if(jid<=0){
+            return null;
+        }
+        RecruitExample recruitExample=new RecruitExample();
+        recruitExample.createCriteria().andJidEqualTo(jid);
+        //通过职位Id找招聘
+        List<Recruit> recruits = recruitMapper.selectByExample(recruitExample);
+        if(recruits==null || recruits.size()==0){
+            return null;
+        }
+        Recruit recruit=recruits.get(0);
+        MemberShowCVExample memberShowCVExample=new MemberShowCVExample();
+        memberShowCVExample.createCriteria().andRidEqualTo(recruit.getId()).andStateEqualTo(3);
+        return memberShowCVMapper.selectByExample(memberShowCVExample);
     }
 }

@@ -64,7 +64,6 @@ public class VitaeController {
     @RequestMapping("quVitae")
     @ResponseBody
     public Vitae quVitae(Integer id)throws Exception{
-        System.out.println(id);
         return vitaeService.queryById(id);
     }
 }

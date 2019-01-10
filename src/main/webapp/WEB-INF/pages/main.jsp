@@ -28,7 +28,7 @@
     </form>
 </c:if>
 <c:if test="${!empty sessionScope.user}">
-    <h4>欢迎${sessionScope.user.name}登陆</h4>
+    <h4>欢迎${sessionScope.user.name}登陆<a href="goOut">注销</a></h4>
     <c:if test="${!empty sessionScope.memberShowCV}">
         <script language='javascript'>alert('您收到面试邀请，请及时查阅')</script>
     </c:if>

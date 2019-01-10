@@ -23,7 +23,7 @@
     </script>
 </head>
 <body>
-<h4>欢迎${sessionScope.emp.vitae.name}登录</h4>
+<h4>欢迎${sessionScope.emp.vitae.name}登录<a href="goOut">注销</a></h4>
 <ul>
     <li id="eGC">考勤打卡</li>
     <li id="eV">个人信息</li>
@@ -67,7 +67,26 @@
         </tr>
     </table>
 </div>
-<div id="dM">这里是通讯录</div>
+<div id="dM">
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>部门</td>
+            <td>职位</td>
+            <td colspan="2">电话</td>
+            <td colspan="2">Email</td>
+        </tr>
+        <c:forEach items="${sessionScope.employee}" var="i">
+            <tr>
+                <td>${i.vitae.name}</td>
+                <td>${i.department.name}</td>
+                <td>${i.job.name}</td>
+                <td colspan="2">${i.vitae.phone}</td>
+                <td colspan="2">${i.vitae.email}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 <div id="dT">这里是培训</div>
 <div id="dA">
     <table>
@@ -100,9 +119,9 @@
     </table>
 </div>
 <div id="dL">
-    <form method="post" action="#">
+    <form id="fL" method="post" action="addlea">
         原因:<textarea name="cause"></textarea>
-        <input type="button" value="提交报告">
+        <input name="lea" type="submit" value="提交报告">
     </form>
 </div>
 </body>

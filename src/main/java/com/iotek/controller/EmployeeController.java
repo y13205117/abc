@@ -3,9 +3,11 @@ package com.iotek.controller;
 import com.iotek.model.AwardRecord;
 import com.iotek.model.Employee;
 import com.iotek.model.Employee2;
+import com.iotek.model.Leave;
 import com.iotek.service.AwardRecordService;
 import com.iotek.service.EmployeeService;
 import com.iotek.service.GateCardService;
+import com.iotek.service.LeaveService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +25,8 @@ public class EmployeeController {
     private AwardRecordService awardRecordService;
     @Resource(name = "gateCardServiceImpl")
     private GateCardService gateCardService;
+    @Resource(name = "leaveServiceImpl")
+    private LeaveService leaveService;
     @RequestMapping("/queryEmp")
     @ResponseBody
     public List<Employee2> queryEmp(Employee employee)throws Exception{
@@ -32,6 +36,8 @@ public class EmployeeController {
     @RequestMapping("/goEmployee")
     public String goEmployee(HttpSession session)throws Exception{
         Employee2 employee2= (Employee2) session.getAttribute("emp");
+        List<Employee2> employee2s = employeeService.queryEmp2();
+        session.setAttribute("employee",employee2s);
         List<AwardRecord> awardRecords = awardRecordService.queryByEid(employee2.getEmployee().getId());
         session.setAttribute("awardRecord",awardRecords);
         return "employee";
@@ -55,5 +61,29 @@ public class EmployeeController {
         }else{
             response.getWriter().write("打卡失败");
         }
+    }
+    @RequestMapping("/actEmp")
+    public void actEmp(Integer jid,Integer vid,Integer mid,HttpServletResponse response)throws Exception{
+        boolean res = employeeService.saveEmployee(jid, vid,mid);
+        if(res){
+            response.getWriter().write("入职成功");
+        }else{
+            response.getWriter().write("入职失败");
+        }
+    }
+    @RequestMapping("/addlea")
+    public void addlea(String cause,HttpSession session,HttpServletResponse response)throws Exception{
+        Employee2 employee2= (Employee2) session.getAttribute("emp");
+        boolean res = leaveService.saveLeave(cause, employee2.getEmployee().getId());
+        if(res){
+            response.getWriter().print("<script language='javascript'>alert('提交成功');</script>");
+        }else{
+            response.getWriter().print("<script language='javascript'>alert('提交失败');</script>");
+        }
+        response.sendRedirect("goE");
+    }
+    @RequestMapping("/goE")
+    public String goE()throws Exception{
+        return "employee";
     }
 }

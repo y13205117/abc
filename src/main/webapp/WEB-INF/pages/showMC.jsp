@@ -19,9 +19,10 @@
     <script src="js/showMC.js"></script>
 </head>
 <body>
+<h4><a href="goOut">注销</a></h4>
 <table>
     <tr>
-        <td colspan="4">面试通知</td>
+        <td colspan="4">面试通知</td> 
     </tr>
     <tr>
         <c:if test="${empty sessionScope.memberShowCV}">

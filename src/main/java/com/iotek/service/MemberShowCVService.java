@@ -20,4 +20,6 @@ public interface MemberShowCVService {
     boolean updateState(Integer mid);
     //不去去面试
     boolean updateNotState(Integer mid);
+    //查找来面试的人
+    List<MemberShowCV> queryByJid(Integer jid);
 }

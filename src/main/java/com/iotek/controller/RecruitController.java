@@ -6,6 +6,7 @@ import com.iotek.service.MemberShowCVService;
 import com.iotek.service.RecruitService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -63,5 +64,10 @@ public class RecruitController {
             session.setAttribute("recruit",recruit2s);
             response.getWriter().write("ok");
         }
+    }
+    @RequestMapping("/queryRec")
+    @ResponseBody
+    public List<MemberShowCV> queryRecruit(Integer jid)throws Exception{
+        return memberShowCVService.queryByJid(jid);
     }
 }

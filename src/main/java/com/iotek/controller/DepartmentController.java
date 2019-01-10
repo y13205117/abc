@@ -5,6 +5,7 @@ import com.iotek.service.DepartmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -27,5 +28,28 @@ public class DepartmentController {
             response.getWriter().write("添加失败");
         }
         return null;
+    }
+    @RequestMapping("/quDep")
+    public void quDep(Integer id,HttpServletResponse response)throws Exception{
+        Department department = departmentService.queryById(id);
+        response.getWriter().write(department.getName());
+    }
+    @RequestMapping("/upDEP")
+    public void upDEP(Department department,HttpServletResponse response)throws Exception{
+        boolean res = departmentService.updateByDepartment(department);
+        if(res){
+            response.getWriter().write("修改成功");
+        }else{
+            response.getWriter().write("修改失败");
+        }
+    }
+    @RequestMapping("/deDep")
+    public void deDep(Integer id,HttpServletResponse response)throws Exception{
+        boolean res = departmentService.deleteDepartment(id);
+        if(res){
+            response.getWriter().write("删除成功");
+        }else {
+            response.getWriter().write("删除失败");
+        }
     }
 }

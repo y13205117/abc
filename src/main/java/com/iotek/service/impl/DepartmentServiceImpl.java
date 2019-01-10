@@ -2,10 +2,8 @@ package com.iotek.service.impl;
 
 import com.iotek.dao.DepartmentMapper;
 import com.iotek.dao.EmployeeMapper;
-import com.iotek.model.Department;
-import com.iotek.model.DepartmentExample;
-import com.iotek.model.Employee;
-import com.iotek.model.EmployeeExample;
+import com.iotek.dao.JobMapper;
+import com.iotek.model.*;
 import com.iotek.service.DepartmentService;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +17,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentMapper departmentMapper;
     @Resource
     private EmployeeMapper employeeMapper;
+    @Resource
+    private JobMapper jobMapper;
     @Override
     public List<Department> queryDepartment() {
         DepartmentExample departmentExample=new DepartmentExample();
@@ -54,9 +54,31 @@ public class DepartmentServiceImpl implements DepartmentService {
         employeeExample.createCriteria().andDidEqualTo(id);
         List<Employee> employees = employeeMapper.selectByExample(employeeExample);
         if(employees==null){
+            JobExample jobExample=new JobExample();
+            jobExample.createCriteria().andDidEqualTo(id);
+            int i1 = jobMapper.deleteByExample(jobExample);
             int i = departmentMapper.deleteByPrimaryKey(id);
-            return i>0?true:false;
+            if(i1>0 && i>0){
+                return true;
+            }
         }
         return false;
+    }
+
+    @Override
+    public Department queryById(Integer id) {
+        if(id<=0){
+            return null;
+        }
+        return departmentMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public boolean updateByDepartment(Department department) {
+        if (department==null){
+            return false;
+        }
+        int i = departmentMapper.updateByPrimaryKeySelective(department);
+        return i>0?true:false;
     }
 }

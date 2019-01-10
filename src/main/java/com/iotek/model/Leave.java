@@ -11,6 +11,8 @@ public class Leave implements Serializable {
 
     private Integer eid;
 
+    private Integer state;
+
     public Integer getId() {
         return id;
     }
@@ -41,5 +43,24 @@ public class Leave implements Serializable {
 
     public void setEid(Integer eid) {
         this.eid = eid;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Leave{" +
+                "id=" + id +
+                ", cause='" + cause + '\'' +
+                ", time='" + time + '\'' +
+                ", eid=" + eid +
+                ", state=" + state +
+                '}';
     }
 }

@@ -126,8 +126,8 @@ $(function () {
                         }else if(obj[i].state ==3){
                             var td8=$("<td>兼职</td>");
                         }
-                        td9.html(obj[i].employee.type)
-                        td0.html(obj[i].employee.performance)
+                        td9.html(obj[i].employee.type);
+                        td0.html(obj[i].employee.performance);
                         tr1.append(td6);
                         tr1.append(td7);
                         tr1.append(td8);
@@ -312,6 +312,283 @@ $(function () {
                     var td=$("<td colspan='5'>抱歉本职位还没有人投递简历</td>");
                     tr.append(td);
                     tb.append(tr);
+                }
+            }
+        })
+    })
+    $("#addE").click(function () {
+        var j=$("#j1").val();
+        var tb=$("#t1");
+        if(j==""){
+            alert("您还没有选职位");
+            return;
+        }
+        tb.html("");
+        $.ajax({
+            type:"post",
+            url:"queryRec",
+            data:{"jid":j},
+            success:function(obj){
+                var tr=$("<tr></tr>");
+                var td1=$("<td>简历编号</td>");
+                var td2=$("<td>简历姓名</td>");
+                var td3=$("<td>操作简历</td>");
+                tr.append(td1);
+                tr.append(td2);
+                tr.append(td3);
+                tb.append(tr);
+                if(obj.length>0){
+                    for(var i in obj){
+                        $.ajax({
+                            type:"post",
+                            url:"quVitae",
+                            data:{"id":obj[i].vid},
+                            success:function(ob){
+                                var tr1=$("<tr></tr>");
+                                var td4=$("<td></td>");
+                                td4.html(ob.id);
+                                var td5=$("<td></td>");
+                                td5.html(ob.name);
+                                var td6=$("<td><input class='act' type='button' value='入职'></td>");
+                                $(document).on("click", ".act", function (){
+                                    $.ajax({
+                                        type:"post",
+                                        url:"actEmp",
+                                        data:{"vid":obj[i].vid,"jid":j,"mid":obj[i].id},
+                                        success:function(obj){
+                                            alert(obj);
+                                            location.reload();
+                                        }
+                                    })
+                                })
+                                tr1.append(td4);
+                                tr1.append(td5);
+                                tr1.append(td6);
+                                tb.append(tr1);
+                            }
+                        })
+                    }
+                }else{
+                    var tr1=$("<tr></tr>");
+                    var td4=$("<td>抱歉没有人来面试</td>");
+                    tr1.append(td4);
+                    tb.append(tr1);
+                }
+            }
+        })
+    })
+    $("#upD").click(function () {
+        $("#upD").attr("disabled","disabled");
+        var d1=$("#d1").val();
+        if(d1==="请选择"){
+            alert("请选择部门");
+            $("#upD").removeAttr("disabled");
+            return;
+        }
+        $.ajax({
+            type:"post",
+            url:"quDep",
+            data:{"id":d1},
+            success:function(obj){
+                var div=$("<div id='div3' style='display: block'></div>");
+                var vd=$("<span>部门名称:</span><input id='dns' name='name'><br>");
+                vd.val(obj);
+                var que=$("<input id='que' type='button'value='确认'>");
+                var res=$("<input id='ret' type='button'value='取消'>");
+                div.append(vd);
+                div.append(que);
+                div.append(res);
+                $(document.body).append(div);
+                $(document).on("click", "#ret", function () {
+                    div.remove();
+                    $("#upD").removeAttr("disabled");
+                    return;
+                })
+                $(document).on("click", "#que", function () {
+                    var name=$("#dns").val();
+                    $.ajax({
+                        type:"post",
+                        url:"upDEP",
+                        data:{"name":name,"id":d1},
+                        success:function(obj){
+                            alert(obj);
+                            location.reload();
+                        }
+                    })
+                })
+            }
+        })
+    })
+    $("#upJ").click(function () {
+        $("#upJ").attr("disabled","disabled");
+        var j1=$("#j1").val();
+        if(j1===null){
+            alert("请选择职位");
+            $("#upJ").removeAttr("disabled");
+            return;
+        }
+        $.ajax({
+            type:"post",
+            url:"quJob",
+            data:{"id":j1},
+            success:function(obj){
+                var div=$("<div id='div4' style='display: block'></div>");
+                var vd=$("<span>职位名称:</span><input id='dnJ' name='name'><br>");
+                vd.val(obj);
+                var que=$("<input id='quJ' type='button'value='确认'>");
+                var res=$("<input id='reJ' type='button'value='取消'>");
+                div.append(vd);
+                div.append(que);
+                div.append(res);
+                $(document.body).append(div);
+                $(document).on("click", "#reJ", function () {
+                    div.remove();
+                    $("#upJ").removeAttr("disabled");
+                    return;
+                })
+                $(document).on("click", "#quJ", function () {
+                    var name=$("#dns").val();
+                    $.ajax({
+                        type:"post",
+                        url:"upJob",
+                        data:{"name":name,"id":j1},
+                        success:function(obj){
+                            alert(obj);
+                            location.reload();
+                        }
+                    })
+                })
+            }
+        })
+    })
+    $("#deD").click(function () {
+        if(confirm("确认删除？")){
+            var d1 = $("#d1").val();
+            if (d1 === "请选择") {
+                alert("请选择部门");
+                return;
+            }
+            $.ajax({
+                type:"post",
+                url:"deDep",
+                data:{"id":d1},
+                success:function(obj){
+                    alert(obj);
+                    location.reload();
+                }
+            })
+        }else{
+            return;
+        }
+    })
+    $("#deJ").click(function () {
+        if(confirm("确认删除？")){
+            var j1 = $("#j1").val();
+            if(j1===null){
+                alert("请选择职位");
+                return;
+            }
+            $.ajax({
+                type:"post",
+                url:"deJob",
+                data:{"id":j1},
+                success:function(obj){
+                    alert(obj);
+                    location.reload();
+                }
+            })
+        }else{
+            return;
+        }
+    })
+    $("#addT").click(function () {
+        $("#p1").html("");
+        $(this).attr("disabled","disabled");
+        var f=$("<form action='addTrain' method='post'></form>");
+        var c=$("<span>内容:</span><input name='content'><br>");
+        var r=$("<span>要求:</span><input name='required'><br>");
+        var s=$("<span>开始:</span><input class='date' name='starttime'><br>");
+        var e=$("<span>结束:</span><input class='date' name='endtime'><br>");
+        var b=$("<input id='quT' type='button' value='确认'><input id='reT' type='button' value='取消'>");
+        f.append(c);
+        f.append(r);
+        f.append(s);
+        f.append(e);
+        f.append(b);
+        $(document).on("click",".date",function () {
+            $(this).ECalendar({
+                type:"time",   //模式，time: 带时间选择; date: 不带时间选择;
+                stamp : false,   //是否转成时间戳，默认true;
+                offset:[0,2],   //弹框手动偏移量;
+                format:"yyyy年mm月dd日",   //时间格式 默认 yyyy-mm-dd hh:ii;
+                skin:3,   //皮肤颜色，默认随机，可选值：0-8,或者直接标注颜色值;
+                step:10,   //选择时间分钟的精确度;
+                callback:function(v,e){} //回调函数
+            })
+        })
+        $("#p1").append(f);
+        $(document).on("click","#quT",function (){
+            f.submit();
+        })
+        $(document).on("click","#reT",function (){
+            f.remove();
+            $("#addT").removeAttr("disabled");
+            return;
+        })
+    })
+    $(".deT").click(function () {
+        var t=$(this).next().html();
+        $.ajax({
+            type:"post",
+            url:"delTrain",
+            data:{"id":t},
+            success:function(obj){
+                alert(obj);
+                location.reload();
+            }
+        })
+    })
+    $("#deE").click(function () {
+        $("#t1").html("");
+        $.ajax({
+            type:"post",
+            url:"quLea",
+            data:"",
+            success:function(obj){
+                var tr=$("<tr></tr>");
+                var td1=$("<td>员工编号</td>");
+                var td2=$("<td>离职原因</td>");
+                var td3=$("<td>申请时间</td>");
+                var td4=$("<td>操作</td>");
+                tr.append(td1);
+                tr.append(td2);
+                tr.append(td3);
+                tr.append(td4);
+                $("#t1").append(tr);
+                for (var i in obj) {
+                    var tr1=$("<tr></tr>");
+                    var td5=$("<td></td>");
+                    td5.html(obj[i].eid);
+                    var td6=$("<td></td>");
+                    td5.html(obj[i].cause);
+                    var td7=$("<td></td>");
+                    td5.html(obj[i].time);
+                    var td8=$("<td><input class='.agg' type='button' value='同意'></td>");
+                    tr1.append(td5);
+                    tr1.append(td6);
+                    tr1.append(td7);
+                    tr1.append(td8);
+                    $("#t1").append(tr1);
+                    $(document).on("click",".agg",function () {
+                        $.ajax({
+                            type:"post",
+                            url:"upLea",
+                            data:{"eid":obj[i].eid},
+                            success:function(obj){
+                                alert(obj);
+                            }
+                        })
+                    })
                 }
             }
         })

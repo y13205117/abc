@@ -19,6 +19,7 @@
     <script src="js/vitae.js"></script>
 </head>
 <body>
+<h4><a href="goOut">注销</a></h4>
 <table border="1px">
     <c:if test="${empty sessionScope.vitae}">
         <tr>

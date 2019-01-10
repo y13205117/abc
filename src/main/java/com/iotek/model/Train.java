@@ -52,4 +52,15 @@ public class Train implements Serializable {
     public void setEndtime(String endtime) {
         this.endtime = endtime == null ? null : endtime.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Train{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", required='" + required + '\'' +
+                ", starttime='" + starttime + '\'' +
+                ", endtime='" + endtime + '\'' +
+                '}';
+    }
 }

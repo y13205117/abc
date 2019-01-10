@@ -39,7 +39,8 @@ public class UserController {
         if(employee!=null){
             Employee2 employee2 = employeeService.queryEmpById(employee.getId());
             session.setAttribute("emp",employee2);
-            return "goEmployee";
+            response.sendRedirect("goEmployee");
+            return null;
         }
         if(user.getName().equals("admin") && user.getPass().equals("123456")){
             response.sendRedirect("goAdmin");
@@ -103,5 +104,10 @@ public class UserController {
         }else{
             response.getWriter().write("操作失败，请刷新页面");
         }
+    }
+    @RequestMapping("/goOut")
+    public String goOut(HttpSession session)throws Exception{
+        session.invalidate();
+        return "../../index";
     }
 }

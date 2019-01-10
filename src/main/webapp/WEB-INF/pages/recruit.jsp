@@ -29,7 +29,7 @@
     </form>
 </c:if>
 <c:if test="${!empty sessionScope.user}">
-    <h4>欢迎${sessionScope.user.name}登陆</h4>
+    <h4>欢迎${sessionScope.user.name}登陆<a href="goOut">注销</a></h4>
 </c:if>
 部门:<select id="d1" name="did">
     <option>请选择</option>

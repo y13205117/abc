@@ -11,4 +11,8 @@ public interface DepartmentService {
     boolean saveDepartment(String name);
     //删除
     boolean deleteDepartment(Integer id);
+    //通过id找部门
+    Department queryById(Integer id);
+    //修改名字
+    boolean updateByDepartment(Department department);
 }

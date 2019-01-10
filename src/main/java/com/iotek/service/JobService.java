@@ -11,4 +11,8 @@ public interface JobService {
     boolean saveJob(Job job);
     //删除
     boolean deleteJob(Integer id);
+    //查找
+    Job queryById(Integer id);
+    //修改名字
+    boolean updateJob(Job job);
 }
