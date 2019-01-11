@@ -31,8 +31,13 @@ public class TrainAndEmpServiceImpl implements TrainAndEmpService {
     }
 
     @Override
-    public List<TrainAndEmp> queryTrainAndEmp(TrainAndEmp trainAndEmp) {
-        return null;
+    public List<TrainAndEmp> queryTrainAndEmp(Integer eid) {
+        if(eid<=0){
+            return null;
+        }
+        TrainAndEmpExample trainAndEmpExample=new TrainAndEmpExample();
+        trainAndEmpExample.createCriteria().andEidEqualTo(eid);
+        return trainAndEmpMapper.selectByExample(trainAndEmpExample);
     }
 
     @Override

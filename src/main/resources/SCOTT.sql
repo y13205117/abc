@@ -11,7 +11,7 @@ Target Server Type    : ORACLE
 Target Server Version : 110200
 File Encoding         : 65001
 
-Date: 2018-12-26 23:35:18
+Date: 2019-01-11 11:36:33
 */
 
 
@@ -25,7 +25,7 @@ CREATE TABLE "SCOTT"."T_AWARDRECORD" (
 "A_MONEY" NUMBER(6) NULL ,
 "A_TIME" VARCHAR2(20 BYTE) NULL ,
 "A_EID" NUMBER(6) NULL ,
-"A_CID" NUMBER NULL 
+"A_CID" NUMBER(6) DEFAULT NULL  NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -36,6 +36,8 @@ NOCACHE
 -- ----------------------------
 -- Records of T_AWARDRECORD
 -- ----------------------------
+INSERT INTO "SCOTT"."T_AWARDRECORD" VALUES ('1', '早退', '-50', '2019-01-11 02:47:40', '2', '2');
+INSERT INTO "SCOTT"."T_AWARDRECORD" VALUES ('2', '早退', '-50', '2019-01-11 07:39:07', '2', '2');
 
 -- ----------------------------
 -- Table structure for T_CALCULATE
@@ -46,7 +48,8 @@ CREATE TABLE "SCOTT"."T_CALCULATE" (
 "C_TIME" VARCHAR2(20 BYTE) NULL ,
 "C_RECONSIDER" NUMBER(6) DEFAULT 1  NULL ,
 "C_CAUSE" VARCHAR2(50 BYTE) NULL ,
-"C_EID" NUMBER(6) NULL 
+"C_EID" NUMBER(6) NULL ,
+"C_REALSALAY" NUMBER(8,2) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -57,6 +60,8 @@ NOCACHE
 -- ----------------------------
 -- Records of T_CALCULATE
 -- ----------------------------
+INSERT INTO "SCOTT"."T_CALCULATE" VALUES ('1', '2019-01-11 08:51:14', '0', null, '2', '281.82');
+INSERT INTO "SCOTT"."T_CALCULATE" VALUES ('2', '2019-01-11 08:54:43', '0', null, '2', '281.82');
 
 -- ----------------------------
 -- Table structure for T_DEPARTMENT
@@ -76,6 +81,8 @@ NOCACHE
 -- ----------------------------
 -- Records of T_DEPARTMENT
 -- ----------------------------
+INSERT INTO "SCOTT"."T_DEPARTMENT" VALUES ('1', '工程部', '2018-12-27 23:33:30');
+INSERT INTO "SCOTT"."T_DEPARTMENT" VALUES ('2', '人事部', '2018-12-28 00:54:28');
 
 -- ----------------------------
 -- Table structure for T_EMPLOYEE
@@ -85,10 +92,11 @@ CREATE TABLE "SCOTT"."T_EMPLOYEE" (
 "E_ID" NUMBER(6) NOT NULL ,
 "E_SALARY" NUMBER(8,2) NULL ,
 "E_STATE" NUMBER(6) NULL ,
-"E_TYPE" NUMBER(6) NULL ,
+"E_ENTRYTIME" VARCHAR2(20 BYTE) DEFAULT NULL  NULL ,
 "E_JID" NUMBER(6) NULL ,
 "E_PERFORMANCE" NUMBER(6) NULL ,
-"E_VID" NUMBER(6) NULL 
+"E_VID" NUMBER(6) NULL ,
+"E_DID" NUMBER(6) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -99,6 +107,7 @@ NOCACHE
 -- ----------------------------
 -- Records of T_EMPLOYEE
 -- ----------------------------
+INSERT INTO "SCOTT"."T_EMPLOYEE" VALUES ('2', '4000', '2', '2019-01-11 00:52:24', '2', '200', '3', '1');
 
 -- ----------------------------
 -- Table structure for T_GATECARD
@@ -106,11 +115,10 @@ NOCACHE
 DROP TABLE "SCOTT"."T_GATECARD";
 CREATE TABLE "SCOTT"."T_GATECARD" (
 "G_ID" NUMBER(6) NOT NULL ,
-"COLUMN_2" NUMBER NULL ,
 "G_OFFICEHOURS" VARCHAR2(20 BYTE) NULL ,
 "G_AFTERHOURS" VARCHAR2(20 BYTE) NULL ,
-"G_STATE" NUMBER(6) NULL ,
-"G_EID" NUMBER(6) NULL 
+"G_EID" NUMBER(6) NULL ,
+"G_DATE" VARCHAR2(20 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -121,29 +129,7 @@ NOCACHE
 -- ----------------------------
 -- Records of T_GATECARD
 -- ----------------------------
-
--- ----------------------------
--- Table structure for T_GCSTATE
--- ----------------------------
-DROP TABLE "SCOTT"."T_GCSTATE";
-CREATE TABLE "SCOTT"."T_GCSTATE" (
-"GC_ID" NUMBER(6) NULL ,
-"GC_NAME" VARCHAR2(20 BYTE) NULL 
-)
-LOGGING
-NOCOMPRESS
-NOCACHE
-
-;
-
--- ----------------------------
--- Records of T_GCSTATE
--- ----------------------------
-INSERT INTO "SCOTT"."T_GCSTATE" VALUES ('1', '正常');
-INSERT INTO "SCOTT"."T_GCSTATE" VALUES ('2', '加班');
-INSERT INTO "SCOTT"."T_GCSTATE" VALUES ('3', '迟到');
-INSERT INTO "SCOTT"."T_GCSTATE" VALUES ('4', '早退');
-INSERT INTO "SCOTT"."T_GCSTATE" VALUES ('5', '矿工');
+INSERT INTO "SCOTT"."T_GATECARD" VALUES ('2', '07:38:56', '07:39:07', '2', '2019-01-11');
 
 -- ----------------------------
 -- Table structure for T_JOB
@@ -164,6 +150,8 @@ NOCACHE
 -- ----------------------------
 -- Records of T_JOB
 -- ----------------------------
+INSERT INTO "SCOTT"."T_JOB" VALUES ('1', '经理', '2018-12-28 01:28:32', '1');
+INSERT INTO "SCOTT"."T_JOB" VALUES ('2', '助理', '2018-12-28 02:10:42', '1');
 
 -- ----------------------------
 -- Table structure for T_LEAVE
@@ -173,7 +161,8 @@ CREATE TABLE "SCOTT"."T_LEAVE" (
 "L_ID" NUMBER(6) NOT NULL ,
 "L_CAUSE" VARCHAR2(20 BYTE) NULL ,
 "L_TIME" VARCHAR2(20 BYTE) NULL ,
-"L_EID" NUMBER(6) NULL 
+"L_EID" NUMBER(6) NULL ,
+"L_STATE" NUMBER(6) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -205,6 +194,7 @@ NOCACHE
 -- ----------------------------
 -- Records of T_MEMBERSHOWCV
 -- ----------------------------
+INSERT INTO "SCOTT"."T_MEMBERSHOWCV" VALUES ('1', '1', '3', '2019-01-04 14:09:26', '-1');
 
 -- ----------------------------
 -- Table structure for T_RECRUIT
@@ -214,9 +204,10 @@ CREATE TABLE "SCOTT"."T_RECRUIT" (
 "R_ID" NUMBER(6) NOT NULL ,
 "R_THEME" VARCHAR2(20 BYTE) NULL ,
 "R_CONTENT" VARCHAR2(100 BYTE) NULL ,
-"R_REQUIRE" VARCHAR2(20 BYTE) NULL ,
 "R_COUNT" NUMBER(6) NULL ,
-"R_RELEASETIME" VARCHAR2(20 BYTE) NULL 
+"R_RELEASETIME" VARCHAR2(20 BYTE) NULL ,
+"R_DID" NUMBER(6) NULL ,
+"R_JID" NUMBER(6) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -227,6 +218,7 @@ NOCACHE
 -- ----------------------------
 -- Records of T_RECRUIT
 -- ----------------------------
+INSERT INTO "SCOTT"."T_RECRUIT" VALUES ('1', '招个秘书', '急招工程部秘密一名，要求身高170cm', '1', '2019-01-04 13:25:49', '1', '2');
 
 -- ----------------------------
 -- Table structure for T_STATE
@@ -245,7 +237,7 @@ NOCACHE
 -- ----------------------------
 -- Records of T_STATE
 -- ----------------------------
-INSERT INTO "SCOTT"."T_STATE" VALUES ('1', '在职');
+INSERT INTO "SCOTT"."T_STATE" VALUES ('1', '正式员工');
 INSERT INTO "SCOTT"."T_STATE" VALUES ('2', '试用期');
 INSERT INTO "SCOTT"."T_STATE" VALUES ('3', '离职');
 
@@ -269,6 +261,7 @@ NOCACHE
 -- ----------------------------
 -- Records of T_TRAIN
 -- ----------------------------
+INSERT INTO "SCOTT"."T_TRAIN" VALUES ('1', '1111', '1111', '2019年1月12日', '2019年1月13日');
 
 -- ----------------------------
 -- Table structure for T_TRAINANDDEP
@@ -288,6 +281,8 @@ NOCACHE
 -- ----------------------------
 -- Records of T_TRAINANDDEP
 -- ----------------------------
+INSERT INTO "SCOTT"."T_TRAINANDDEP" VALUES ('5', '2', '1');
+INSERT INTO "SCOTT"."T_TRAINANDDEP" VALUES ('6', '1', '1');
 
 -- ----------------------------
 -- Table structure for T_TRAINANDEMP
@@ -296,7 +291,7 @@ DROP TABLE "SCOTT"."T_TRAINANDEMP";
 CREATE TABLE "SCOTT"."T_TRAINANDEMP" (
 "TAE_ID" NUMBER(6) NOT NULL ,
 "TAE_EID" NUMBER(6) NULL ,
-"TEA_TID" NUMBER(6) NULL 
+"TAE_TID" NUMBER(6) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -307,6 +302,7 @@ NOCACHE
 -- ----------------------------
 -- Records of T_TRAINANDEMP
 -- ----------------------------
+INSERT INTO "SCOTT"."T_TRAINANDEMP" VALUES ('1', '2', '1');
 
 -- ----------------------------
 -- Table structure for T_USER
@@ -353,7 +349,7 @@ NOCACHE
 -- ----------------------------
 -- Records of T_VITAE
 -- ----------------------------
-INSERT INTO "SCOTT"."T_VITAE" VALUES ('2', 'yinhuaqi1', '19900519', '男', '15021843599', '上海市', 'y13205117@gmail.com', '本科', '1');
+INSERT INTO "SCOTT"."T_VITAE" VALUES ('3', '殷骅祺', '19900519', '男', '15021843599', '上海市', 'y13205117@gmail.com', '本科', '1');
 
 -- ----------------------------
 -- Sequence structure for SEQ_T_AWARDRECORD
@@ -363,7 +359,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_AWARDRECORD"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 3
  NOCACHE 
  ORDER ;
 
@@ -375,7 +371,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_CALCULATE"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 3
  NOCACHE 
  ORDER ;
 
@@ -387,7 +383,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_DEPARTMENT"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 3
  NOCACHE 
  ORDER ;
 
@@ -399,7 +395,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_EMPLOYEE"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 3
  NOCACHE 
  ORDER ;
 
@@ -411,7 +407,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_GATECARD"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 3
  NOCACHE 
  ORDER ;
 
@@ -435,7 +431,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_JOB"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 3
  NOCACHE 
  ORDER ;
 
@@ -447,7 +443,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_LEAVE"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 4
  NOCACHE 
  ORDER ;
 
@@ -459,7 +455,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_MEMBERSHOWCV"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 2
  NOCACHE 
  ORDER ;
 
@@ -471,7 +467,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_RECRUIT"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 2
  NOCACHE 
  ORDER ;
 
@@ -495,7 +491,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_TRAIN"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 8
  NOCACHE 
  ORDER ;
 
@@ -507,7 +503,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_TRAINANDDEP"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 7
  NOCACHE 
  ORDER ;
 
@@ -519,7 +515,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_TRAINANDEMP"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 1
+ START WITH 2
  NOCACHE 
  ORDER ;
 
@@ -543,7 +539,7 @@ CREATE SEQUENCE "SCOTT"."SEQ_T_VITAE"
  INCREMENT BY 1
  MINVALUE 1
  MAXVALUE 999999
- START WITH 3
+ START WITH 4
  NOCACHE 
  ORDER ;
 
@@ -652,13 +648,6 @@ ALTER TABLE "SCOTT"."T_GATECARD" ADD CHECK ("G_ID" IS NOT NULL);
 -- ----------------------------
 ALTER TABLE "SCOTT"."T_GATECARD" ADD PRIMARY KEY ("G_ID");
 
--- ----------------------------
--- Triggers structure for table T_GCSTATE
--- ----------------------------
-CREATE OR REPLACE TRIGGER "SCOTT"."T_GCSTATETRIG" BEFORE INSERT ON "SCOTT"."T_GCSTATE" REFERENCING OLD AS "OLD" NEW AS "NEW" FOR EACH ROW ENABLE
-BEGIN
-    SELECT SEQ_T_GCSTATE.nextval INTO :new.GC_ID FROM dual;
-  end;
 -- ----------------------------
 -- Indexes structure for table T_JOB
 -- ----------------------------

@@ -1,9 +1,6 @@
 package com.iotek.controller;
 
-import com.iotek.model.AwardRecord;
-import com.iotek.model.Calculate;
-import com.iotek.model.Employee;
-import com.iotek.model.Employee2;
+import com.iotek.model.*;
 import com.iotek.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +23,8 @@ public class EmployeeController {
     private LeaveService leaveService;
     @Resource(name = "calculateServiceImpl")
     private CalculateService calculateService;
+    @Resource(name = "trainServiceImpl")
+    private TrainService trainService;
     @RequestMapping("/queryEmp")
     @ResponseBody
     public List<Employee2> queryEmp(Employee employee)throws Exception{
@@ -35,6 +34,8 @@ public class EmployeeController {
     @RequestMapping("/goEmployee")
     public String goEmployee(HttpSession session)throws Exception{
         Employee2 employee2= (Employee2) session.getAttribute("emp");
+        List<Train> trains = trainService.queryById(employee2.getEmployee().getDid(), employee2.getEmployee().getId());
+        session.setAttribute("train",trains);
         List<Employee2> employee2s = employeeService.queryEmp2();
         session.setAttribute("employee",employee2s);
         List<AwardRecord> awardRecords = awardRecordService.queryByEid(employee2.getEmployee().getId());

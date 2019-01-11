@@ -88,7 +88,32 @@
         </c:forEach>
     </table>
 </div>
-<div id="dT">这里是培训</div>
+<div id="dT">
+    <table>
+        <tr>
+            <td colspan="2">培训内容</td>
+            <td colspan="2">培训要求</td>
+            <td colspan="2">开始时间</td>
+            <td colspan="2">结束时间</td>
+        </tr>
+        <c:if test="${empty sessionScope.train}">
+            <tr>
+                <td colspan="8">您目前没有培训</td>
+            </tr>
+        </c:if>
+        <c:if test="${!empty sessionScope.train}">
+            <script language='javascript'>alert('您培训通知，请及时查阅')</script>
+            <c:forEach items="${sessionScope.train}" var="i">
+                <tr>
+                    <td colspan="2">${i.content}</td>
+                    <td colspan="2">${i.required}</td>
+                    <td colspan="2">${i.starttime}</td>
+                    <td colspan="2">${i.endtime}</td>
+                </tr>
+            </c:forEach>
+        </c:if>
+    </table>
+</div>
 <div id="dA">
     <table>
         <tr>
@@ -120,32 +145,32 @@
     </table>
 </div>
 <div id="dC">
-   <table>
-       <tr>
-           <td>员工编号</td>
-           <td>是否复议</td>
-           <td>复议原因</td>
-           <td>结算时间</td>
-           <td>实发薪资</td>
-       </tr>
-       <c:forEach items="${sessionScope.calculate}" var="i">
-           <tr>
-               <td>${i.id}</td>
-               <c:if test="${i.reconsider==0}">
-                   <td>未提出复议</td>
-               </c:if>
-               <c:if test="${i.reconsider==1}">
-                   <td>以提交复议</td>
-               </c:if>
-               <c:if test="${i.reconsider==2}">
-                   <td>以完成复议</td>
-               </c:if>
-               <td>${i.cause}</td>
-               <td>${i.time}</td>
-               <td>${i.realsalay}</td>
-           </tr>
-       </c:forEach>
-   </table>
+    <table>
+        <tr>
+            <td>员工编号</td>
+            <td>是否复议</td>
+            <td>复议原因</td>
+            <td>结算时间</td>
+            <td>实发薪资</td>
+        </tr>
+        <c:forEach items="${sessionScope.calculate}" var="i">
+            <tr>
+                <td>${i.id}</td>
+                <c:if test="${i.reconsider==0}">
+                    <td>未提出复议</td>
+                </c:if>
+                <c:if test="${i.reconsider==1}">
+                    <td>以提交复议</td>
+                </c:if>
+                <c:if test="${i.reconsider==2}">
+                    <td>以完成复议</td>
+                </c:if>
+                <td>${i.cause}</td>
+                <td>${i.time}</td>
+                <td>${i.realsalay}</td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
 <div id="dL">
     <form id="fL" method="post" action="addlea">

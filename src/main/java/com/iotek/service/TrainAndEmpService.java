@@ -8,7 +8,7 @@ public interface TrainAndEmpService {
     //增加员工
     boolean saveEepByEid(TrainAndEmp trainAndEmp);
     //员工id查找
-    List<TrainAndEmp> queryTrainAndEmp(TrainAndEmp trainAndEmp);
+    List<TrainAndEmp> queryTrainAndEmp(Integer eid);
     //员工部门
     boolean deleteTrainAndEmp(TrainAndEmp trainAndEmp);
 }

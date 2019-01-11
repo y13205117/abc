@@ -19,8 +19,6 @@ public class AdminController {
     private RecruitService recruitService;
     @Resource(name = "memberShowCVServiceImpl")
     private MemberShowCVService memberShowCVService;
-    @Resource(name = "trainServiceImpl")
-    private TrainService trainService;
     @Resource(name = "gateCardServiceImpl")
     private GateCardService gateCardService;
     @Resource(name = "awardRecordServiceImpl")
@@ -31,6 +29,8 @@ public class AdminController {
     private EmployeeService employeeService;
     @Resource(name = "calculateServiceImpl")
     private CalculateService calculateService;
+    @Resource(name = "trainServiceImpl")
+    private TrainService trainService;
     @Resource(name = "trainAndDepServiceImpl")
     private TrainAndDepService trainAndDepService;
     @Resource(name = "trainAndEmpServiceImpl")

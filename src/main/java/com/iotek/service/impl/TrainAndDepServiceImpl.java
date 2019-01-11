@@ -30,8 +30,13 @@ public class TrainAndDepServiceImpl implements TrainAndDepService {
     }
 
     @Override
-    public List<TrainAndDep> queryTrainAndDep(TrainAndDep trainAndDep) {
-        return null;
+    public List<TrainAndDep> queryTrainAndDep(Integer did) {
+        if(did<=0){
+            return null;
+        }
+        TrainAndDepExample trainAndDepExample=new TrainAndDepExample();
+        trainAndDepExample.createCriteria().andDidEqualTo(did);
+        return trainAndDepMapper.selectByExample(trainAndDepExample);
     }
 
     @Override
