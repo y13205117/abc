@@ -62,7 +62,7 @@
                 <td>${i.department.name}</td>
                 <td>${i.job.name}</td>
                 <td>${i.recruit.releasetime}</td>
-                <td><input class="qu" type="button" value="查看"><span>${i.recruit.id}</span></td>
+                <td><input class="qu" type="button" value="查看"><span style="display: none">${i.recruit.id}</span></td>
             </tr>
         </c:forEach>
     </c:if>

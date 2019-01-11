@@ -45,7 +45,7 @@ public class GateCardServiceImpl implements GateCardService {
                 //迟到奖惩
                 AwardRecord awardRecord=new AwardRecord();
                 awardRecord.setCause("迟到");
-                awardRecord.setMoney(50);
+                awardRecord.setMoney(-50);
                 awardRecord.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
                 awardRecord.setEid(eid);
                 awardRecordMapper.insertSelective(awardRecord);
@@ -79,7 +79,7 @@ public class GateCardServiceImpl implements GateCardService {
             //早退奖惩
             AwardRecord awardRecord=new AwardRecord();
             awardRecord.setCause("早退");
-            awardRecord.setMoney(50);
+            awardRecord.setMoney(-50);
             awardRecord.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
             awardRecord.setEid(eid);
             awardRecordMapper.insertSelective(awardRecord);

@@ -35,7 +35,7 @@
     <li id="qT">查看培训</li>
     <li id="qR">查看招聘</li>
     <li id="qA">查看奖惩</li>
-    <li>薪资结算</li>
+    <li id="qC">薪资结算</li>
 </ul>
 <div id="dE">
     <input id="addD" type="button" value="添加部门"><input id="addJ" type="button" value="添加职位">
@@ -80,7 +80,7 @@
                     <td>${i.required}</td>
                     <td>${i.starttime}</td>
                     <td>${i.endtime}</td>
-                    <td><input class="addTandD" type="button" value="添加员工"><input class="deT" type="button" value="删除"><span>${i.id}</span></td>
+                    <td><input class="addTandD" type="button" value="添加员工"><input class="deT" type="button" value="删除"><span style="display: none">${i.id}</span></td>
                 </tr>
             </c:forEach>
         </c:if>
@@ -135,7 +135,7 @@
                     <td>${i.department.name}</td>
                     <td>${i.job.name}</td>
                     <td>${i.recruit.releasetime}</td>
-                    <td><input name="query" type="button" value="查看简历"><span>${i.recruit.id}</span></td>
+                    <td><input name="query" type="button" value="查看简历"><span style="display: none">${i.recruit.id}</span></td>
                 </tr>
             </c:forEach>
         </table>
@@ -191,13 +191,28 @@
                     <c:if test="${empty i.cid}">
                         <td>未结算</td>
                     </c:if>
-                    <td><input name="upA" type="button" value="修改"><span>${i.id}</span></td>
+                    <td><input name="upA" type="button" value="修改"><span style="display: none">${i.id}</span></td>
                 </tr>
             </c:forEach>
         </c:if>
     </table>
 </div>
-<div></div>
+<div id="dC">
+    <table>
+        <tr>
+            <td>员工编号</td>
+            <td>员工薪资</td>
+            <td>员工绩效</td>
+            <td>结算薪资</td>
+        </tr>
+        <c:forEach items="${sessionScope.employee}" var="i">
+            <td>${i.employee.id}</td>
+            <td>${i.employee.salary}</td>
+            <td>${i.employee.performance}</td>
+            <td><input class="counter" type="button" value="结算薪资"><span style="display: none">${i.employee.id}</span></td>
+        </c:forEach>
+    </table>
+</div>
 </body>
 </html>
 

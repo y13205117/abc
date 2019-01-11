@@ -13,6 +13,8 @@ public class Calculate implements Serializable {
 
     private Integer eid;
 
+    private Double realsalay;
+
     public Integer getId() {
         return id;
     }
@@ -51,5 +53,25 @@ public class Calculate implements Serializable {
 
     public void setEid(Integer eid) {
         this.eid = eid;
+    }
+
+    public Double getRealsalay() {
+        return realsalay;
+    }
+
+    public void setRealsalay(Double realsalay) {
+        this.realsalay = realsalay;
+    }
+
+    @Override
+    public String toString() {
+        return "Calculate{" +
+                "id=" + id +
+                ", time='" + time + '\'' +
+                ", reconsider=" + reconsider +
+                ", cause='" + cause + '\'' +
+                ", eid=" + eid +
+                ", realsalay=" + realsalay +
+                '}';
     }
 }

@@ -27,6 +27,10 @@ public class AdminController {
     private AwardRecordService awardRecordService;
     @Resource(name = "leaveServiceImpl")
     private LeaveService leaveService;
+    @Resource(name = "employeeServiceImpl")
+    private EmployeeService employeeService;
+    @Resource(name = "calculateServiceImpl")
+    private CalculateService calculateService;
     @RequestMapping("/goAdmin")
     public String goAdmin(HttpSession session)throws Exception{
         List<Recruit2> recruits = recruitService.queryRecruit();
@@ -35,12 +39,14 @@ public class AdminController {
         List<GateCard> gateCards=gateCardService.queryAll();
         List<AwardRecord> awardRecords = awardRecordService.queryAll();
         List<Leave> leaves = leaveService.queryByState();
+        List<Employee2> employee2s = employeeService.queryEmp2();
         session.setAttribute("department",departments);
         session.setAttribute("recruit",recruits);
         session.setAttribute("train",trains);
         session.setAttribute("gateCard",gateCards);
         session.setAttribute("awardRecord",awardRecords);
         session.setAttribute("leave",leaves);
+        session.setAttribute("employee",employee2s);
         return "admin";
     }
     @RequestMapping("/amdinSendRecruit")
@@ -55,17 +61,17 @@ public class AdminController {
             response.getWriter().print("<script language='javascript'>alert('发布失败');</script>");
         }
     }
-    @RequestMapping("queryMCV")
+    @RequestMapping("/queryMCV")
     @ResponseBody
     public List<MemberShowCV> queryMCV(Integer mid)throws Exception{
         List<MemberShowCV> memberShowCVS = memberShowCVService.queryByRid(mid);
         return memberShowCVS;
     }
-    @RequestMapping("updateMCV")
+    @RequestMapping("/updateMCV")
     public void updateMCV(Integer mid)throws Exception{
         boolean res = memberShowCVService.updateMemberShowCV(mid);
     }
-    @RequestMapping("invMCV")
+    @RequestMapping("/invMCV")
     public void invMCV(Integer mid,HttpServletResponse response)throws Exception{
         int i = memberShowCVService.updateInv(mid);
         if(i==2){
@@ -78,7 +84,7 @@ public class AdminController {
             response.getWriter().write("无效数据");
         }
     }
-    @RequestMapping("addTrain")
+    @RequestMapping("/addTrain")
     public String addTrain(Train train,HttpSession session)throws Exception{
         boolean res = trainService.saveTrain(train);
         if(res){
@@ -87,7 +93,7 @@ public class AdminController {
         }
         return "admin";
     }
-    @RequestMapping("delTrain")
+    @RequestMapping("/delTrain")
     public void delTrain(Integer id,HttpSession session,HttpServletResponse response)throws Exception{
         boolean res = trainService.deleteTrain(id);
         if(res){
@@ -98,13 +104,13 @@ public class AdminController {
             response.getWriter().write("删除失败");
         }
     }
-    @RequestMapping("quLea")
+    @RequestMapping("/quLea")
     @ResponseBody
     public List<Leave> quLea(HttpSession session)throws Exception{
         List<Leave> leaves= (List<Leave>) session.getAttribute("leave");
         return leaves;
     }
-    @RequestMapping("upLea")
+    @RequestMapping("/upLea")
     public void upLea(Integer eid,HttpSession session,HttpServletResponse response)throws Exception{
         boolean res = leaveService.updateLeave(eid);
         if(res){
@@ -113,5 +119,14 @@ public class AdminController {
             response.getWriter().write("离职办理成功");
         }
         response.getWriter().write("离职办理失败");
+    }
+    @RequestMapping("/addCal")
+    public void addCal(Integer eid,HttpSession session,HttpServletResponse response)throws Exception{
+        boolean res = calculateService.saveCalculate(eid);
+        if(res){
+            response.getWriter().write("结算成功");
+        }else{
+            response.getWriter().write("结算失败");
+        }
     }
 }

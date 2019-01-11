@@ -45,10 +45,10 @@
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="^TAE_" replaceString=""/>-->
         <!--</table>-->
-        <!--<table tableName="T_AWARDRECORD" domainObjectName="AwardRecord" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
-               <!--enableUpdateByExample="true">-->
-            <!--<columnRenamingRule searchString="^A_" replaceString=""/>-->
-        <!--</table>-->
+        <table tableName="T_AWARDRECORD" domainObjectName="AwardRecord" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnRenamingRule searchString="^A_" replaceString=""/>
+        </table>
         <!--<table tableName="T_CALCULATE" domainObjectName="Calculate" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="C_" replaceString=""/>-->
@@ -69,10 +69,10 @@
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="J_" replaceString=""/>-->
         <!--</table>-->
-        <table tableName="T_LEAVE" domainObjectName="Leave" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
-               enableUpdateByExample="true">
-            <columnRenamingRule searchString="L_" replaceString=""/>
-        </table>
+        <!--<table tableName="T_LEAVE" domainObjectName="Leave" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
+               <!--enableUpdateByExample="true">-->
+            <!--<columnRenamingRule searchString="L_" replaceString=""/>-->
+        <!--</table>-->
         <!--<table tableName="T_MEMBERSHOWCV" domainObjectName="MemberShowCV" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"-->
                <!--enableUpdateByExample="true">-->
             <!--<columnRenamingRule searchString="M_" replaceString=""/>-->

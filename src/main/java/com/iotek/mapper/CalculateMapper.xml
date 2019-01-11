@@ -7,6 +7,7 @@
     <result column="C_RECONSIDER" property="reconsider" jdbcType="DECIMAL" />
     <result column="C_CAUSE" property="cause" jdbcType="VARCHAR" />
     <result column="C_EID" property="eid" jdbcType="DECIMAL" />
+    <result column="C_REALSALAY" property="realsalay" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    C_ID, C_TIME, C_RECONSIDER, C_CAUSE, C_EID
+    C_ID, C_TIME, C_RECONSIDER, C_CAUSE, C_EID, C_REALSALAY
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iotek.model.CalculateExample" >
     select
@@ -87,11 +88,11 @@
     select 
     <include refid="Base_Column_List" />
     from T_CALCULATE
-    where C_ID = #{id}
+    where C_ID = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_CALCULATE
-    where C_ID = #{id}
+    where C_ID = #{id,jdbcType=DECIMAL}
   </delete>
   <delete id="deleteByExample" parameterType="com.iotek.model.CalculateExample" >
     delete from T_CALCULATE
@@ -101,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.iotek.model.Calculate" >
     insert into T_CALCULATE (C_ID, C_TIME, C_RECONSIDER, 
-      C_CAUSE, C_EID)
-    values (#{id}, #{time}, #{reconsider},
-      #{cause}, #{eid})
+      C_CAUSE, C_EID, C_REALSALAY
+      )
+    values (#{id,jdbcType=DECIMAL}, #{time,jdbcType=VARCHAR}, #{reconsider,jdbcType=DECIMAL}, 
+      #{cause,jdbcType=VARCHAR}, #{eid,jdbcType=DECIMAL}, #{realsalay,jdbcType=DECIMAL}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.iotek.model.Calculate" >
     insert into T_CALCULATE
@@ -123,22 +126,28 @@
       <if test="eid != null" >
         C_EID,
       </if>
+      <if test="realsalay != null" >
+        C_REALSALAY,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="time != null" >
-        #{time},
+        #{time,jdbcType=VARCHAR},
       </if>
       <if test="reconsider != null" >
-        #{reconsider},
+        #{reconsider,jdbcType=DECIMAL},
       </if>
       <if test="cause != null" >
-        #{cause},
+        #{cause,jdbcType=VARCHAR},
       </if>
       <if test="eid != null" >
-        #{eid},
+        #{eid,jdbcType=DECIMAL},
+      </if>
+      <if test="realsalay != null" >
+        #{realsalay,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -152,19 +161,22 @@
     update T_CALCULATE
     <set >
       <if test="record.id != null" >
-        C_ID = #{record.id},
+        C_ID = #{record.id,jdbcType=DECIMAL},
       </if>
       <if test="record.time != null" >
-        C_TIME = #{record.time},
+        C_TIME = #{record.time,jdbcType=VARCHAR},
       </if>
       <if test="record.reconsider != null" >
-        C_RECONSIDER = #{record.reconsider},
+        C_RECONSIDER = #{record.reconsider,jdbcType=DECIMAL},
       </if>
       <if test="record.cause != null" >
-        C_CAUSE = #{record.cause},
+        C_CAUSE = #{record.cause,jdbcType=VARCHAR},
       </if>
       <if test="record.eid != null" >
-        C_EID = #{record.eid},
+        C_EID = #{record.eid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.realsalay != null" >
+        C_REALSALAY = #{record.realsalay,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -173,11 +185,12 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update T_CALCULATE
-    set C_ID = #{record.id},
-      C_TIME = #{record.time},
-      C_RECONSIDER = #{record.reconsider},
-      C_CAUSE = #{record.cause},
-      C_EID = #{record.eid}
+    set C_ID = #{record.id,jdbcType=DECIMAL},
+      C_TIME = #{record.time,jdbcType=VARCHAR},
+      C_RECONSIDER = #{record.reconsider,jdbcType=DECIMAL},
+      C_CAUSE = #{record.cause,jdbcType=VARCHAR},
+      C_EID = #{record.eid,jdbcType=DECIMAL},
+      C_REALSALAY = #{record.realsalay,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,26 +199,30 @@
     update T_CALCULATE
     <set >
       <if test="time != null" >
-        C_TIME = #{time},
+        C_TIME = #{time,jdbcType=VARCHAR},
       </if>
       <if test="reconsider != null" >
-        C_RECONSIDER = #{reconsider},
+        C_RECONSIDER = #{reconsider,jdbcType=DECIMAL},
       </if>
       <if test="cause != null" >
-        C_CAUSE = #{cause},
+        C_CAUSE = #{cause,jdbcType=VARCHAR},
       </if>
       <if test="eid != null" >
-        C_EID = #{eid},
+        C_EID = #{eid,jdbcType=DECIMAL},
+      </if>
+      <if test="realsalay != null" >
+        C_REALSALAY = #{realsalay,jdbcType=DECIMAL},
       </if>
     </set>
-    where C_ID = #{id}
+    where C_ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.iotek.model.Calculate" >
     update T_CALCULATE
-    set C_TIME = #{time},
-      C_RECONSIDER = #{reconsider},
-      C_CAUSE = #{cause},
-      C_EID = #{eid}
-    where C_ID = #{id}
+    set C_TIME = #{time,jdbcType=VARCHAR},
+      C_RECONSIDER = #{reconsider,jdbcType=DECIMAL},
+      C_CAUSE = #{cause,jdbcType=VARCHAR},
+      C_EID = #{eid,jdbcType=DECIMAL},
+      C_REALSALAY = #{realsalay,jdbcType=DECIMAL}
+    where C_ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

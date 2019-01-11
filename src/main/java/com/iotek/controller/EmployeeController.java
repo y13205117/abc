@@ -3,7 +3,6 @@ package com.iotek.controller;
 import com.iotek.model.AwardRecord;
 import com.iotek.model.Employee;
 import com.iotek.model.Employee2;
-import com.iotek.model.Leave;
 import com.iotek.service.AwardRecordService;
 import com.iotek.service.EmployeeService;
 import com.iotek.service.GateCardService;

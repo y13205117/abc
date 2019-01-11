@@ -13,7 +13,7 @@ public class AwardRecord implements Serializable {
 
     private Integer eid;
 
-    private Double cid;
+    private Integer cid;
 
     public Integer getId() {
         return id;
@@ -55,11 +55,23 @@ public class AwardRecord implements Serializable {
         this.eid = eid;
     }
 
-    public Double getCid() {
+    public Integer getCid() {
         return cid;
     }
 
-    public void setCid(Double cid) {
+    public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    @Override
+    public String toString() {
+        return "AwardRecord{" +
+                "id=" + id +
+                ", cause='" + cause + '\'' +
+                ", money=" + money +
+                ", time='" + time + '\'' +
+                ", eid=" + eid +
+                ", cid=" + cid +
+                '}';
     }
 }

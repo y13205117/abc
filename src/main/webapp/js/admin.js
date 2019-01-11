@@ -174,6 +174,12 @@ $(function () {
         $("#dA").css("display","block");
         $("#qA").attr("disabled","disabled");
     })
+    $("#qC").click(function () {
+        $("li").removeAttr("disabled");
+        $("div").css("display","none");
+        $("#dC").css("display","block");
+        $("#qC").attr("disabled","disabled");
+    })
     $("#d2").change(function () {
         $("#j2").html("");
         var did=$("#d2").val();
@@ -590,6 +596,17 @@ $(function () {
                         })
                     })
                 }
+            }
+        })
+    })
+    $(".counter").click(function () {
+        var eid=$(this).next().html();
+        $.ajax({
+            type:"post",
+            url:"addCal",
+            data:{"eid":eid},
+            success:function(obj){
+
             }
         })
     })

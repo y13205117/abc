@@ -434,52 +434,52 @@ public class AwardRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andCidEqualTo(Double value) {
+        public Criteria andCidEqualTo(Integer value) {
             addCriterion("A_CID =", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidNotEqualTo(Double value) {
+        public Criteria andCidNotEqualTo(Integer value) {
             addCriterion("A_CID <>", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidGreaterThan(Double value) {
+        public Criteria andCidGreaterThan(Integer value) {
             addCriterion("A_CID >", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidGreaterThanOrEqualTo(Double value) {
+        public Criteria andCidGreaterThanOrEqualTo(Integer value) {
             addCriterion("A_CID >=", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidLessThan(Double value) {
+        public Criteria andCidLessThan(Integer value) {
             addCriterion("A_CID <", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidLessThanOrEqualTo(Double value) {
+        public Criteria andCidLessThanOrEqualTo(Integer value) {
             addCriterion("A_CID <=", value, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidIn(List<Double> values) {
+        public Criteria andCidIn(List<Integer> values) {
             addCriterion("A_CID in", values, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidNotIn(List<Double> values) {
+        public Criteria andCidNotIn(List<Integer> values) {
             addCriterion("A_CID not in", values, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidBetween(Double value1, Double value2) {
+        public Criteria andCidBetween(Integer value1, Integer value2) {
             addCriterion("A_CID between", value1, value2, "cid");
             return (Criteria) this;
         }
 
-        public Criteria andCidNotBetween(Double value1, Double value2) {
+        public Criteria andCidNotBetween(Integer value1, Integer value2) {
             addCriterion("A_CID not between", value1, value2, "cid");
             return (Criteria) this;
         }

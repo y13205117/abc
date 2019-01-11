@@ -423,6 +423,66 @@ public class CalculateExample {
             addCriterion("C_EID not between", value1, value2, "eid");
             return (Criteria) this;
         }
+
+        public Criteria andRealsalayIsNull() {
+            addCriterion("C_REALSALAY is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayIsNotNull() {
+            addCriterion("C_REALSALAY is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayEqualTo(Double value) {
+            addCriterion("C_REALSALAY =", value, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayNotEqualTo(Double value) {
+            addCriterion("C_REALSALAY <>", value, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayGreaterThan(Double value) {
+            addCriterion("C_REALSALAY >", value, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayGreaterThanOrEqualTo(Double value) {
+            addCriterion("C_REALSALAY >=", value, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayLessThan(Double value) {
+            addCriterion("C_REALSALAY <", value, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayLessThanOrEqualTo(Double value) {
+            addCriterion("C_REALSALAY <=", value, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayIn(List<Double> values) {
+            addCriterion("C_REALSALAY in", values, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayNotIn(List<Double> values) {
+            addCriterion("C_REALSALAY not in", values, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayBetween(Double value1, Double value2) {
+            addCriterion("C_REALSALAY between", value1, value2, "realsalay");
+            return (Criteria) this;
+        }
+
+        public Criteria andRealsalayNotBetween(Double value1, Double value2) {
+            addCriterion("C_REALSALAY not between", value1, value2, "realsalay");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

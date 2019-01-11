@@ -31,7 +31,7 @@
         <c:if test="${!empty sessionScope.memberShowCV}">
             <c:forEach items="${sessionScope.memberShowCV}" var="i">
                 <td colspan="2">带好相应物品请于下周一到XXX路XX楼找XX小姐/先生</td>
-                <td colspan="2"><input class="go" type="button" value="接受邀请"><input class="no" type="button" value="拒接邀请"><span>${i.id}</span></td>
+                <td colspan="2"><input class="go" type="button" value="接受邀请"><input class="no" type="button" value="拒接邀请"><span style="display: none">${i.id}</span></td>
             </c:forEach>
         </c:if>
     </tr>

@@ -61,7 +61,7 @@ public class VitaeController {
             response.getWriter().write("删除失败");
         }
     }
-    @RequestMapping("quVitae")
+    @RequestMapping("/quVitae")
     @ResponseBody
     public Vitae quVitae(Integer id)throws Exception{
         return vitaeService.queryById(id);
