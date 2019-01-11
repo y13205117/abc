@@ -224,63 +224,63 @@ public class TrainAndEmpExample {
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidIsNull() {
-            addCriterion("TEA_TID is null");
+        public Criteria andTidIsNull() {
+            addCriterion("TAE_TID is null");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidIsNotNull() {
-            addCriterion("TEA_TID is not null");
+        public Criteria andTidIsNotNull() {
+            addCriterion("TAE_TID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidEqualTo(Integer value) {
-            addCriterion("TEA_TID =", value, "teaTid");
+        public Criteria andTidEqualTo(Integer value) {
+            addCriterion("TAE_TID =", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidNotEqualTo(Integer value) {
-            addCriterion("TEA_TID <>", value, "teaTid");
+        public Criteria andTidNotEqualTo(Integer value) {
+            addCriterion("TAE_TID <>", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidGreaterThan(Integer value) {
-            addCriterion("TEA_TID >", value, "teaTid");
+        public Criteria andTidGreaterThan(Integer value) {
+            addCriterion("TAE_TID >", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("TEA_TID >=", value, "teaTid");
+        public Criteria andTidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("TAE_TID >=", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidLessThan(Integer value) {
-            addCriterion("TEA_TID <", value, "teaTid");
+        public Criteria andTidLessThan(Integer value) {
+            addCriterion("TAE_TID <", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidLessThanOrEqualTo(Integer value) {
-            addCriterion("TEA_TID <=", value, "teaTid");
+        public Criteria andTidLessThanOrEqualTo(Integer value) {
+            addCriterion("TAE_TID <=", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidIn(List<Integer> values) {
-            addCriterion("TEA_TID in", values, "teaTid");
+        public Criteria andTidIn(List<Integer> values) {
+            addCriterion("TAE_TID in", values, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidNotIn(List<Integer> values) {
-            addCriterion("TEA_TID not in", values, "teaTid");
+        public Criteria andTidNotIn(List<Integer> values) {
+            addCriterion("TAE_TID not in", values, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidBetween(Integer value1, Integer value2) {
-            addCriterion("TEA_TID between", value1, value2, "teaTid");
+        public Criteria andTidBetween(Integer value1, Integer value2) {
+            addCriterion("TAE_TID between", value1, value2, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTeaTidNotBetween(Integer value1, Integer value2) {
-            addCriterion("TEA_TID not between", value1, value2, "teaTid");
+        public Criteria andTidNotBetween(Integer value1, Integer value2) {
+            addCriterion("TAE_TID not between", value1, value2, "tid");
             return (Criteria) this;
         }
     }

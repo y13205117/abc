@@ -32,4 +32,13 @@ public class TrainAndDep implements Serializable {
     public void setTid(Integer tid) {
         this.tid = tid;
     }
+
+    @Override
+    public String toString() {
+        return "TrainAndDep{" +
+                "id=" + id +
+                ", did=" + did +
+                ", tid=" + tid +
+                '}';
+    }
 }

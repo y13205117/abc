@@ -606,8 +606,21 @@ $(function () {
             url:"addCal",
             data:{"eid":eid},
             success:function(obj){
-
+                alert(obj);
+                location.reload();
             }
         })
+    })
+    $(".addTandD").click(function () {
+        $("#dATD").css("display","block");
+        var tid=$(this).next().next().html();
+        $("#dtid").val(tid);
+        $("#etid").val(tid);
+    })
+    $("#addDep").click(function () {
+        $("#fDep").submit();
+    })
+    $("#addEmp").click(function () {
+        $("#fEmp").submit();
     })
 })

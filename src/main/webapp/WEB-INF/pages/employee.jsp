@@ -31,6 +31,7 @@
     <li id="eT">查看培训</li>
     <li id="eA">查看奖惩</li>
     <li id="eL">申请离职</li>
+    <li id="eC">查看薪资</li>
 </ul>
 <div id="dGC">
     <ul id="clock">
@@ -117,6 +118,34 @@
             </c:forEach>
         </c:if>
     </table>
+</div>
+<div id="dC">
+   <table>
+       <tr>
+           <td>员工编号</td>
+           <td>是否复议</td>
+           <td>复议原因</td>
+           <td>结算时间</td>
+           <td>实发薪资</td>
+       </tr>
+       <c:forEach items="${sessionScope.calculate}" var="i">
+           <tr>
+               <td>${i.id}</td>
+               <c:if test="${i.reconsider==0}">
+                   <td>未提出复议</td>
+               </c:if>
+               <c:if test="${i.reconsider==1}">
+                   <td>以提交复议</td>
+               </c:if>
+               <c:if test="${i.reconsider==2}">
+                   <td>以完成复议</td>
+               </c:if>
+               <td>${i.cause}</td>
+               <td>${i.time}</td>
+               <td>${i.realsalay}</td>
+           </tr>
+       </c:forEach>
+   </table>
 </div>
 <div id="dL">
     <form id="fL" method="post" action="addlea">

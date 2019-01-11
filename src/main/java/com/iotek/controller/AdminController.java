@@ -31,6 +31,10 @@ public class AdminController {
     private EmployeeService employeeService;
     @Resource(name = "calculateServiceImpl")
     private CalculateService calculateService;
+    @Resource(name = "trainAndDepServiceImpl")
+    private TrainAndDepService trainAndDepService;
+    @Resource(name = "trainAndEmpServiceImpl")
+    private TrainAndEmpService trainAndEmpService;
     @RequestMapping("/goAdmin")
     public String goAdmin(HttpSession session)throws Exception{
         List<Recruit2> recruits = recruitService.queryRecruit();
@@ -128,5 +132,29 @@ public class AdminController {
         }else{
             response.getWriter().write("结算失败");
         }
+    }
+    @RequestMapping("/addTAD")
+    public void addTAD(TrainAndDep trainAndDep,HttpServletResponse response)throws Exception{
+        System.out.println(trainAndDep);
+        boolean res = trainAndDepService.saveDepByDid(trainAndDep);
+        if(res){
+            response.getWriter().write("<script language='javascript'>alert('添加成功');</script>");
+        }
+        response.sendRedirect("goM");
+    }
+    @RequestMapping("/addTAE")
+    public void addTAE(TrainAndEmp trainAndEmp,HttpServletResponse response)throws Exception{
+        System.out.println(trainAndEmp);
+        boolean res = trainAndEmpService.saveEepByEid(trainAndEmp);
+        if(res){
+            response.getWriter().write("<script language='javascript'>alert('添加成功');</script>");
+        }else{
+            response.getWriter().write("<script language='javascript'>alert('请不出重复添加');</script>");
+        }
+        response.sendRedirect("goM");
+    }
+    @RequestMapping("/goM")
+    public String goM()throws Exception{
+        return "admin";
     }
 }

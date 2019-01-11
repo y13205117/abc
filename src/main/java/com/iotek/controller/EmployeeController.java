@@ -1,12 +1,10 @@
 package com.iotek.controller;
 
 import com.iotek.model.AwardRecord;
+import com.iotek.model.Calculate;
 import com.iotek.model.Employee;
 import com.iotek.model.Employee2;
-import com.iotek.service.AwardRecordService;
-import com.iotek.service.EmployeeService;
-import com.iotek.service.GateCardService;
-import com.iotek.service.LeaveService;
+import com.iotek.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +24,8 @@ public class EmployeeController {
     private GateCardService gateCardService;
     @Resource(name = "leaveServiceImpl")
     private LeaveService leaveService;
+    @Resource(name = "calculateServiceImpl")
+    private CalculateService calculateService;
     @RequestMapping("/queryEmp")
     @ResponseBody
     public List<Employee2> queryEmp(Employee employee)throws Exception{
@@ -39,6 +39,8 @@ public class EmployeeController {
         session.setAttribute("employee",employee2s);
         List<AwardRecord> awardRecords = awardRecordService.queryByEid(employee2.getEmployee().getId());
         session.setAttribute("awardRecord",awardRecords);
+        List<Calculate> calculates = calculateService.queryByEid(employee2.getEmployee().getId());
+        session.setAttribute("calculate",calculates);
         return "employee";
     }
     @RequestMapping("/goOffice")

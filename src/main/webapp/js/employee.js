@@ -48,6 +48,12 @@ $(function() {
         $("#dA").css("display","block");
         $("#eA").attr("disabled","disabled");
     })
+    $("#eC").click(function () {
+        $("li").removeAttr("disabled");
+        $("div").css("display","none");
+        $("#dC").css("display","block");
+        $("#eC").attr("disabled","disabled");
+    })
     $("#eL").click(function () {
         $("li").removeAttr("disabled");
         $("div").css("display","none");

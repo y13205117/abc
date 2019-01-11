@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -15,7 +16,7 @@
 <head>
     <base href="<%=basePath%>"/>
     <title>管理员界面</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/Ecalendar.jquery.min.js"></script>
     <script src="js/admin.js">
@@ -80,13 +81,35 @@
                     <td>${i.required}</td>
                     <td>${i.starttime}</td>
                     <td>${i.endtime}</td>
-                    <td><input class="addTandD" type="button" value="添加员工"><input class="deT" type="button" value="删除"><span style="display: none">${i.id}</span></td>
+                    <td><input class="addTandD" type="button" value="添加员工"><input class="deT" type="button" value="删除"><span
+                            style="display: none">${i.id}</span></td>
                 </tr>
             </c:forEach>
         </c:if>
     </table>
-    <input id="addT" type="button" value="添加"><br>
+    <input id="addT" type="button" value="添加培训"><br>
     <p id="p1"></p>
+    <div id="dATD">
+        <form id="fDep" action="addTAD" method="post">
+            部门:<select id="d3" name="did">
+            <c:forEach items="${sessionScope.department}" var="i">
+                <option value="${i.id}">${i.name}</option>
+            </c:forEach>
+            <input hidden id="dtid" name="tid" value="">
+            <input id="addDep" type="button" value="添加"><br>
+        </select>
+        </form>
+        <form id="fEmp" action="addTAE" method="post">
+            员工:<select id="j3" name="eid">
+            <c:forEach items="${sessionScope.employee}" var="i">
+                <option value="${i.employee.id}">${i.vitae.name}</option>
+            </c:forEach>
+            <input hidden id="etid" name="tid" value="">
+            <input id="addEmp" type="button" value="添加"><br>
+        </select>
+        </form>
+    </div>
+
 </div>
 <div id="dGC">
     <table id="tGC">
@@ -135,7 +158,8 @@
                     <td>${i.department.name}</td>
                     <td>${i.job.name}</td>
                     <td>${i.recruit.releasetime}</td>
-                    <td><input name="query" type="button" value="查看简历"><span style="display: none">${i.recruit.id}</span></td>
+                    <td><input name="query" type="button" value="查看简历"><span
+                            style="display: none">${i.recruit.id}</span></td>
                 </tr>
             </c:forEach>
         </table>
@@ -209,7 +233,8 @@
             <td>${i.employee.id}</td>
             <td>${i.employee.salary}</td>
             <td>${i.employee.performance}</td>
-            <td><input class="counter" type="button" value="结算薪资"><span style="display: none">${i.employee.id}</span></td>
+            <td><input class="counter" type="button" value="结算薪资"><span style="display: none">${i.employee.id}</span>
+            </td>
         </c:forEach>
     </table>
 </div>

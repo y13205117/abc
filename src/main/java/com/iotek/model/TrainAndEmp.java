@@ -7,7 +7,7 @@ public class TrainAndEmp implements Serializable {
 
     private Integer eid;
 
-    private Integer teaTid;
+    private Integer tid;
 
     public Integer getId() {
         return id;
@@ -25,11 +25,20 @@ public class TrainAndEmp implements Serializable {
         this.eid = eid;
     }
 
-    public Integer getTeaTid() {
-        return teaTid;
+    public Integer getTid() {
+        return tid;
     }
 
-    public void setTeaTid(Integer teaTid) {
-        this.teaTid = teaTid;
+    public void setTid(Integer tid) {
+        this.tid = tid;
+    }
+
+    @Override
+    public String toString() {
+        return "TrainAndEmp{" +
+                "id=" + id +
+                ", eid=" + eid +
+                ", tid=" + tid +
+                '}';
     }
 }

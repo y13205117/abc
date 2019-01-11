@@ -6,9 +6,9 @@
     </root>
     <schema id="2" parent="1" name="SCOTT">
       <ObjectId>48</ObjectId>
-      <IntrospectionTimestamp>2019-01-11.16:17:33</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2019-01-11.18:00:26</IntrospectionTimestamp>
       <CreatedTimestamp>2018-12-23.10:10:32</CreatedTimestamp>
-      <ModifiedTimestamp>2019-01-11.16:17:31</ModifiedTimestamp>
+      <ModifiedTimestamp>2019-01-11.18:00:24</ModifiedTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -266,7 +266,7 @@
     <table id="48" parent="2" name="T_TRAINANDEMP">
       <ObjectId>20341</ObjectId>
       <CreatedTimestamp>2018-12-25.08:10:19</CreatedTimestamp>
-      <ModifiedTimestamp>2018-12-25.09:38:25</ModifiedTimestamp>
+      <ModifiedTimestamp>2019-01-11.18:00:24</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="49" parent="2" name="T_USER">
@@ -855,7 +855,7 @@
       <Position>2</Position>
       <DataType>NUMBER(6 digit)|0s</DataType>
     </column>
-    <column id="148" parent="48" name="TEA_TID">
+    <column id="148" parent="48" name="TAE_TID">
       <Position>3</Position>
       <DataType>NUMBER(6 digit)|0s</DataType>
     </column>
